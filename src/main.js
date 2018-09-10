@@ -4,6 +4,8 @@ import App from './App'
 Vue.config.productionTip = false
 App.mpType = 'app'
 
+import './service/index'
+
 // 定义插件
 const somePlugin = {
   install: function () {

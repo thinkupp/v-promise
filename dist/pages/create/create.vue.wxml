@@ -1,0 +1,19 @@
+<template name="86455d98">
+  <view class="_div data-v-0949817d">
+    <van-cell-group class="_van-cell-group data-v-0949817d">
+      <picker range="{{typeRange}}" class="_picker data-v-0949817d">
+        <van-cell title="选择类型" value="起床" class="_van-cell data-v-0949817d"></van-cell>
+      </picker>
+      <picker range="{{visibilityRange}}" class="_picker data-v-0949817d">
+        <van-cell title="报名信息" value="所有人可见" class="_van-cell data-v-0949817d"></van-cell>
+      </picker>
+      <picker range="{{timeRange}}" class="_picker data-v-0949817d">
+        <van-cell title="有效时间" value="仅一次" class="_van-cell data-v-0949817d"></van-cell>
+      </picker>
+    </van-cell-group> -填表- <van-cell-group class="_van-cell-group data-v-0949817d">
+      <van-field required label="标题" placeholder="给你的约定起个独特的标题" class="_van-field data-v-0949817d"></van-field>
+      <van-field value="{{desc}}" required label="描述" placeholder="你有什么想法或者想对访问者说些什么" class="_van-field data-v-0949817d"></van-field>
+      <van-field required label="人数限制" placeholder="设定监督人数上限" class="_van-field data-v-0949817d"></van-field>
+    </van-cell-group>
+  </view>
+</template>

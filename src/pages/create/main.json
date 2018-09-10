@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-field": "../../npm/vant-weapp/dist/field/index",
+    "van-cell": "../../npm/vant-weapp/dist/cell/index",
+    "van-cell-group": "../../npm/vant-weapp/dist/cell-group/index",
+    "van-action-sheet": "../../npm/vant-weapp/dist/action-sheet/index"
+  }
+}
