@@ -5,5 +5,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+  @import './styles/global.less';
 </style>

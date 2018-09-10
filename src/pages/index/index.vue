@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    暂无数据哦
-    <vant-button>按钮</vant-button>
+    <button>创建新约定</button>
+
   </div>
 </template>
 
