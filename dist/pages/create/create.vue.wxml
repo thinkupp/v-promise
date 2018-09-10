@@ -1,4 +1,4 @@
-<template name="86455d98">
+<template name="710c4edd">
   <view class="_div data-v-0949817d">
     <van-cell-group class="_van-cell-group data-v-0949817d">
       <picker range="{{typeRange}}" class="_picker data-v-0949817d">

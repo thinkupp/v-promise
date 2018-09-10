@@ -8,7 +8,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "好几个约定",
+    "navigationBarTitleText": "我有N个约定",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
