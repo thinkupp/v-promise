@@ -2,14 +2,60 @@ require("../../common/manifest.js");
 require("../../common/vendor.js");
 global.webpackJsonp([6],{
 
-/***/ 92:
+/***/ 100:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('van-cell-group', {
+    attrs: {
+      "mpcomid": '1'
+    }
+  }, [_c('picker', {
+    attrs: {
+      "range": _vm.typeRange
+    }
+  }, [_c('van-cell', {
+    attrs: {
+      "title": "选择类型",
+      "label": "想要别人监督你什么呢",
+      "value": "起床",
+      "value-class": "create-type",
+      "mpcomid": '0'
+    }
+  })], 1)], 1), _vm._v(" "), _c('time-picker', {
+    attrs: {
+      "title": "生效时间",
+      "mpcomid": '2'
+    }
+  }), _vm._v(" "), _c('time-picker', {
+    attrs: {
+      "title": "失效时间",
+      "mpcomid": '3'
+    }
+  })], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0949817d", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__create__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__create__ = __webpack_require__(97);
 
 
 
@@ -18,18 +64,18 @@ app.$mount();
 
 /***/ }),
 
-/***/ 93:
+/***/ 97:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_create_vue__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_0949817d_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_create_vue__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_create_vue__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_0949817d_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_create_vue__ = __webpack_require__(100);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(94)
+  __webpack_require__(98)
 }
-var normalizeComponent = __webpack_require__(5)
+var normalizeComponent = __webpack_require__(4)
 /* script */
 
 /* template */
@@ -72,17 +118,18 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 94:
+/***/ 98:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 95:
+/***/ 99:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__component_TimePicker_vue__ = __webpack_require__(41);
 //
 //
 //
@@ -96,113 +143,32 @@ if (false) {(function () {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
       typeRange: ['起床'],
-      visibilityRange: ['所有人可见', '所有人不可见'],
-      timeRange: ['仅一次', '每天(包含节假日)', '每天(不含节假日)'],
       showAction: false,
       desc: '有你们在一旁，我可能动力会大些！'
     };
   },
-  created: function created() {},
+  mounted: function mounted() {
+    this.initData();
+  },
 
 
-  methods: {}
-});
+  methods: {
+    initData: function initData() {}
+  },
 
-/***/ }),
-
-/***/ 96:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('van-cell-group', {
-    attrs: {
-      "mpcomid": '3'
-    }
-  }, [_c('picker', {
-    attrs: {
-      "range": _vm.typeRange
-    }
-  }, [_c('van-cell', {
-    attrs: {
-      "title": "选择类型",
-      "value": "起床",
-      "mpcomid": '0'
-    }
-  })], 1), _vm._v(" "), _c('picker', {
-    attrs: {
-      "range": _vm.visibilityRange
-    }
-  }, [_c('van-cell', {
-    attrs: {
-      "title": "报名信息",
-      "value": "所有人可见",
-      "mpcomid": '1'
-    }
-  })], 1), _vm._v(" "), _c('picker', {
-    attrs: {
-      "range": _vm.timeRange
-    }
-  }, [_c('van-cell', {
-    attrs: {
-      "title": "有效时间",
-      "value": "仅一次",
-      "mpcomid": '2'
-    }
-  })], 1)], 1), _vm._v("\n  -填表-\n  "), _c('van-cell-group', {
-    attrs: {
-      "mpcomid": '7'
-    }
-  }, [_c('van-field', {
-    attrs: {
-      "required": "",
-      "label": "标题",
-      "placeholder": "给你的约定起个独特的标题",
-      "mpcomid": '4'
-    }
-  }), _vm._v(" "), _c('van-field', {
-    attrs: {
-      "value": _vm.desc,
-      "required": "",
-      "label": "描述",
-      "placeholder": "你有什么想法或者想对访问者说些什么",
-      "mpcomid": '5'
-    }
-  }), _vm._v(" "), _c('van-field', {
-    attrs: {
-      "required": "",
-      "label": "人数限制",
-      "placeholder": "设定监督人数上限",
-      "mpcomid": '6'
-    }
-  })], 1)], 1)
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0949817d", esExports)
+  components: {
+    TimePicker: __WEBPACK_IMPORTED_MODULE_0__component_TimePicker_vue__["a" /* default */]
   }
-}
+});
 
 /***/ })
 
-},[92]);
+},[96]);
 //# sourceMappingURL=main.js.map

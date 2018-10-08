@@ -1,1 +1,2 @@
+<import src="/component/TimePicker.vue.wxml" />
 <import src="/pages/index/components/TopBar.vue.wxml" />

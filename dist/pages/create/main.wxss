@@ -1,4 +1,8 @@
+@import "../../common/vendor.wxss";
 
 .action.data-v-0949817d {
   z-index: 99999;
+}
+.abc.data-v-0949817d {
+  color: #00c000;
 }

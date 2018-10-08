@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 .index.data-v-33b487e3 {
   height: 100%;

@@ -1,0 +1,21 @@
+
+.time-picker.data-v-5f8cd7e4 {
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  color: #333;
+  background-color: #FFF;
+  font-size: 32rpx;
+  display: flex;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+.time-picker .left.data-v-5f8cd7e4,
+.time-picker .right.data-v-5f8cd7e4 {
+  flex: 1;
+}
+.time-picker .right.data-v-5f8cd7e4 {
+  display: flex;
+  justify-content: flex-end;
+}
+.time-picker .right .part2.data-v-5f8cd7e4 {
+  margin-left: 15rpx;
+}

@@ -1,3 +1,4 @@
+@import "common/vendor.wxss";
 
 ._button {
   padding: 0;
@@ -11,4 +12,7 @@
 }
 page {
   height: 100%;
+}
+.create-type {
+  color: #009688;
 }

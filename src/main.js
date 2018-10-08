@@ -5,6 +5,7 @@ Vue.config.productionTip = false
 App.mpType = 'app'
 
 import './service/index'
+import './component/index'
 
 // 定义插件
 const somePlugin = {
