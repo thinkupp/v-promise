@@ -1,5 +1,5 @@
 <template>
-  <div class="more" @click="handleClick">
+  <div class="more" @click="handleClick" :class="{off: !on}">
     <span class="more-text">{{title}}</span>
     <span class="iconfont icon-arrow more-icon" :class="{select: on}"></span>
   </div>
@@ -36,7 +36,10 @@
     padding: 20rpx 30rpx;
     box-sizing: border-box;
     margin-top: 100rpx;
-    border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+
+    &.off {
+      border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+    }
 
     .more-text {
       font-size: 35rpx;

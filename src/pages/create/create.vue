@@ -12,12 +12,16 @@
     <an-more></an-more>
 
     <div class="more-option">
-      <picker :range="createRange">
-        <van-cell :border="false" title="自动创建" label="按照规定时间自动创建" value="从不" value-class="create-type"></van-cell>
-      </picker>
+      <van-cell-group>
+        <picker :range="createRange">
+          <van-cell title="自动创建" label="00:00 系统自动创建" value="从不" value-class="create-type"></van-cell>
+        </picker>
+      </van-cell-group>
 
       <check-option title="允许围观"></check-option>
       <check-option title="私密"></check-option>
+
+      <upload-image></upload-image>
     </div>
   </div>
 </template>
@@ -26,6 +30,7 @@
   import TimePicker from '../../component/TimePicker.vue'
   import AnMore from './components/AnMore.vue'
   import CheckOption from '../../component/CheckOption.vue'
+  import UploadImage from './components/UploadImage.vue'
 
   export default {
     data() {
@@ -50,7 +55,8 @@
     components: {
       TimePicker,
       AnMore,
-      CheckOption
+      CheckOption,
+      UploadImage
     }
   }
 </script>

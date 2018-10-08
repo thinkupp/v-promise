@@ -23,3 +23,26 @@ page {
 .create-type {
   color: #009688;
 }
+
+.common-cell {
+  padding: 10px 15px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    -webkit-transform: scale(1, .5);
+    transform: scale(1, .5);
+    border-bottom: 1px solid #e5e5e5;
+  }
+}

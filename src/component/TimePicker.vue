@@ -1,5 +1,5 @@
 <template>
-  <div class="time-picker">
+  <div class="time-picker common-cell">
     <span class="left">{{title}}</span>
 
     <div class="right">
@@ -53,13 +53,7 @@
 
 <style scoped lang="less">
   .time-picker {
-    padding: 20rpx 30rpx;
-    box-sizing: border-box;
-    color: #333;
     background-color: #FFF;
-    font-size: 32rpx;
-    display: flex;
-    border-bottom: 1rpx solid #e6e6e6;
 
     .left, .right {
       flex: 1;
@@ -70,7 +64,7 @@
       justify-content: flex-end;
 
       .part2 {
-        margin-left: 15rpx;
+        margin-left: 10px;
       }
     }
   }

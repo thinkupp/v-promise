@@ -1,5 +1,5 @@
 <template>
-  <div class="check-option">
+  <div class="check-option common-cell">
     <span class="title">{{title}}</span>
     <v-check-box @change="handleChange" :value="select"></v-check-box>
   </div>
@@ -39,17 +39,10 @@
   }
 </script>
 
-<style scoped lang="less">
+<style>
   .check-option {
-    padding: 20rpx 30rpx;
-    box-sizing: border-box;
-    display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .title {
-      font-size: 33rpx;
-      color: #333;
-    }
   }
+
 </style>

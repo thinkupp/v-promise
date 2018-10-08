@@ -1,5 +1,5 @@
 <view
-  class="custom-class van-cell {{ center ? 'van-cell--center' : '' }} {{ required ? 'van-cell--required' : '' }} {{ isLink || clickable ? 'van-cell--clickable' : '' }} {{ border ? 'van-hairline' : '' }}"  
+  class="custom-class van-cell {{ center ? 'van-cell--center' : '' }} {{ required ? 'van-cell--required' : '' }} {{ isLink || clickable ? 'van-cell--clickable' : '' }} {{ border ? 'van-hairline' : '' }}"
   style="{{ customStyle }}"
   bind:tap="onClick"
 >
