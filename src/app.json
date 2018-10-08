@@ -3,7 +3,8 @@
     "pages/index/main",
     "pages/promise-list/main",
     "pages/create/main",
-    "pages/template/main"
+    "pages/template/main",
+    "pages/register/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

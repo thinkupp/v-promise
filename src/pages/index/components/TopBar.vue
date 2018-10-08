@@ -1,12 +1,10 @@
 <template>
   <ul class="top-bar">
     <li :class="{select: currentIndex === 0}" @click="handleClick(0)">
-      <span class="title">已创建</span>
-      <span class="number"> 0</span>
+      <span class="title">我创建的</span>
     </li>
     <li :class="{select: currentIndex === 1}" @click="handleClick(1)">
-      <span class="title">已监督</span>
-      <span class="number"> 0</span>
+      <span class="title">我参与的</span>
     </li>
   </ul>
 </template>
@@ -32,13 +30,16 @@
 
 <style lang="less" scoped>
   .top-bar {
-    height: 120rpx;
-    line-height: 120rpx;
+    height: 242rpx;
+    line-height: 242rpx;
     display: flex;
     text-align: center;
+    align-items: center;
+    background: #5677FC;
 
     li {
       flex: 1;
+      color: rgba(255, 255, 255, 0.7);
 
       .number {
         font-size: 30rpx
@@ -47,8 +48,7 @@
       &.select {
 
         .title {
-          color: #d81e06;
-          border-bottom: 1rpx solid #d81e06;
+          color: #FFFFFF;
         }
       }
     }

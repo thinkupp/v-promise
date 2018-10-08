@@ -1,9 +1,11 @@
 <template>
   <div class="index">
-    <top-bar></top-bar>
+    <div class="bar-wrapper">
+      <top-bar></top-bar>
+      <button class="create-button" @click="handleCreate">创建</button>
+    </div>
 
     <div class="content" :class="{empty: listData.length === 0}">
-      <button class="create-button" @click="handleCreate">创建新约定</button>
     </div>
   </div>
 </template>
@@ -34,24 +36,31 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+
+    .bar-wrapper {
+      height: 242rpx;
+      position: relative;
+
+      .create-button {
+        width: 380rpx;
+        height: 100rpx;
+        line-height: 100rpx;
+        background: #687CCC;
+        font-size: 36rpx;
+        position: absolute;
+        bottom: -50rpx;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #FFF;
+        border-radius: 50rpx;
+        letter-spacing: 5rpx;
+        box-shadow: 0 16rpx 16rpx rgba(0, 0, 0, 0.25);
+      }
+    }
   }
 
   .content {
     flex: 1;
 
-    .create-button {
-      width: 300rpx;
-      height: 100rpx;
-      line-height: 100rpx;
-      border-radius: 60rpx;
-      background: #d81e06;
-      color: #FFF;
-    }
-
-    &.empty {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
   }
 </style>
