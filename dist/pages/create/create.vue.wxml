@@ -1,9 +1,16 @@
-<import src="/component/TimePicker.vue.wxml" /><template name="710c4edd">
+<import src="/component/TimePicker.vue.wxml" />
+<import src="/pages/create/components/AnMore.vue.wxml" />
+<import src="/component/CheckOption.vue.wxml" /><template name="710c4edd">
   <view class="_div data-v-0949817d">
     <van-cell-group class="_van-cell-group data-v-0949817d">
       <picker range="{{typeRange}}" class="_picker data-v-0949817d">
         <van-cell title="选择类型" label="想要别人监督你什么呢" value="起床" value-class="create-type" class="_van-cell data-v-0949817d"></van-cell>
       </picker>
-    </van-cell-group> <template title="生效时间" data="{{...$root[$kk+'2'], $root}}" is="1fb892f8"></template> <template title="失效时间" data="{{...$root[$kk+'3'], $root}}" is="1fb892f8"></template>
+    </van-cell-group> <template title="生效时间" data="{{...$root[$kk+'2'], $root}}" is="1fb892f8"></template> <template title="失效时间" data="{{...$root[$kk+'3'], $root}}" is="1fb892f8"></template> <template data="{{...$root[$kk+'4'], $root}}" is="61a742ec"></template>
+    <view class="_div data-v-0949817d more-option">
+      <picker range="{{createRange}}" class="_picker data-v-0949817d">
+        <van-cell border="{{false}}" title="自动创建" label="按照规定时间自动创建" value="从不" value-class="create-type" class="_van-cell data-v-0949817d"></van-cell>
+      </picker> <template title="允许围观" data="{{...$root[$kk+'6'], $root}}" is="c75633b8"></template> <template title="私密" data="{{...$root[$kk+'7'], $root}}" is="c75633b8"></template>
+    </view>
   </view>
 </template>

@@ -8,16 +8,30 @@
 
     <time-picker title="生效时间"></time-picker>
     <time-picker title="失效时间"></time-picker>
+
+    <an-more></an-more>
+
+    <div class="more-option">
+      <picker :range="createRange">
+        <van-cell :border="false" title="自动创建" label="按照规定时间自动创建" value="从不" value-class="create-type"></van-cell>
+      </picker>
+
+      <check-option title="允许围观"></check-option>
+      <check-option title="私密"></check-option>
+    </div>
   </div>
 </template>
 
 <script>
   import TimePicker from '../../component/TimePicker.vue'
+  import AnMore from './components/AnMore.vue'
+  import CheckOption from '../../component/CheckOption.vue'
 
   export default {
     data() {
       return {
         typeRange: ['起床'],
+        createRange: ['从不', '每天', '工作日', '节假日'],
         showAction: false,
         desc: '有你们在一旁，我可能动力会大些！'
       }
@@ -34,17 +48,13 @@
     },
 
     components: {
-      TimePicker
+      TimePicker,
+      AnMore,
+      CheckOption
     }
   }
 </script>
 
 <style lang="less" scoped>
-  .action {
-    z-index: 99999;
-  }
 
-  .abc {
-    color: #00c000;
-  }
 </style>

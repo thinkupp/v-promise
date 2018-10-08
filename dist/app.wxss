@@ -1,5 +1,26 @@
 @import "common/vendor.wxss";
 
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_864209_gxf7s1axvc8.eot');
+  src: url('//at.alicdn.com/t/font_864209_gxf7s1axvc8.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_864209_gxf7s1axvc8.woff') format('woff'), url('//at.alicdn.com/t/font_864209_gxf7s1axvc8.ttf') format('truetype'), url('//at.alicdn.com/t/font_864209_gxf7s1axvc8.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 32rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-arrow:before {
+  content: "\E629";
+}
+.icon-wenhao:before {
+  content: "\E671";
+}
+.icon-duihao:before {
+  content: "\E60B";
+}
 ._button {
   padding: 0;
   margin: 0;

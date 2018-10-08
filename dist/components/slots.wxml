@@ -1,2 +1,5 @@
-<import src="/component/TimePicker.vue.wxml" />
 <import src="/pages/index/components/TopBar.vue.wxml" />
+<import src="/component/TimePicker.vue.wxml" />
+<import src="/pages/create/components/AnMore.vue.wxml" />
+<import src="/component/CheckOption.vue.wxml" />
+<import src="/component/VCheckBox.vue.wxml" />
