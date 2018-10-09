@@ -1,5 +1,5 @@
 <template>
-  <div class="more" @click="handleClick" :class="{off: !on}">
+  <div class="more common-cell" @click="handleClick" :class="{off: !on}">
     <span class="more-text">{{title}}</span>
     <span class="iconfont icon-arrow more-icon" :class="{select: on}"></span>
   </div>
@@ -30,19 +30,13 @@
 
 <style scoped lang="less">
   .more {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 20rpx 30rpx;
-    box-sizing: border-box;
-    margin-top: 100rpx;
 
     &.off {
       border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
     }
 
     .more-text {
-      font-size: 35rpx;
       color: #333;
     }
 
