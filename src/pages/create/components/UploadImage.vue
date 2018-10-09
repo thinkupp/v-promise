@@ -49,7 +49,7 @@
                   const data = JSON.parse( res.data );
                   if ( data.image ) {
                     that.listData = that.listData.concat( e.tempFilePaths );
-                    that.$emit('success');
+                    that.$emit( 'success', data.image );
                   }
                 }
               },

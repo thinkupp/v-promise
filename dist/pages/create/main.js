@@ -497,7 +497,7 @@ if (false) {(function () {
                 var data = JSON.parse(res.data);
                 if (data.image) {
                   that.listData = that.listData.concat(e.tempFilePaths);
-                  that.$emit('success');
+                  that.$emit('success', data.image);
                 }
               }
             },
@@ -679,12 +679,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('upload-image', {
     attrs: {
+      "eventid": '7',
       "mpcomid": '10'
+    },
+    on: {
+      "success": _vm.uploadSuccess
     }
   })], 1), _vm._v(" "), _c('button', {
     staticClass: "submit-button",
     attrs: {
-      "eventid": '7'
+      "eventid": '8'
     },
     on: {
       "click": _vm.handleSubmit
@@ -1024,6 +1028,9 @@ if (false) {(function () {
     },
     createTypeChange: function createTypeChange(e) {
       this.createType = Number(e.mp.detail.value);
+    },
+    uploadSuccess: function uploadSuccess(image) {
+      this.formData.images.push(image);
     }
   },
 

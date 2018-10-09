@@ -35,7 +35,7 @@
         @question="privateQuestion"
         title="私密"></check-option>
 
-      <upload-image></upload-image>
+      <upload-image @success="uploadSuccess"></upload-image>
     </div>
 
     <button class="submit-button" @click="handleSubmit">提交</button>
@@ -193,6 +193,10 @@
 
       createTypeChange ( e ) {
         this.createType = Number( e.mp.detail.value )
+      },
+
+      uploadSuccess ( image ) {
+        this.formData.images.push( image );
       }
     },
 
