@@ -9,25 +9,32 @@ global.webpackJsonp([2],{
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_index__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__component_index__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__App__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_index__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component_index__ = __webpack_require__(92);
 
 
 
 
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.config.productionTip = false;
-__WEBPACK_IMPORTED_MODULE_2__App__["a" /* default */].mpType = 'app';
+
+__WEBPACK_IMPORTED_MODULE_2_vue___default.a.config.productionTip = false;
+__WEBPACK_IMPORTED_MODULE_3__App__["a" /* default */].mpType = 'app';
 
 
 
+
+Array.prototype.deepCopy = function () {
+  return JSON.parse(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default()(this));
+};
 
 // 定义插件
 var somePlugin = {
   install: function install() {
-    __WEBPACK_IMPORTED_MODULE_1_vue___default.a.mixin({
+    __WEBPACK_IMPORTED_MODULE_2_vue___default.a.mixin({
       onUnload: function onUnload() {
         if (this.$options.data) {
           __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()(this.$data, this.$options.data());
@@ -36,9 +43,9 @@ var somePlugin = {
     });
   }
   // 使用插件
-};__WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(somePlugin);
+};__WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(somePlugin);
 
-var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a(__WEBPACK_IMPORTED_MODULE_2__App__["a" /* default */]);
+var app = new __WEBPACK_IMPORTED_MODULE_2_vue___default.a(__WEBPACK_IMPORTED_MODULE_3__App__["a" /* default */]);
 
 app.$mount();
 
@@ -123,8 +130,8 @@ if (false) {(function () {
         that.$api.login({
           code: e.code
         }).then(function (res) {
+          that.globalData.userId = res.id;
           if (!res.regStatus) {
-            that.globalData.userId = res.id;
             wx.reLaunch({
               url: '/pages/register/main'
             });
@@ -245,13 +252,15 @@ var register = function register(data) {
 var base_ip = 'http://192.168.8.249:3000/api';
 
 var request = function request(option) {
-  option.url = base_ip + option.url;
-
   return new __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
+    option.url = base_ip + option.url;
+    var userId = getApp().globalData.userId;
+    if (!option.header) option.header = {};
+    if (userId) option.header.uid = userId;
+
     wx.request(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, option, {
       success: function success(res) {
         var data = res.data;
-        console.log("request", data, typeof data === 'undefined' ? 'undefined' : __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default()(data));
         if ((typeof data === 'undefined' ? 'undefined' : __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default()(data)) === 'object') {
           resolve(data);
         } else {

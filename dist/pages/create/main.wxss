@@ -23,11 +23,19 @@
   transform: rotate(180deg);
 }
 
-.check-option {
+.check-option.data-v-1a0ff0c4 {
   justify-content: space-between;
   align-items: center;
 }
-
+.check-option .left.data-v-1a0ff0c4 {
+  display: flex;
+  align-items: center;
+}
+.check-option .left .icon.data-v-1a0ff0c4 {
+  margin-left: 10rpx;
+  font-size: 20px;
+  color: #3388ff;
+}
 
 .v-check-box.data-v-9e360dc0 {
   width: 36rpx;

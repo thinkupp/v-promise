@@ -1,13 +1,15 @@
 const base_ip = 'http://192.168.8.249:3000/api';
 
 const request = function ( option ) {
-  option.url = base_ip + option.url;
-
   return new Promise((resolve, reject) => {
+    option.url = base_ip + option.url;
+    const userId = getApp().globalData.userId;
+    if ( !option.header ) option.header = {};
+    if ( userId ) option.header.uid = userId;
+
     wx.request(Object.assign({}, option, {
       success: function ( res ) {
         const data = res.data;
-        console.log("request", data, typeof data);
         if (typeof data === 'object') {
           resolve( data );
         } else {

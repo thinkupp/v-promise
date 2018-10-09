@@ -1,6 +1,10 @@
 <template>
   <div class="check-option common-cell">
-    <span class="title">{{title}}</span>
+    <div class="left">
+      <span class="title">{{title}}</span>
+      <span class="iconfont icon-wenhao icon" @click="handleQuestion"></span>
+    </div>
+
     <v-check-box @change="handleChange" :value="select"></v-check-box>
   </div>
 </template>
@@ -9,12 +13,6 @@
   import VCheckBox from './VCheckBox.vue'
 
   export default {
-    data() {
-      return {
-
-      }
-    },
-
     components: {
       VCheckBox
     },
@@ -34,15 +32,30 @@
     methods: {
       handleChange ( value ) {
         this.$emit('change', value)
+      },
+
+      handleQuestion () {
+        this.$emit('question');
       }
     }
   }
 </script>
 
-<style>
+<style scoped lang="less">
   .check-option {
     justify-content: space-between;
     align-items: center;
+
+    .left {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        margin-left: 10rpx;
+        font-size: 20px;
+        color: #3388ff;
+      }
+    }
   }
 
 </style>

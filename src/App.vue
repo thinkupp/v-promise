@@ -13,8 +13,8 @@
           that.$api.login({
             code: e.code,
           }).then(res => {
+            that.globalData.userId = res.id;
             if ( !res.regStatus ) {
-              that.globalData.userId = res.id;
               wx.reLaunch({
                 url: '/pages/register/main'
               })

@@ -7,6 +7,10 @@ App.mpType = 'app'
 import './service/index'
 import './component/index'
 
+Array.prototype.deepCopy = function () {
+  return JSON.parse(JSON.stringify(this))
+}
+
 // 定义插件
 const somePlugin = {
   install: function () {

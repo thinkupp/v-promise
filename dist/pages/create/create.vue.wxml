@@ -4,16 +4,21 @@
 <import src="/pages/create/components/UploadImage.vue.wxml" /><template name="86455d98">
   <view class="_div data-v-0949817d">
     <van-cell-group class="_van-cell-group data-v-0949817d">
-      <picker range="{{typeRange}}" class="_picker data-v-0949817d">
-        <van-cell title="选择类型" label="想要别人监督你什么呢" value="起床" value-class="create-type" class="_van-cell data-v-0949817d"></van-cell>
+      <picker value="{{formData.type}}" range="{{typeRange}}" class="_picker data-v-0949817d">
+        <van-cell title="选择类型" label="想要别人监督你什么呢" value="{{typeRange[formData.type]}}" value-class="create-type" class="_van-cell data-v-0949817d"></van-cell>
       </picker>
-    </van-cell-group> <template title="生效时间" data="{{...$root[$kk+'2'], $root}}" is="1e72ff0d"></template> <template title="失效时间" data="{{...$root[$kk+'3'], $root}}" is="1e72ff0d"></template> <template data="{{...$root[$kk+'4'], $root}}" is="b135605a"></template>
-    <view class="_div data-v-0949817d more-option">
+    </van-cell-group> <template binddate-change="handleProxy" wx:if="{{formData.startTime}}" title="生效时间" data-eventid="{{'0'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'2'], $root}}" is="1e72ff0d"></template>
+    <van-cell-group class="_van-cell-group data-v-0949817d">
+      <picker value="{{effectiveIndex}}" mode="multiSelector" bindchange="handleProxy" bindcancel="handleProxy" bindcolumnchange="handleProxy" range="{{timeRange}}" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_picker data-v-0949817d">
+        <van-cell title="有效时间" value="{{effectiveValue}}" value-class="create-type" class="_van-cell data-v-0949817d"></van-cell>
+      </picker>
+    </van-cell-group> <template bindchange="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'5'], $root}}" is="b135605a"></template>
+    <view class="_div data-v-0949817d more-option" hidden="{{!(showAnMore)}}">
       <van-cell-group class="_van-cell-group data-v-0949817d">
-        <picker range="{{createRange}}" class="_picker data-v-0949817d">
-          <van-cell title="自动创建" label="00:00 系统自动创建" value="从不" value-class="create-type" class="_van-cell data-v-0949817d"></van-cell>
+        <picker value="{{formData.autoCreate}}" range="{{createRange}}" class="_picker data-v-0949817d">
+          <van-cell title="自动创建" label="00:00 系统自动创建" value="{{createRange[formData.autoCreate]}}" value-class="create-type" class="_van-cell data-v-0949817d"></van-cell>
         </picker>
-      </van-cell-group> <template title="允许围观" data="{{...$root[$kk+'7'], $root}}" is="37eeaebb"></template> <template title="私密" data="{{...$root[$kk+'8'], $root}}" is="37eeaebb"></template> <template data="{{...$root[$kk+'9'], $root}}" is="1d471ff9"></template>
-    </view>
+      </van-cell-group> <template bindchange="handleProxy" bindquestion="handleProxy" title="所有人可见" data-eventid="{{'3'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'8'], $root}}" is="37eeaebb"></template> <template bindchange="handleProxy" bindquestion="handleProxy" title="私密" data-eventid="{{'4'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'9'], $root}}" is="37eeaebb"></template> <template data="{{...$root[$kk+'10'], $root}}" is="1d471ff9"></template>
+    </view> <button bindtap="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_button data-v-0949817d">提交</button>
   </view>
 </template>

@@ -7597,6 +7597,11 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
     title: {
       type: String,
       default: ''
+    },
+
+    value: {
+      type: String,
+      default: ''
     }
   },
 
@@ -7607,19 +7612,20 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 
   methods: {
     initData: function initData() {
-      var time = new Date();
-      var year = time.getFullYear();
-      var month = time.getMonth() + 1;
-      month = month < 10 ? '0' + month : month;
-      var day = time.getDate();
-      day = day < 10 ? '0' + day : day;
-      this.part1 = year + '-' + month + '-' + day;
+      var time = this.value.split(' ');
+      this.part1 = time[0];
+      this.part2 = time[1];
     },
     dateChange: function dateChange(e) {
       this.part1 = e.mp.detail.value;
+      this.changeEmit();
     },
     timeChange: function timeChange(e) {
       this.part2 = e.mp.detail.value;
+      this.changeEmit();
+    },
+    changeEmit: function changeEmit() {
+      this.$emit('date-change', this.part1 + ' ' + this.part2);
     }
   }
 });

@@ -142,11 +142,11 @@ if (false) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_CheckOption_vue__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_1a0ff0c4_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_CheckOption_vue__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_1a0ff0c4_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_CheckOption_vue__ = __webpack_require__(173);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(105)
+  __webpack_require__(172)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
@@ -156,12 +156,12 @@ var normalizeComponent = __webpack_require__(1)
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-1a0ff0c4"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_CheckOption_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_1a0ff0c4_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_CheckOption_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_1a0ff0c4_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_CheckOption_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
@@ -191,13 +191,6 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 105:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 106:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -210,15 +203,14 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  data: function data() {
-    return {};
-  },
-
-
   components: {
     VCheckBox: __WEBPACK_IMPORTED_MODULE_0__VCheckBox_vue__["a" /* default */]
   },
@@ -238,6 +230,9 @@ if (false) {(function () {
   methods: {
     handleChange: function handleChange(value) {
       this.$emit('change', value);
+    },
+    handleQuestion: function handleQuestion() {
+      this.$emit('question');
     }
   }
 });
@@ -380,39 +375,6 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-9e360dc0", esExports)
-  }
-}
-
-/***/ }),
-
-/***/ 111:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "check-option common-cell"
-  }, [_c('span', {
-    staticClass: "title"
-  }, [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _c('v-check-box', {
-    attrs: {
-      "value": _vm.select,
-      "eventid": '0',
-      "mpcomid": '0'
-    },
-    on: {
-      "change": _vm.handleChange
-    }
-  })], 1)
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-1a0ff0c4", esExports)
   }
 }
 
@@ -599,63 +561,117 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }, [_c('picker', {
     attrs: {
+      "value": _vm.formData.type,
       "range": _vm.typeRange
     }
   }, [_c('van-cell', {
     attrs: {
       "title": "选择类型",
       "label": "想要别人监督你什么呢",
-      "value": "起床",
+      "value": _vm.typeRange[_vm.formData.type],
       "value-class": "create-type",
       "mpcomid": '0'
     }
-  })], 1)], 1), _vm._v(" "), _c('time-picker', {
+  })], 1)], 1), _vm._v(" "), (_vm.formData.startTime) ? _c('time-picker', {
     attrs: {
+      "value": _vm.formData.startTime,
       "title": "生效时间",
+      "eventid": '0',
       "mpcomid": '2'
+    },
+    on: {
+      "date-change": _vm.startTimeChange
     }
-  }), _vm._v(" "), _c('time-picker', {
-    attrs: {
-      "title": "失效时间",
-      "mpcomid": '3'
-    }
-  }), _vm._v(" "), _c('an-more', {
+  }) : _vm._e(), _vm._v(" "), _c('van-cell-group', {
     attrs: {
       "mpcomid": '4'
     }
+  }, [_c('picker', {
+    attrs: {
+      "value": _vm.effectiveIndex,
+      "mode": "multiSelector",
+      "range": _vm.timeRange,
+      "eventid": '1'
+    },
+    on: {
+      "change": _vm.timeValueChange,
+      "cancel": _vm.timeValueCancel,
+      "columnchange": _vm.timeTypeChange
+    }
+  }, [_c('van-cell', {
+    attrs: {
+      "title": "有效时间",
+      "value": _vm.effectiveValue,
+      "value-class": "create-type",
+      "mpcomid": '3'
+    }
+  })], 1)], 1), _vm._v(" "), _c('an-more', {
+    attrs: {
+      "eventid": '2',
+      "mpcomid": '5'
+    },
+    on: {
+      "change": _vm.anMoreChange
+    }
   }), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.showAnMore),
+      expression: "showAnMore"
+    }],
     staticClass: "more-option"
   }, [_c('van-cell-group', {
     attrs: {
-      "mpcomid": '6'
+      "mpcomid": '7'
     }
   }, [_c('picker', {
     attrs: {
+      "value": _vm.formData.autoCreate,
       "range": _vm.createRange
     }
   }, [_c('van-cell', {
     attrs: {
       "title": "自动创建",
       "label": "00:00 系统自动创建",
-      "value": "从不",
+      "value": _vm.createRange[_vm.formData.autoCreate],
       "value-class": "create-type",
-      "mpcomid": '5'
+      "mpcomid": '6'
     }
   })], 1)], 1), _vm._v(" "), _c('check-option', {
     attrs: {
-      "title": "允许围观",
-      "mpcomid": '7'
+      "select": _vm.formData.onlookers,
+      "title": "所有人可见",
+      "eventid": '3',
+      "mpcomid": '8'
+    },
+    on: {
+      "change": _vm.onlookersChange,
+      "question": _vm.onlookersQuestion
     }
   }), _vm._v(" "), _c('check-option', {
     attrs: {
+      "select": _vm.private,
       "title": "私密",
-      "mpcomid": '8'
+      "eventid": '4',
+      "mpcomid": '9'
+    },
+    on: {
+      "change": _vm.privateChange,
+      "question": _vm.privateQuestion
     }
   }), _vm._v(" "), _c('upload-image', {
     attrs: {
-      "mpcomid": '9'
+      "mpcomid": '10'
     }
-  })], 1)], 1)
+  })], 1), _vm._v(" "), _c('button', {
+    attrs: {
+      "eventid": '5'
+    },
+    on: {
+      "click": _vm.handleSubmit
+    }
+  }, [_vm._v("提交")])], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -665,6 +681,56 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-0949817d", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 172:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 173:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "check-option common-cell"
+  }, [_c('div', {
+    staticClass: "left"
+  }, [_c('span', {
+    staticClass: "title"
+  }, [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _c('span', {
+    staticClass: "iconfont icon-wenhao icon",
+    attrs: {
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.handleQuestion
+    }
+  })]), _vm._v(" "), _c('v-check-box', {
+    attrs: {
+      "value": _vm.select,
+      "eventid": '1',
+      "mpcomid": '0'
+    },
+    on: {
+      "change": _vm.handleChange
+    }
+  })], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1a0ff0c4", esExports)
   }
 }
 
@@ -783,6 +849,23 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -792,10 +875,25 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      typeRange: ['起床'],
+      typeRange: ['起床', '跑步'],
       createRange: ['从不', '每天', '工作日', '节假日'],
+      timeRange: [[1, 2, 3], ['分钟', '小时']],
       showAction: false,
-      desc: '有你们在一旁，我可能动力会大些！'
+      showAnMore: false,
+      desc: '有你们在一旁，我可能动力会大些！',
+      effectiveIndex: [1, 1],
+      tmpEffectiveIndex: [1, 1],
+      tmpTimeRange: [[1, 2, 3], ['分钟', '小时']],
+
+      formData: {
+        type: 1,
+        autoCreate: 0,
+        startTime: '',
+        endTime: '',
+        onlookers: true,
+        private: false,
+        effectiveTime: 120
+      }
     };
   },
   mounted: function mounted() {
@@ -803,8 +901,97 @@ if (false) {(function () {
   },
 
 
+  computed: {
+    effectiveValue: function effectiveValue() {
+      var tIndex = this.effectiveIndex[0];
+      var tType = this.effectiveIndex[1];
+      return this.timeRange[0][tIndex] + ' ' + this.timeRange[1][tType];
+    }
+  },
+
   methods: {
-    initData: function initData() {}
+    initData: function initData(part1, start, end) {
+      var time = new Date();
+      var year = time.getFullYear();
+      var month = time.getMonth() + 1;
+      month = month < 10 ? '0' + month : month;
+      var day = time.getDate();
+      day = day < 10 ? '0' + day : day;
+      part1 = part1 || year + '-' + month + '-' + day;
+      start = start || '07:30';
+      end = end || '08:00';
+      this.formData.startTime = part1 + ' ' + start;
+      this.formData.endTime = part1 + ' ' + end;
+    },
+    startTimeChange: function startTimeChange(v) {
+      this.formData.startTime = v;
+    },
+    endTimeChange: function endTimeChange(v) {
+      this.formData.endTime = v;
+    },
+    anMoreChange: function anMoreChange() {
+      this.showAnMore = !this.showAnMore;
+    },
+    onlookersChange: function onlookersChange(v) {
+      this.formData.onlookers = v;
+    },
+    privateChange: function privateChange(v) {
+      this.formData.private = v;
+    },
+    onlookersQuestion: function onlookersQuestion() {
+      wx.showModal({
+        title: '说明',
+        content: '勾选此项别人便有机会在大厅中看到您的约定',
+        showCancel: false
+      });
+    },
+    privateQuestion: function privateQuestion() {
+      wx.showModal({
+        title: '说明',
+        content: '勾选此项则只有监督者才能看到此条约定的相关信息',
+        showCancel: false
+      });
+    },
+    handleSubmit: function handleSubmit() {
+      var mIndex = this.effectiveIndex[0];
+      var mType = this.effectiveIndex[1];
+      var time = this.timeRange[0][mIndex];
+      if (mType === 1) {
+        // 小时
+        time *= 60;
+      }
+
+      this.formData.effectiveTime = time;
+    },
+    timeTypeChange: function timeTypeChange(e) {
+      var _e$mp$detail = e.mp.detail,
+          column = _e$mp$detail.column,
+          value = _e$mp$detail.value;
+
+
+      var newValue = [5, 10, 20, 30, 40, 50];
+
+      if (column) {
+        if (value === 1) {
+          newValue = [1, 2, 3];
+        }
+
+        this.$set(this.timeRange, 0, newValue);
+      }
+
+      this.$set(this.effectiveIndex, column, value);
+    },
+    timeValueChange: function timeValueChange(e) {
+      var valueIndexAry = e.mp.detail.value;
+
+      this.effectiveIndex = valueIndexAry;
+      this.tmpEffectiveIndex = valueIndexAry.deepCopy();
+      this.tmpTimeRange = this.timeRange.deepCopy();
+    },
+    timeValueCancel: function timeValueCancel() {
+      this.effectiveIndex = this.tmpEffectiveIndex.deepCopy();
+      this.timeRange = this.tmpTimeRange.deepCopy();
+    }
   },
 
   components: {
