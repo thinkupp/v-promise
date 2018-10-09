@@ -93,14 +93,16 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
   methods: {
     getUserInfo: function getUserInfo(e) {
-      console.log(e);
+      console.log(getApp());
       var detail = e.mp.detail;
       if (detail.userInfo) {
         this.$api.register({
           detail: detail,
           systemInfo: wx.getSystemInfoSync(),
-          scene: getApp().scene
+          scene: getApp().globalData.scene,
+          id: getApp().globalData.userId
         }).then(function (_) {
+          console.log("login the", _);
           wx.reLaunch({
             url: '/pages/index/main'
           });

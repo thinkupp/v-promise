@@ -39,6 +39,7 @@ var somePlugin = {
 };__WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(somePlugin);
 
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a(__WEBPACK_IMPORTED_MODULE_2__App__["a" /* default */]);
+
 app.$mount();
 
 /***/ }),
@@ -111,22 +112,19 @@ if (false) {(function () {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  data: function data() {
-    return {
-      scene: ''
-    };
-  },
   created: function created() {},
   onLaunch: function onLaunch(options) {
     var that = this;
-    this.scene = options.scene;
+    this.globalData = this.$mp.app.globalData;
+    this.globalData.scene = options.scene;
 
     wx.login({
       success: function success(e) {
         that.$api.login({
           code: e.code
         }).then(function (res) {
-          if (res.register) {
+          if (!res.regStatus) {
+            that.globalData.userId = res.id;
             wx.reLaunch({
               url: '/pages/register/main'
             });
@@ -235,21 +233,30 @@ var register = function register(data) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise__);
 
 
-var base_ip = 'http://192.168.0.100:3000/api';
+
+var base_ip = 'http://192.168.8.249:3000/api';
 
 var request = function request(option) {
   option.url = base_ip + option.url;
 
-  return new __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
-    wx.request(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, option, {
+  return new __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
+    wx.request(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, option, {
       success: function success(res) {
-        resolve(res.data);
+        var data = res.data;
+        console.log("request", data, typeof data === 'undefined' ? 'undefined' : __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default()(data));
+        if ((typeof data === 'undefined' ? 'undefined' : __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default()(data)) === 'object') {
+          resolve(data);
+        } else {
+          reject(data);
+        }
       },
       fail: function fail(err) {
         reject(err);

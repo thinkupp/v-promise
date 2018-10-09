@@ -1,4 +1,4 @@
-<template name="5400a8bc">
+<template name="1d471ff9">
   <view class="_div data-v-2878c37c upload-image-wrapper"><label class="_span data-v-2878c37c title">上传图片</label>
     <view class="_div data-v-2878c37c upload-image">
       <image class="_image data-v-2878c37c image" wx:key="index" key="{{index}}" src="{{img}}" wx:for="{{listData}}" wx:for-index="index" wx:for-item="img"></image>

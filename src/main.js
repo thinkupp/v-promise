@@ -23,4 +23,5 @@ const somePlugin = {
 Vue.use(somePlugin)
 
 const app = new Vue(App)
+
 app.$mount()
