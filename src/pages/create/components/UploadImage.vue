@@ -35,16 +35,23 @@
         wx.chooseImage({
           count: 1,
           success ( e ) {
-            that.listData = that.listData.concat(e.tempFilePaths);
+            console.log(e.tempFilePaths);
             wx.uploadFile({
-              url: 'http://192.168.0.100:3000/api/upload/avatar',
+              url: 'http://192.168.8.249:3000/api/upload/image',
               filePath: e.tempFilePaths[0],
-              name: 'file',
+              name: 'image',
               formData: {
-                "user": 'avatar'
+                "user": 'create-image'
               },
               success(res) {
                 console.log(res);
+                if ( res.statusCode === 200 && res.data ) {
+                  const data = JSON.parse( res.data );
+                  if ( data.image ) {
+                    that.listData = that.listData.concat( e.tempFilePaths );
+                    that.$emit('success');
+                  }
+                }
               },
               fail(err) {
                 console.log(err);

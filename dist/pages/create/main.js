@@ -483,16 +483,23 @@ if (false) {(function () {
       wx.chooseImage({
         count: 1,
         success: function success(e) {
-          that.listData = that.listData.concat(e.tempFilePaths);
+          console.log(e.tempFilePaths);
           wx.uploadFile({
-            url: 'http://192.168.0.100:3000/api/upload/avatar',
+            url: 'http://192.168.8.249:3000/api/upload/image',
             filePath: e.tempFilePaths[0],
-            name: 'file',
+            name: 'image',
             formData: {
-              "user": 'avatar'
+              "user": 'create-image'
             },
             success: function success(res) {
               console.log(res);
+              if (res.statusCode === 200 && res.data) {
+                var data = JSON.parse(res.data);
+                if (data.image) {
+                  that.listData = that.listData.concat(e.tempFilePaths);
+                  that.$emit('success');
+                }
+              }
             },
             fail: function fail(err) {
               console.log(err);
@@ -555,20 +562,26 @@ if (false) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('van-cell-group', {
+  return _c('div', {
+    staticClass: "create"
+  }, [_c('van-cell-group', {
     attrs: {
       "mpcomid": '1'
     }
   }, [_c('picker', {
     attrs: {
-      "value": _vm.formData.type,
-      "range": _vm.typeRange
+      "value": _vm.createType,
+      "range": _vm.typeRange,
+      "eventid": '0'
+    },
+    on: {
+      "change": _vm.createTypeChange
     }
   }, [_c('van-cell', {
     attrs: {
       "title": "选择类型",
       "label": "想要别人监督你什么呢",
-      "value": _vm.typeRange[_vm.formData.type],
+      "value": _vm.typeRange[_vm.createType],
       "value-class": "create-type",
       "mpcomid": '0'
     }
@@ -576,7 +589,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "value": _vm.formData.startTime,
       "title": "生效时间",
-      "eventid": '0',
+      "eventid": '1',
       "mpcomid": '2'
     },
     on: {
@@ -591,7 +604,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "value": _vm.effectiveIndex,
       "mode": "multiSelector",
       "range": _vm.timeRange,
-      "eventid": '1'
+      "eventid": '2'
     },
     on: {
       "change": _vm.timeValueChange,
@@ -607,7 +620,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   })], 1)], 1), _vm._v(" "), _c('an-more', {
     attrs: {
-      "eventid": '2',
+      "eventid": '3',
       "mpcomid": '5'
     },
     on: {
@@ -628,13 +641,17 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('picker', {
     attrs: {
       "value": _vm.formData.autoCreate,
-      "range": _vm.createRange
+      "range": _vm.createRange,
+      "eventid": '4'
+    },
+    on: {
+      "change": _vm.autoCreateChange
     }
   }, [_c('van-cell', {
     attrs: {
       "title": "自动创建",
       "label": "00:00 系统自动创建",
-      "value": _vm.createRange[_vm.formData.autoCreate],
+      "value": _vm.createRange[_vm.autoCreateIndex],
       "value-class": "create-type",
       "mpcomid": '6'
     }
@@ -642,7 +659,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "select": _vm.formData.onlookers,
       "title": "所有人可见",
-      "eventid": '3',
+      "eventid": '5',
       "mpcomid": '8'
     },
     on: {
@@ -653,7 +670,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "select": _vm.private,
       "title": "私密",
-      "eventid": '4',
+      "eventid": '6',
       "mpcomid": '9'
     },
     on: {
@@ -665,8 +682,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '10'
     }
   })], 1), _vm._v(" "), _c('button', {
+    staticClass: "submit-button",
     attrs: {
-      "eventid": '5'
+      "eventid": '7'
     },
     on: {
       "click": _vm.handleSubmit
@@ -865,7 +883,6 @@ if (false) {(function () {
 //
 //
 //
-//
 
 
 
@@ -885,14 +902,17 @@ if (false) {(function () {
       tmpEffectiveIndex: [1, 1],
       tmpTimeRange: [[1, 2, 3], ['分钟', '小时']],
 
+      createType: 1, // 约定类型
+      autoCreateIndex: 0, // 自动创建选项
+
       formData: {
-        type: 1,
-        autoCreate: 0,
         startTime: '',
-        endTime: '',
         onlookers: true,
         private: false,
-        effectiveTime: 120
+        effectiveTime: 120,
+        autoCreate: '',
+        type: '跑步',
+        images: []
       }
     };
   },
@@ -922,6 +942,9 @@ if (false) {(function () {
       end = end || '08:00';
       this.formData.startTime = part1 + ' ' + start;
       this.formData.endTime = part1 + ' ' + end;
+
+      // 初始化有效时间序列
+      // this.formData.effectiveTime
     },
     startTimeChange: function startTimeChange(v) {
       this.formData.startTime = v;
@@ -962,6 +985,10 @@ if (false) {(function () {
       }
 
       this.formData.effectiveTime = time;
+      this.formData.autoCreate = this.createRange[this.autoCreateIndex];
+      this.formData.type = this.typeRange[this.createType];
+
+      console.log(this.formData);
     },
     timeTypeChange: function timeTypeChange(e) {
       var _e$mp$detail = e.mp.detail,
@@ -991,6 +1018,12 @@ if (false) {(function () {
     timeValueCancel: function timeValueCancel() {
       this.effectiveIndex = this.tmpEffectiveIndex.deepCopy();
       this.timeRange = this.tmpTimeRange.deepCopy();
+    },
+    autoCreateChange: function autoCreateChange(e) {
+      this.autoCreateIndex = Number(e.mp.detail.value);
+    },
+    createTypeChange: function createTypeChange(e) {
+      this.createType = Number(e.mp.detail.value);
     }
   },
 

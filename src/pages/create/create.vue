@@ -1,13 +1,12 @@
 <template>
-  <div>
+  <div class="create">
     <van-cell-group>
-      <picker :value="formData.type" :range="typeRange">
-        <van-cell title="选择类型" label="想要别人监督你什么呢" :value="typeRange[formData.type]" value-class="create-type"></van-cell>
+      <picker :value="createType" :range="typeRange" @change="createTypeChange">
+        <van-cell title="选择类型" label="想要别人监督你什么呢" :value="typeRange[createType]" value-class="create-type"></van-cell>
       </picker>
     </van-cell-group>
 
     <time-picker @date-change="startTimeChange" v-if="formData.startTime" :value="formData.startTime" title="生效时间"></time-picker>
-    <!--<time-picker @date-change="endTimeChange" v-if="formData.endTime" :value="formData.endTime" title="失效时间"></time-picker>-->
 
     <van-cell-group>
     <picker :value="effectiveIndex" mode="multiSelector" @change="timeValueChange" @cancel="timeValueCancel" @columnchange="timeTypeChange" :range="timeRange">
@@ -19,8 +18,8 @@
 
     <div class="more-option" v-show="showAnMore">
       <van-cell-group>
-        <picker :value="formData.autoCreate" :range="createRange">
-          <van-cell title="自动创建" label="00:00 系统自动创建" :value="createRange[formData.autoCreate]" value-class="create-type"></van-cell>
+        <picker @change="autoCreateChange" :value="formData.autoCreate" :range="createRange">
+          <van-cell title="自动创建" label="00:00 系统自动创建" :value="createRange[autoCreateIndex]" value-class="create-type"></van-cell>
         </picker>
       </van-cell-group>
 
@@ -39,7 +38,7 @@
       <upload-image></upload-image>
     </div>
 
-    <button @click="handleSubmit">提交</button>
+    <button class="submit-button" @click="handleSubmit">提交</button>
   </div>
 </template>
 
@@ -62,14 +61,17 @@
         tmpEffectiveIndex: [1, 1],
         tmpTimeRange: [[ 1, 2, 3 ], ['分钟', '小时']],
 
+        createType: 1,          // 约定类型
+        autoCreateIndex: 0,     // 自动创建选项
+
         formData: {
-          type: 1,
-          autoCreate: 0,
           startTime: '',
-          endTime: '',
           onlookers: true,
           private: false,
-          effectiveTime: 120
+          effectiveTime: 120,
+          autoCreate: '',
+          type: '跑步',
+          images: []
         }
       }
     },
@@ -99,6 +101,9 @@
         end = end || '08:00';
         this.formData.startTime = part1 + ' ' + start;
         this.formData.endTime = part1 + ' ' + end;
+
+        // 初始化有效时间序列
+        // this.formData.effectiveTime
       },
 
       startTimeChange ( v ) {
@@ -147,6 +152,10 @@
         }
 
         this.formData.effectiveTime = time;
+        this.formData.autoCreate = this.createRange[this.autoCreateIndex];
+        this.formData.type = this.typeRange[this.createType]
+
+        console.log(this.formData);
       },
 
       timeTypeChange ( e ) {
@@ -176,6 +185,14 @@
       timeValueCancel () {
         this.effectiveIndex = this.tmpEffectiveIndex.deepCopy();
         this.timeRange = this.tmpTimeRange.deepCopy();
+      },
+
+      autoCreateChange ( e ) {
+        this.autoCreateIndex = Number( e.mp.detail.value );
+      },
+
+      createTypeChange ( e ) {
+        this.createType = Number( e.mp.detail.value )
       }
     },
 
@@ -189,5 +206,18 @@
 </script>
 
 <style lang="less" scoped>
+  .create {
+    padding-bottom: 120rpx;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 100%;
 
+    .submit-button {
+      height: 100rpx;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  }
 </style>

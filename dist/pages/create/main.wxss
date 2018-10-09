@@ -1,5 +1,19 @@
 @import "../../common/vendor.wxss";
 
+.create.data-v-0949817d {
+  padding-bottom: 120rpx;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 100%;
+}
+.create .submit-button.data-v-0949817d {
+  height: 100rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 .more.data-v-202347ea {
   display: flex;
   align-items: center;
