@@ -106,9 +106,7 @@ if (false) {(function () {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "more common-cell",
-    class: {
-      off: !_vm.on
-    },
+    class: _vm.on ? 'on' : 'off',
     attrs: {
       "eventid": '0'
     },
@@ -589,6 +587,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "value": _vm.formData.startTime,
       "title": "生效时间",
+      "border": false,
       "eventid": '1',
       "mpcomid": '2'
     },

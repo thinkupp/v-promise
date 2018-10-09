@@ -17,14 +17,14 @@
 .more.data-v-202347ea {
   justify-content: space-between;
 }
-.more.off.data-v-202347ea {
-  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+.more.data-v-202347ea:after {
+  border: none;
 }
 .more .more-text.data-v-202347ea {
   color: #333;
 }
 .more .more-icon.data-v-202347ea {
-  font-size: 32rpx;
+  font-size: 16px;
   transition: all 0.3s linear;
 }
 .more .select.data-v-202347ea {

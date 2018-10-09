@@ -7602,6 +7602,11 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
     value: {
       type: String,
       default: ''
+    },
+
+    border: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -7637,7 +7642,10 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "time-picker common-cell"
+    staticClass: "time-picker common-cell",
+    class: {
+      'hide-border': !_vm.border
+    }
   }, [_c('span', {
     staticClass: "left"
   }, [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _c('div', {

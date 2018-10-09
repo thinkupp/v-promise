@@ -1,5 +1,5 @@
 <template>
-  <div class="more common-cell" @click="handleClick" :class="{off: !on}">
+  <div class="more common-cell" @click="handleClick" :class="on ? 'on' : 'off'">
     <span class="more-text">{{title}}</span>
     <span class="iconfont icon-arrow more-icon" :class="{select: on}"></span>
   </div>
@@ -32,8 +32,8 @@
   .more {
     justify-content: space-between;
 
-    &.off {
-      border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+    &:after {
+      border: none;
     }
 
     .more-text {
@@ -41,7 +41,7 @@
     }
 
     .more-icon {
-      font-size: 32rpx;
+      font-size: 16px;
       transition: all 0.3s linear;
     }
 

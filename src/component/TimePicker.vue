@@ -1,5 +1,5 @@
 <template>
-  <div class="time-picker common-cell">
+  <div class="time-picker common-cell" :class="{'hide-border': !border}">
     <span class="left">{{title}}</span>
 
     <div class="right">
@@ -27,6 +27,11 @@
       value: {
         type: String,
         default: ''
+      },
+
+      border: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -61,6 +66,10 @@
 <style scoped lang="less">
   .time-picker {
     background-color: #FFF;
+
+    &.hide-border::after {
+      border: none;
+    }
 
     .left, .right {
       flex: 1;

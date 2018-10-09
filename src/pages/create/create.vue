@@ -6,13 +6,13 @@
       </picker>
     </van-cell-group>
 
-    <time-picker @date-change="startTimeChange" v-if="formData.startTime" :value="formData.startTime" title="生效时间"></time-picker>
+    <time-picker @date-change="startTimeChange" v-if="formData.startTime" :value="formData.startTime" title="生效时间" :border="false"></time-picker>
 
     <van-cell-group>
-    <picker :value="effectiveIndex" mode="multiSelector" @change="timeValueChange" @cancel="timeValueCancel" @columnchange="timeTypeChange" :range="timeRange">
-      <van-cell title="有效时间" :value="effectiveValue" value-class="create-type"></van-cell>
-    </picker>
-  </van-cell-group>
+      <picker :value="effectiveIndex" mode="multiSelector" @change="timeValueChange" @cancel="timeValueCancel" @columnchange="timeTypeChange" :range="timeRange">
+        <van-cell title="有效时间" :value="effectiveValue" value-class="create-type"></van-cell>
+      </picker>
+    </van-cell-group>
 
     <an-more @change="anMoreChange"></an-more>
 
