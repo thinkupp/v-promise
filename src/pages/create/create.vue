@@ -225,10 +225,11 @@
     box-sizing: border-box;
     position: relative;
     min-height: 100%;
+    /*overflow-y: auto;*/
 
     .submit-button {
       height: 100rpx;
-      position: fixed;
+      position: absolute;
       left: 0;
       bottom: 0;
       width: 100%;

@@ -8,7 +8,7 @@
 }
 .create .submit-button.data-v-0949817d {
   height: 100rpx;
-  position: fixed;
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
