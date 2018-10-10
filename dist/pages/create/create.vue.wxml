@@ -18,7 +18,11 @@
         <picker bindchange="handleProxy" value="{{formData.autoCreate}}" range="{{createRange}}" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_picker data-v-0949817d">
           <van-cell title="自动创建" label="00:00 系统自动创建" value="{{createRange[autoCreateIndex]}}" value-class="create-type" class="_van-cell data-v-0949817d"></van-cell>
         </picker>
-      </van-cell-group> <template bindchange="handleProxy" bindquestion="handleProxy" title="所有人可见" data-eventid="{{'5'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'8'], $root}}" is="c75633b8"></template> <template bindchange="handleProxy" bindquestion="handleProxy" title="私密" data-eventid="{{'6'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'9'], $root}}" is="c75633b8"></template> <template bindsuccess="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'10'], $root}}" is="5400a8bc"></template>
+      </van-cell-group> <template bindchange="handleProxy" bindquestion="handleProxy" title="允许围观" data-eventid="{{'5'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'8'], $root}}" is="c75633b8"></template> <template bindchange="handleProxy" bindquestion="handleProxy" title="私密" data-eventid="{{'6'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'9'], $root}}" is="c75633b8"></template> <template bindsuccess="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'10'], $root}}" is="5400a8bc"></template>
+      <van-cell-group class="_van-cell-group data-v-0949817d">
+        <van-field value="{{formData.title}}" label="标题" placeholder="请输入标题" class="_van-field data-v-0949817d"></van-field>
+        <van-field value="{{formData.desc}}" label="描述" type="textarea" placeholder="描述" class="_van-field data-v-0949817d"></van-field>
+      </van-cell-group>
     </view> <button class="_button data-v-0949817d submit-button" bindtap="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}">提交</button>
   </view>
 </template>

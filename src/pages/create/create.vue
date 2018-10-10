@@ -27,7 +27,7 @@
         :select="formData.onlookers"
         @change="onlookersChange"
         @question="onlookersQuestion"
-        title="所有人可见"></check-option>
+        title="允许围观"></check-option>
 
       <check-option
         :select="private"
@@ -36,6 +36,19 @@
         title="私密"></check-option>
 
       <upload-image @success="uploadSuccess"></upload-image>
+
+      <van-cell-group>
+        <van-field
+          :value="formData.title"
+          label="标题"
+          placeholder="请输入标题"></van-field>
+
+        <van-field
+          :value="formData.desc"
+          label="描述"
+          type="textarea"
+          placeholder="描述"></van-field>
+      </van-cell-group>
     </div>
 
     <button class="submit-button" @click="handleSubmit">提交</button>
@@ -60,7 +73,6 @@
         effectiveIndex: [1, 1],
         tmpEffectiveIndex: [1, 1],
         tmpTimeRange: [[ 1, 2, 3 ], ['分钟', '小时']],
-
         createType: 1,          // 约定类型
         autoCreateIndex: 0,     // 自动创建选项
 
@@ -71,7 +83,9 @@
           effectiveTime: 120,
           autoCreate: '',
           type: '跑步',
-          images: []
+          images: [],
+          title: '有人监督，动力十足！',
+          desc: ''
         }
       }
     },
@@ -100,10 +114,6 @@
         start = start || '07:30';
         end = end || '08:00';
         this.formData.startTime = part1 + ' ' + start;
-        this.formData.endTime = part1 + ' ' + end;
-
-        // 初始化有效时间序列
-        // this.formData.effectiveTime
       },
 
       startTimeChange ( v ) {
@@ -129,7 +139,7 @@
       onlookersQuestion () {
         wx.showModal({
           title: '说明',
-          content: '勾选此项别人便有机会在大厅中看到您的约定',
+          content: '如不勾选此项，只有监督者才能看到此条约定的相关信息',
           showCancel: false
         })
       },
@@ -137,7 +147,7 @@
       privateQuestion () {
         wx.showModal({
           title: '说明',
-          content: '勾选此项则只有监督者才能看到此条约定的相关信息',
+          content: '设置为私密后别人将无法在大厅中看到此条约定',
           showCancel: false
         })
       },
@@ -218,6 +228,7 @@
     box-sizing: border-box;
     position: relative;
     min-height: 100%;
+    /*overflow-y: auto;*/
 
     .submit-button {
       height: 100rpx;

@@ -131,6 +131,19 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -149,7 +162,6 @@ if (false) {(function () {
       effectiveIndex: [1, 1],
       tmpEffectiveIndex: [1, 1],
       tmpTimeRange: [[1, 2, 3], ['分钟', '小时']],
-
       createType: 1, // 约定类型
       autoCreateIndex: 0, // 自动创建选项
 
@@ -160,7 +172,9 @@ if (false) {(function () {
         effectiveTime: 120,
         autoCreate: '',
         type: '跑步',
-        images: []
+        images: [],
+        title: '有人监督，动力十足！',
+        desc: ''
       }
     };
   },
@@ -189,10 +203,6 @@ if (false) {(function () {
       start = start || '07:30';
       end = end || '08:00';
       this.formData.startTime = part1 + ' ' + start;
-      this.formData.endTime = part1 + ' ' + end;
-
-      // 初始化有效时间序列
-      // this.formData.effectiveTime
     },
     startTimeChange: function startTimeChange(v) {
       this.formData.startTime = v;
@@ -212,14 +222,14 @@ if (false) {(function () {
     onlookersQuestion: function onlookersQuestion() {
       wx.showModal({
         title: '说明',
-        content: '勾选此项别人便有机会在大厅中看到您的约定',
+        content: '如不勾选此项，只有监督者才能看到此条约定的相关信息',
         showCancel: false
       });
     },
     privateQuestion: function privateQuestion() {
       wx.showModal({
         title: '说明',
-        content: '勾选此项则只有监督者才能看到此条约定的相关信息',
+        content: '设置为私密后别人将无法在大厅中看到此条约定',
         showCancel: false
       });
     },
@@ -996,7 +1006,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   })], 1)], 1), _vm._v(" "), _c('check-option', {
     attrs: {
       "select": _vm.formData.onlookers,
-      "title": "所有人可见",
+      "title": "允许围观",
       "eventid": '5',
       "mpcomid": '8'
     },
@@ -1023,7 +1033,26 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "success": _vm.uploadSuccess
     }
-  })], 1), _vm._v(" "), _c('button', {
+  }), _vm._v(" "), _c('van-cell-group', {
+    attrs: {
+      "mpcomid": '13'
+    }
+  }, [_c('van-field', {
+    attrs: {
+      "value": _vm.formData.title,
+      "label": "标题",
+      "placeholder": "请输入标题",
+      "mpcomid": '11'
+    }
+  }), _vm._v(" "), _c('van-field', {
+    attrs: {
+      "value": _vm.formData.desc,
+      "label": "描述",
+      "type": "textarea",
+      "placeholder": "描述",
+      "mpcomid": '12'
+    }
+  })], 1)], 1), _vm._v(" "), _c('button', {
     staticClass: "submit-button",
     attrs: {
       "eventid": '8'
