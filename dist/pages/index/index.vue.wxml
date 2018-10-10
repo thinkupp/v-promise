@@ -1,6 +1,6 @@
-<import src="/pages/index/components/TopBar.vue.wxml" /><template name="1696d95a">
+<import src="/pages/index/components/TopBar.vue.wxml" /><template name="12e9a57a">
   <view class="_div data-v-33b487e3 index">
-    <view class="_div data-v-33b487e3 bar-wrapper"><template data="{{...$root[$kk+'0'], $root}}" is="7b52d9bf"></template> <button class="_button data-v-33b487e3 create-button" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">创建</button></view>
+    <view class="_div data-v-33b487e3 bar-wrapper"><template data="{{...$root[$kk+'0'], $root}}" is="c4b8cfb0"></template> <button class="_button data-v-33b487e3 create-button" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">创建</button></view>
     <view class="_div data-v-33b487e3 content {{[listData.length === 0 ? 'empty' : '']}}"></view>
   </view>
 </template>
