@@ -6,12 +6,15 @@
     </div>
 
     <div class="content" :class="{empty: listData.length === 0}">
+      <item></item>
     </div>
   </div>
 </template>
 
 <script>
   import TopBar from './components/TopBar'
+  import Item from './components/Item'
+
   export default {
     data () {
       return {
@@ -20,7 +23,8 @@
     },
 
     components: {
-      TopBar
+      TopBar,
+      Item
     },
 
     methods: {
@@ -61,6 +65,8 @@
 
   .content {
     flex: 1;
-
+    margin-top: 100rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
   }
 </style>

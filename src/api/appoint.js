@@ -2,7 +2,7 @@ import request from './request';
 
 const createAppoint = function ( data ) {
   return request({
-    url: '/appoint',
+    url: '/appoint/create',
     data,
     method: 'POST'
   })

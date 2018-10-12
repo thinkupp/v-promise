@@ -1,0 +1,63 @@
+@import "common/vendor.wxss";
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_864209_gari87r8a94.eot');
+  src: url('//at.alicdn.com/t/font_864209_gari87r8a94.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_864209_gari87r8a94.woff') format('woff'), url('//at.alicdn.com/t/font_864209_gari87r8a94.ttf') format('truetype'), url('//at.alicdn.com/t/font_864209_gari87r8a94.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-arrow:before {
+  content: "\E629";
+}
+.icon-wenhao:before {
+  content: "\E671";
+}
+.icon-duihao:before {
+  content: "\E60B";
+}
+.icon-jiahao:before {
+  content: "\E62F";
+}
+._button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  display: inline-block;
+  border-radius: 0;
+}
+._button:after {
+  border: none;
+}
+page {
+  height: 100%;
+}
+.create-type {
+  color: #009688;
+}
+.common-cell {
+  padding: 10px 15px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  position: relative;
+}
+.common-cell::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+  border-bottom: 1px solid #e5e5e5;
+}

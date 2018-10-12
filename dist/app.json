@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/promise-list/main",
+    "pages/create/main",
+    "pages/template/main",
+    "pages/register/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "我有N个约定",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#d81e06",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/main",
+        "text": "首页",
+        "iconPath": "res/images/home-default.png",
+        "selectedIconPath": "res/images/home-select.png"
+      },
+      {
+        "text": "模板库",
+        "pagePath": "pages/template/main",
+        "iconPath": "res/images/template-default.png",
+        "selectedIconPath": "res/images/template-select.png"
+      },
+      {
+        "pagePath": "pages/promise-list/main",
+        "text": "大厅",
+        "iconPath": "res/images/more-default.png",
+        "selectedIconPath": "res/images/more-select.png"
+      }
+    ]
+  }
+}
