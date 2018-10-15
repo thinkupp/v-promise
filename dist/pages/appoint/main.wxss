@@ -3,6 +3,7 @@
 .appoint.data-v-4f0313fe {
   min-height: 100%;
   background: rgba(248, 248, 248);
+  padding-bottom: 20rpx;
 }
 
 .header-tip.data-v-6b8296e5 {
@@ -136,7 +137,7 @@
 
 .appoint-about.data-v-79f9e462 {
   width: 692rpx;
-  margin: 0 auto;
+  margin: 82rpx auto 0 auto;
   box-shadow: 0 0 26rpx 0 #D7CCCC;
   border-radius: 20rpx;
   padding-top: 30rpx;

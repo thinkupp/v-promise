@@ -26,5 +26,6 @@
   .appoint {
     min-height: 100%;
     background: rgba(248, 248, 248);
+    padding-bottom: 20rpx;
   }
 </style>

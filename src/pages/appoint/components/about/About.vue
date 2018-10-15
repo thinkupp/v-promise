@@ -21,7 +21,7 @@
 <style lang="less" scoped>
   .appoint-about {
     width: 692rpx;
-    margin: 0 auto;
+    margin: 82rpx auto 0 auto;
     box-shadow: 0 0 26rpx 0 #D7CCCC;
     border-radius: 20rpx;
     padding-top: 30rpx;
@@ -29,4 +29,3 @@
     box-sizing: border-box;
   }
 </style>
-
