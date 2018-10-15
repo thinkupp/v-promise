@@ -4,6 +4,7 @@
   min-height: 100%;
   background: #F8F8F8;
   padding-bottom: 96rpx;
+  box-sizing: border-box;
 }
 .appoint .confirm-wrapper.data-v-4f0313fe {
   position: relative;
@@ -241,6 +242,9 @@
 .comment ._li .information .creator .right .top .look.data-v-6080baf4 {
   margin-left: 5rpx;
 }
+.comment ._li .information .creator .right .top .report.data-v-6080baf4 {
+  margin-left: 5rpx;
+}
 .comment ._li .information .creator .right .time.data-v-6080baf4 {
   color: #B7ADAD;
   font-size: 25rpx;
@@ -255,6 +259,22 @@
 .comment ._li .content.data-v-6080baf4 {
   color: #888;
   margin-top: 10rpx;
+}
+.no-comment.data-v-6080baf4 {
+  font-size: 28rpx;
+  color: #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.no-comment .icon-zanwushuju.data-v-6080baf4 {
+  color: #e6e6e6;
+  font-size: 100rpx;
+  margin-top: -50rpx;
+}
+.no-comment ._span.data-v-6080baf4 {
+  margin-top: 20rpx;
 }
 
 .speak.data-v-34cceb24 {

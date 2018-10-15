@@ -247,9 +247,8 @@ if (false) {(function () {
       this.formData.type = this.typeRange[this.createType];
 
       this.$api.createAppoint(this.formData).then(function (res) {
-        console.log(res);
         wx.reLaunch({
-          url: '/pages/appoint/main'
+          url: '/pages/appoint/main?id=' + res._id
         });
       });
     },

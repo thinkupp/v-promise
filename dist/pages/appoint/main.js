@@ -88,6 +88,7 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_about_About__ = __webpack_require__(130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Bottom_vue__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Confirm_vue__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_ApiServer__ = __webpack_require__(74);
 //
 //
 //
@@ -103,7 +104,8 @@ if (false) {(function () {
 //
 //
 //
-//
+
+
 
 
 
@@ -112,6 +114,13 @@ if (false) {(function () {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+  data: function data() {
+    return {
+      appointData: {}
+    };
+  },
+
+
   components: {
     HeaderTip: __WEBPACK_IMPORTED_MODULE_0__components_HeaderTip__["a" /* default */],
     Card: __WEBPACK_IMPORTED_MODULE_1__components_Card__["a" /* default */],
@@ -123,7 +132,18 @@ if (false) {(function () {
   methods: {
     publish: function publish(value) {
       console.log('发表了评论：', value);
+    },
+    fetchAppointDetail: function fetchAppointDetail(id) {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_5__service_ApiServer__["a" /* default */].fetchAppointDetail(id).then(function (res) {
+        _this.appointData = res;
+      });
     }
+  },
+
+  onLoad: function onLoad(e) {
+    this.fetchAppointDetail(e.id);
   }
 });
 
@@ -356,16 +376,16 @@ if (false) {(function () {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  data: function data() {}
+  props: {
+    detail: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -377,21 +397,42 @@ if (false) {(function () {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "appoint-card"
-  }, [_vm._m(0), _vm._v(" "), _c('p', {
+  }, [_c('div', {
+    staticClass: "creator"
+  }, [_c('img', {
+    staticClass: "avatar",
+    attrs: {
+      "src": _vm.detail.u.avatar
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "nickname"
+  }, [_vm._v(_vm._s(_vm.detail.u.nickName))])]), _vm._v(" "), _c('p', {
     staticClass: "des"
   }, [_vm._v("\n    \"这里是创建的时候写的备注之类的话\"\n  ")]), _vm._v(" "), _c('p', {
     staticClass: "item-name"
   }, [_vm._v("目标：")]), _vm._v(" "), _c('p', {
     staticClass: "target-content"
-  }, [_c('span', [_vm._v("[")]), _vm._v("\n    跑步\n    "), _c('span', [_vm._v("]")])]), _vm._v(" "), _c('p', {
+  }, [_c('span', [_vm._v("[")]), _vm._v("\n    " + _vm._s(_vm.detail.type) + "\n    "), _c('span', [_vm._v("]")])]), _vm._v(" "), _c('p', {
     staticClass: "item-name"
   }, [_vm._v("有效打卡时间：")]), _vm._v(" "), _c('p', {
     staticClass: "clock-in-time"
-  }, [_vm._v("2010/10/10 23:59:59 之前")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('p', {
+  }, [_vm._v("2010/10/10 23:59:59 之前")]), _vm._v(" "), (_vm.detail.images.length) ? _c('div', {
+    staticClass: "images"
+  }, _vm._l((_vm.detail.images), function(image, index) {
+    return _c('img', {
+      key: index,
+      staticClass: "image",
+      attrs: {
+        "src": image
+      }
+    })
+  })) : _vm._e(), _vm._v(" "), _c('p', {
     staticClass: "status"
   }, [_vm._v("进行中")]), _vm._v(" "), _c('div', {
     staticClass: "about"
-  }, [_vm._m(2), _vm._v(" "), _c('div', {
+  }, [_c('div', {
+    staticClass: "options"
+  }, [_c('span', [_vm._v("每日自动创建")]), _vm._v(" "), _c('span', [_vm._v("监督者上限100")]), _vm._v(" "), (!_vm.detail.onlookers) ? _c('span', [_vm._v("不允许围观")]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "information"
   }, [_c('p', [_c('i', {
     staticClass: "iconfont icon-jiandu"
@@ -401,66 +442,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "iconfont icon-fangwen"
   }), _vm._v("浏览人次 120")], 1)], 1)])], 1)
 }
-var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "creator"
-  }, [_c('img', {
-    staticClass: "avatar",
-    attrs: {
-      "src": "/res/images/home-select.png"
-    }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "nickname"
-  }, [_vm._v("昵称XXX")])])
-},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "images"
-  }, [_c('img', {
-    staticClass: "image",
-    attrs: {
-      "src": "/res/images/more-default.png"
-    }
-  }), _vm._v(" "), _c('img', {
-    staticClass: "image",
-    attrs: {
-      "src": "/res/images/more-default.png"
-    }
-  }), _vm._v(" "), _c('img', {
-    staticClass: "image",
-    attrs: {
-      "src": "/res/images/more-default.png"
-    }
-  }), _vm._v(" "), _c('img', {
-    staticClass: "image",
-    attrs: {
-      "src": "/res/images/more-default.png"
-    }
-  }), _vm._v(" "), _c('img', {
-    staticClass: "image",
-    attrs: {
-      "src": "/res/images/more-default.png"
-    }
-  }), _vm._v(" "), _c('img', {
-    staticClass: "image",
-    attrs: {
-      "src": "/res/images/more-default.png"
-    }
-  }), _vm._v(" "), _c('img', {
-    staticClass: "image",
-    attrs: {
-      "src": "/res/images/more-default.png"
-    }
-  }), _vm._v(" "), _c('img', {
-    staticClass: "image",
-    attrs: {
-      "src": "/res/images/more-default.png"
-    }
-  })])
-},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "options"
-  }, [_c('span', [_vm._v("每日自动创建")]), _vm._v(" "), _c('span', [_vm._v("监督者上限100")]), _vm._v(" "), _c('span', [_vm._v("不允许围观")])])
-}]
+var staticRenderFns = []
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -795,15 +777,24 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  data: function data() {
-    return {};
-  },
-  created: function created() {},
-
-
-  methods: {}
+  props: {
+    commentList: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -813,7 +804,7 @@ if (false) {(function () {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
+  return _c('div', [(_vm.commentList.length) ? _c('ul', {
     staticClass: "comment"
   }, [_c('li', [_c('div', {
     staticClass: "information"
@@ -832,7 +823,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "nickname"
   }, [_vm._v("Nickname")]), _vm._v(" "), _c('span', {
     staticClass: "look"
-  }, [_vm._v("督")])]), _vm._v(" "), _c('span', {
+  }, [_vm._v("督")]), _vm._v(" "), _c('span', {
+    staticClass: "report"
+  }, [_vm._v("举报")])]), _vm._v(" "), _c('span', {
     staticClass: "time"
   }, [_vm._v("2010-10-10 00:00:00")])])]), _vm._v(" "), _c('div', {
     staticClass: "handle"
@@ -869,7 +862,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "zan-number"
   }, [_vm._v("111")])], 1)]), _vm._v(" "), _c('p', {
     staticClass: "content"
-  }, [_vm._v("这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..")])], 1)], 1)
+  }, [_vm._v("这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..")])], 1)], 1) : _c('p', {
+    staticClass: "no-comment"
+  }, [_c('i', {
+    staticClass: "iconfont icon-zanwushuju"
+  }), _vm._v(" "), _c('span', [_vm._v("暂无评论哦~")])], 1)], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1169,6 +1166,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "confirm-wrapper"
   }, [_c('card', {
     attrs: {
+      "detail": _vm.appointData,
       "mpcomid": '1'
     }
   }), _vm._v(" "), _c('confirm', {

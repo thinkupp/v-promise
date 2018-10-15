@@ -6530,7 +6530,48 @@ module.exports = function (exec, skipClosing) {
 
 
 /***/ }),
-/* 51 */,
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise__);
+
+
+
+var base_ip = 'http://192.168.0.100:3000/api';
+// const base_ip = 'http://192.168.8.101:3000/api';
+
+var request = function request(option) {
+  return new __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
+    option.url = base_ip + option.url;
+    var userId = getApp().globalData.userId;
+    if (!option.header) option.header = {};
+    if (userId) option.header.uid = userId;
+
+    wx.request(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, option, {
+      success: function success(res) {
+        var data = res.data;
+        if ((typeof data === 'undefined' ? 'undefined' : __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default()(data)) === 'object') {
+          resolve(data);
+        } else {
+          reject(data);
+        }
+      },
+      fail: function fail(err) {
+        reject(err);
+      }
+    }));
+  });
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (request);
+
+/***/ }),
 /* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6915,7 +6956,47 @@ module.exports = g;
 /* 71 */,
 /* 72 */,
 /* 73 */,
-/* 74 */,
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_user__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_appoint__ = __webpack_require__(113);
+
+
+
+
+var login = function login(data) {
+  return __WEBPACK_IMPORTED_MODULE_1__api_user__["a" /* default */].login(data);
+};
+
+var register = function register(data) {
+  return __WEBPACK_IMPORTED_MODULE_1__api_user__["a" /* default */].register(data);
+};
+
+var createAppoint = function createAppoint(data) {
+  return __WEBPACK_IMPORTED_MODULE_2__api_appoint__["a" /* default */].createAppoint(data);
+};
+
+var fetchCreateAppoint = function fetchCreateAppoint(params) {
+  return __WEBPACK_IMPORTED_MODULE_2__api_appoint__["a" /* default */].fetchCreateAppoint.apply(__WEBPACK_IMPORTED_MODULE_2__api_appoint__["a" /* default */], __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray___default()(params));
+};
+
+var fetchAppointDetail = function fetchAppointDetail(id) {
+  return __WEBPACK_IMPORTED_MODULE_2__api_appoint__["a" /* default */].fetchAppointDetail(id);
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  login: login,
+  register: register,
+  createAppoint: createAppoint,
+  fetchCreateAppoint: fetchCreateAppoint,
+  fetchAppointDetail: fetchAppointDetail
+});
+
+/***/ }),
 /* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7098,7 +7179,35 @@ module.exports = function (object, index, value) {
 
 
 /***/ }),
-/* 84 */,
+/* 84 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__request__ = __webpack_require__(51);
+
+
+var login = function login(data) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/users/login',
+    data: data,
+    method: 'post'
+  });
+};
+
+var register = function register(data) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/users/register',
+    data: data,
+    method: 'post'
+  });
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  login: login,
+  register: register
+});
+
+/***/ }),
 /* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8149,7 +8258,43 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 
 
 /***/ }),
-/* 113 */,
+/* 113 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__request__ = __webpack_require__(51);
+
+
+var createAppoint = function createAppoint(data) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/appoint/create',
+    data: data,
+    method: 'POST'
+  });
+};
+
+var fetchCreateAppoint = function fetchCreateAppoint() {
+  var startIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var count = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 20;
+
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/appoint/create?startIndex=' + startIndex + '&count=' + count
+  });
+};
+
+var fetchAppointDetail = function fetchAppointDetail(id) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/appoint/' + id
+  });
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  createAppoint: createAppoint,
+  fetchCreateAppoint: fetchCreateAppoint,
+  fetchAppointDetail: fetchAppointDetail
+});
+
+/***/ }),
 /* 114 */,
 /* 115 */
 /***/ (function(module, exports) {

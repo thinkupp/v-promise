@@ -15,11 +15,16 @@ const createAppoint = function ( data ) {
 
 const fetchCreateAppoint = function ( params ) {
   return ApiAppoint.fetchCreateAppoint( ...params )
+};
+
+const fetchAppointDetail = function ( id ) {
+  return ApiAppoint.fetchAppointDetail( id );
 }
 
 export default {
   login,
   register,
   createAppoint,
-  fetchCreateAppoint
+  fetchCreateAppoint,
+  fetchAppointDetail
 }

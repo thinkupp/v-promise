@@ -1,8 +1,8 @@
 <template>
   <div class="appoint-card">
     <div class="creator">
-      <img src="/res/images/home-select.png" class="avatar">
-      <span class="nickname">昵称XXX</span>
+      <img :src="detail.u.avatar" class="avatar">
+      <span class="nickname">{{detail.u.nickName}}</span>
     </div>
 
     <p class="des">
@@ -12,22 +12,15 @@
     <p class="item-name">目标：</p>
     <p class="target-content">
       <span>[</span>
-      跑步
+      {{detail.type}}
       <span>]</span>
     </p>
 
     <p class="item-name">有效打卡时间：</p>
     <p class="clock-in-time">2010/10/10 23:59:59 之前</p>
 
-    <div class="images">
-      <img src="/res/images/more-default.png" class="image">
-      <img src="/res/images/more-default.png" class="image">
-      <img src="/res/images/more-default.png" class="image">
-      <img src="/res/images/more-default.png" class="image">
-      <img src="/res/images/more-default.png" class="image">
-      <img src="/res/images/more-default.png" class="image">
-      <img src="/res/images/more-default.png" class="image">
-      <img src="/res/images/more-default.png" class="image">
+    <div class="images" v-if="detail.images.length">
+      <img :src="image" v-for="(image, index) in detail.images" :key="index" class="image">
     </div>
 
     <p class="status">进行中</p>
@@ -36,7 +29,7 @@
       <div class="options">
         <span>每日自动创建</span>
         <span>监督者上限100</span>
-        <span>不允许围观</span>
+        <span v-if="!detail.onlookers">不允许围观</span>
       </div>
 
       <div class="information">
@@ -50,7 +43,14 @@
 
 <script>
   export default {
-    data() {}
+    props: {
+      detail: {
+        type: Object,
+        default: function () {
+          return {}
+        }
+      }
+    }
   }
 </script>
 

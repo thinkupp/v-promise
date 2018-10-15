@@ -83,6 +83,9 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
+
 //
 //
 //
@@ -93,28 +96,28 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
   created: function created() {
     var that = this;
-    // wx.login({
-    //   success: function (e) {
-    //     that.$api.login({
-    //       code: e.code,
-    //     }).then(res => {
-    //       getApp().globalData.userId = res.id;
-    //       let path = '/pages/register/main';
-    //       if ( res.regStatus ) {
-    //         path = '/pages/index/main';
-    //       }
-    //       wx.reLaunch({
-    //         url: path
-    //       })
-    //     }).catch(err => {
-    //       console.log(err);
-    //       wx.showModal({
-    //         title: '温馨提示',
-    //         content: JSON.stringify(err)
-    //       })
-    //     })
-    //   }
-    // })
+    wx.login({
+      success: function success(e) {
+        that.$api.login({
+          code: e.code
+        }).then(function (res) {
+          getApp().globalData.userId = res.id;
+          var path = '/pages/register/main';
+          if (res.regStatus) {
+            path = '/pages/index/main';
+          }
+          wx.reLaunch({
+            url: path
+          });
+        }).catch(function (err) {
+          console.log(err);
+          wx.showModal({
+            title: '温馨提示',
+            content: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()(err)
+          });
+        });
+      }
+    });
   }
 });
 
