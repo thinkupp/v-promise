@@ -1,4 +1,5 @@
 <import src="/pages/appoint/components/HeaderTip.vue.wxml" />
-<import src="/pages/appoint/components/Card.vue.wxml" /><template name="13459810">
-  <view class="_div data-v-4f0313fe appoint"><template data="{{...$root[$kk+'0'], $root}}" is="1d86fb64"></template> <template data="{{...$root[$kk+'1'], $root}}" is="0c7d2cc0"></template></view>
+<import src="/pages/appoint/components/Card.vue.wxml" />
+<import src="/pages/appoint/components/about/About.vue.wxml" /><template name="13459810">
+  <view class="_div data-v-4f0313fe appoint"><template data="{{...$root[$kk+'0'], $root}}" is="1d86fb64"></template> <template data="{{...$root[$kk+'1'], $root}}" is="0c7d2cc0"></template> <template data="{{...$root[$kk+'2'], $root}}" is="78e6998b"></template></view>
 </template>

@@ -133,3 +133,103 @@
 .appoint-card .about .information ._p ._i.data-v-18a455c9 {
   margin-right: 10rpx;
 }
+
+.appoint-about.data-v-79f9e462 {
+  width: 692rpx;
+  margin: 0 auto;
+  box-shadow: 0 0 26rpx 0 #D7CCCC;
+  border-radius: 20rpx;
+  padding-top: 30rpx;
+  padding-bottom: 18rpx;
+  box-sizing: border-box;
+}
+
+.tab.data-v-346c3983 {
+  font-size: 28rpx;
+  color: #333;
+  display: flex;
+  padding-bottom: 44rpx;
+}
+.tab ._li.data-v-346c3983 {
+  flex: 1;
+  text-align: center;
+}
+.tab ._li ._span.data-v-346c3983 {
+  padding-bottom: 16rpx;
+  position: relative;
+}
+.tab ._li ._span.select.data-v-346c3983 {
+  color: #FF4081;
+}
+.tab ._li ._span.select.data-v-346c3983::before {
+  position: absolute;
+  content: '';
+  width: 122rpx;
+  height: 1px;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  background: #FF4081;
+}
+.tab ._li ._span .round.data-v-346c3983 {
+  padding-bottom: 0;
+  position: absolute;
+  top: -5rpx;
+  right: -15rpx;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #E51C23;
+}
+
+.recommend.data-v-d70808de {
+  padding: 0 50rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.recommend ._li.data-v-d70808de {
+  margin-top: 28rpx;
+}
+.recommend ._li .information.data-v-d70808de {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recommend ._li .information .creator.data-v-d70808de {
+  display: flex;
+}
+.recommend ._li .information .creator .avatar.data-v-d70808de {
+  width: 78rpx;
+  height: 78rpx;
+  border-radius: 50%;
+}
+.recommend ._li .information .creator .right.data-v-d70808de {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 16rpx;
+}
+.recommend ._li .information .creator .right .top.data-v-d70808de {
+  display: flex;
+}
+.recommend ._li .information .creator .right .top .nickname.data-v-d70808de {
+  color: #333;
+}
+.recommend ._li .information .creator .right .top .look.data-v-d70808de {
+  margin-left: 5rpx;
+}
+.recommend ._li .information .creator .right .time.data-v-d70808de {
+  color: #B7ADAD;
+  font-size: 25rpx;
+}
+.recommend ._li .information .handle.data-v-d70808de {
+  display: flex;
+}
+.recommend ._li .information .handle .zan-number.data-v-d70808de {
+  margin-left: 16rpx;
+  color: #333;
+}
+.recommend ._li .content.data-v-d70808de {
+  color: #888;
+  margin-top: 10rpx;
+}

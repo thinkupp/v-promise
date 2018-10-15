@@ -3,31 +3,21 @@
     <header-tip></header-tip>
 
     <card></card>
+
+    <about></about>
   </div>
 </template>
 
 <script>
   import HeaderTip from './components/HeaderTip'
   import Card from './components/Card'
+  import About from './components/about/About'
 
   export default {
-    data() {
-      return {
-
-      }
-    },
-
-    created() {
-
-    },
-
-    methods: {
-
-    },
-
     components: {
       HeaderTip,
-      Card
+      Card,
+      About
     }
   }
 </script>
