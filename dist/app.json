@@ -1,10 +1,12 @@
 {
   "pages": [
+    "pages/check/main",
     "pages/index/main",
     "pages/promise-list/main",
     "pages/create/main",
     "pages/template/main",
-    "pages/register/main"
+    "pages/register/main",
+    "pages/appoint/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

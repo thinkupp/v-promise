@@ -1,0 +1,135 @@
+@import "../../common/vendor.wxss";
+
+.appoint.data-v-4f0313fe {
+  min-height: 100%;
+  background: rgba(248, 248, 248);
+}
+
+.header-tip.data-v-6b8296e5 {
+  height: 123rpx;
+  background: rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  box-shadow: 0 6rpx 12rpx 0 #AAAAAA;
+}
+.header-tip .tip.data-v-6b8296e5 {
+  margin-left: 16rpx;
+}
+.header-tip .tip .title.data-v-6b8296e5 {
+  font-size: 32rpx;
+  color: #189D99;
+}
+.header-tip .tip .des.data-v-6b8296e5 {
+  font-size: 24rpx;
+  margin-top: 6rpx;
+  color: #9B9292;
+}
+.header-tip .about.data-v-6b8296e5 {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.header-tip .about .icon-shizhong.data-v-6b8296e5 {
+  font-size: 52rpx;
+  color: #87AA35;
+}
+.header-tip .icon-sanjiaoright.data-v-6b8296e5 {
+  color: #A29898;
+  font-size: 30rpx;
+}
+
+.appoint-card.data-v-18a455c9 {
+  padding: 26rpx 70rpx;
+  box-sizing: border-box;
+  background: #FFF;
+  border-radius: 20rpx;
+  margin-top: 26rpx;
+  border: 1px solid #000;
+}
+.appoint-card .creator.data-v-18a455c9 {
+  display: flex;
+  align-items: center;
+}
+.appoint-card .creator .avatar.data-v-18a455c9 {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.appoint-card .des.data-v-18a455c9 {
+  padding: 18rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  color: #888;
+}
+.appoint-card .item-name.data-v-18a455c9 {
+  font-size: 32rpx;
+  color: #101010;
+  margin-left: 32rpx;
+}
+.appoint-card .target-content.data-v-18a455c9 {
+  font-size: 56rpx;
+  color: #259B24;
+  text-align: center;
+  margin-top: -32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.appoint-card .target-content ._span.data-v-18a455c9 {
+  font-size: 30rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.appoint-card .clock-in-time.data-v-18a455c9 {
+  font-size: 30rpx;
+  color: #333;
+  margin-left: 32rpx;
+}
+.appoint-card .images.data-v-18a455c9 {
+  display: flex;
+  margin-left: 6rpx;
+  overflow-x: auto;
+  margin-right: 6rpx;
+  margin-top: 28rpx;
+}
+.appoint-card .images .image.data-v-18a455c9 {
+  width: 100rpx;
+  height: 100rpx;
+  flex: none;
+  margin-right: 16rpx;
+}
+.appoint-card .status.data-v-18a455c9 {
+  font-size: 36rpx;
+  color: #5677FC;
+  text-align: center;
+}
+.appoint-card .about.data-v-18a455c9 {
+  display: flex;
+  justify-content: space-between;
+}
+.appoint-card .about .options.data-v-18a455c9,
+.appoint-card .about .information.data-v-18a455c9 {
+  display: flex;
+  flex-direction: column;
+  font-size: 28rpx;
+}
+.appoint-card .about .options ._span.data-v-18a455c9,
+.appoint-card .about .information ._span.data-v-18a455c9,
+.appoint-card .about .options ._p.data-v-18a455c9,
+.appoint-card .about .information ._p.data-v-18a455c9 {
+  margin-top: 6rpx;
+}
+.appoint-card .about .options.data-v-18a455c9 {
+  color: #AAA4A4;
+}
+.appoint-card .about .information ._p.data-v-18a455c9 {
+  display: flex;
+  align-items: center;
+}
+.appoint-card .about .information ._p ._i.data-v-18a455c9 {
+  margin-right: 10rpx;
+}

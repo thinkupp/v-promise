@@ -11,10 +11,15 @@ const register = function ( data ) {
 
 const createAppoint = function ( data ) {
   return ApiAppoint.createAppoint( data )
+};
+
+const fetchCreateAppoint = function ( params ) {
+  return ApiAppoint.fetchCreateAppoint( ...params )
 }
 
 export default {
   login,
   register,
-  createAppoint
+  createAppoint,
+  fetchCreateAppoint
 }

@@ -165,9 +165,11 @@
         this.formData.autoCreate = this.createRange[this.autoCreateIndex];
         this.formData.type = this.typeRange[this.createType];
 
-        console.log(this.formData);
         this.$api.createAppoint( this.formData ).then(res => {
           console.log(res);
+          wx.reLaunch({
+            url: '/pages/appoint/main'
+          })
         })
       },
 

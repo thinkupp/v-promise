@@ -18,7 +18,11 @@
   export default {
     data () {
       return {
-        listData: []
+        listData: [],
+        searchData: {
+          startIndex: 0,
+          count: 20
+        }
       }
     },
 
@@ -30,7 +34,16 @@
     methods: {
       handleCreate () {
         this.$route.toCreate();
+      },
+      fetchCreateAppoint () {
+        this.$api.fetchCreateAppoint( this.searchData ).then(res => {
+          console.log(res);
+        })
       }
+    },
+
+    onLoad () {
+      this.fetchCreateAppoint();
     }
   }
 </script>
