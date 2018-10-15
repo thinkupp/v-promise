@@ -2,7 +2,11 @@
   <div class="appoint">
     <header-tip></header-tip>
 
-    <card></card>
+
+    <div class="confirm-wrapper">
+      <card></card>
+      <confirm></confirm>
+    </div>
 
     <about></about>
 
@@ -15,13 +19,15 @@
   import Card from './components/Card'
   import About from './components/about/About'
   import Bottom from './components/Bottom.vue'
+  import Confirm from './components/Confirm.vue'
 
   export default {
     components: {
       HeaderTip,
       Card,
       About,
-      Bottom
+      Bottom,
+      Confirm
     },
 
     methods: {
@@ -37,5 +43,9 @@
     min-height: 100%;
     background: #F8F8F8;
     padding-bottom: 96rpx;
+
+    .confirm-wrapper {
+      position: relative;
+    }
   }
 </style>
