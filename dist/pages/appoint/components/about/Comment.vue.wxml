@@ -1,0 +1,32 @@
+<template name="fa4d9cd8">
+  <view class="_ul data-v-6080baf4 comment">
+    <view class="_li data-v-6080baf4">
+      <view class="_div data-v-6080baf4 information">
+        <view class="_div data-v-6080baf4 creator">
+          <image src="/res/images/template-select.png" class="_img data-v-6080baf4 avatar"></image>
+          <view class="_div data-v-6080baf4 right">
+            <view class="_div data-v-6080baf4 top"><label class="_span data-v-6080baf4 nickname">Nickname</label> <label class="_span data-v-6080baf4 look">督</label></view> <label class="_span data-v-6080baf4 time">2010-10-10 00:00:00</label>
+          </view>
+        </view>
+        <view class="_div data-v-6080baf4 handle">
+          <view class="_i data-v-6080baf4 iconfont icon-dianzan"></view> <label class="_span data-v-6080baf4 zan-number">111</label>
+        </view>
+      </view>
+      <view class="_p data-v-6080baf4 content">这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..</view>
+    </view>
+    <view class="_li data-v-6080baf4">
+      <view class="_div data-v-6080baf4 information">
+        <view class="_div data-v-6080baf4 creator">
+          <image src="/res/images/template-select.png" class="_img data-v-6080baf4 avatar"></image>
+          <view class="_div data-v-6080baf4 right">
+            <view class="_div data-v-6080baf4 top"><label class="_span data-v-6080baf4 nickname">Nickname</label> <label class="_span data-v-6080baf4 look">督</label></view> <label class="_span data-v-6080baf4 time">2010-10-10 00:00:00</label>
+          </view>
+        </view>
+        <view class="_div data-v-6080baf4 handle">
+          <view class="_i data-v-6080baf4 iconfont icon-dianzan"></view> <label class="_span data-v-6080baf4 zan-number">111</label>
+        </view>
+      </view>
+      <view class="_p data-v-6080baf4 content">这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..这里是评论的内容..</view>
+    </view>
+  </view>
+</template>

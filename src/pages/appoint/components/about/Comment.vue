@@ -1,5 +1,5 @@
 <template>
-  <ul class="recommend">
+  <ul class="comment">
     <li>
       <div class="information">
         <div class="creator">
@@ -64,7 +64,7 @@
 </script>
 
 <style lang="less" scoped>
-  .recommend {
+  .comment {
     padding: 0 50rpx;
     box-sizing: border-box;
     font-size: 28rpx;

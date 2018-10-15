@@ -2,18 +2,18 @@
   <div class="appoint-about">
     <tab></tab>
 
-    <recommend></recommend>
+    <comment></comment>
   </div>
 </template>
 
 <script>
   import Tab from './AboutTab'
-  import Recommend from './Recommend'
+  import Comment from './Comment.vue'
 
   export default {
     components: {
       Tab,
-      Recommend
+      Comment
     }
   }
 </script>
@@ -27,5 +27,6 @@
     padding-top: 30rpx;
     padding-bottom: 18rpx;
     box-sizing: border-box;
+    background: #FFF;
   }
 </style>

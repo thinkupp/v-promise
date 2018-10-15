@@ -61,7 +61,27 @@
     background: #FFF;
     border-radius: 20rpx;
     margin-top: 26rpx;
-    border: 1px solid #000;
+    position: relative;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 50rpx;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 20rpx;
+    }
+
+    &:before {
+      width: 652rpx;
+      bottom: -25rpx;
+    }
+
+    &:after {
+      width: 590rpx;
+      bottom: -50rpx;
+    }
 
     .creator {
       display: flex;
