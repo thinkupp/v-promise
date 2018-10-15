@@ -1,0 +1,37 @@
+<template name="2ecdeb29">
+  <view class="_div data-v-18a455c9 appoint-card">
+    <view class="_div data-v-18a455c9 creator">
+      <image src="/res/images/home-select.png" class="_img data-v-18a455c9 avatar"></image> <label class="_span data-v-18a455c9 nickname">昵称XXX</label>
+    </view>
+    <view class="_p data-v-18a455c9 des"> "这里是创建的时候写的备注之类的话" </view>
+    <view class="_p data-v-18a455c9 item-name">目标：</view>
+    <view class="_p data-v-18a455c9 target-content"><label class="_span data-v-18a455c9">[</label> 跑步 <label class="_span data-v-18a455c9">]</label></view>
+    <view class="_p data-v-18a455c9 item-name">有效打卡时间：</view>
+    <view class="_p data-v-18a455c9 clock-in-time">2010/10/10 23:59:59 之前</view>
+    <view class="_div data-v-18a455c9 images">
+      <image src="/res/images/more-default.png" class="_img data-v-18a455c9 image"></image>
+      <image src="/res/images/more-default.png" class="_img data-v-18a455c9 image"></image>
+      <image src="/res/images/more-default.png" class="_img data-v-18a455c9 image"></image>
+      <image src="/res/images/more-default.png" class="_img data-v-18a455c9 image"></image>
+      <image src="/res/images/more-default.png" class="_img data-v-18a455c9 image"></image>
+      <image src="/res/images/more-default.png" class="_img data-v-18a455c9 image"></image>
+      <image src="/res/images/more-default.png" class="_img data-v-18a455c9 image"></image>
+      <image src="/res/images/more-default.png" class="_img data-v-18a455c9 image"></image>
+    </view>
+    <view class="_p data-v-18a455c9 status">进行中</view>
+    <view class="_div data-v-18a455c9 about">
+      <view class="_div data-v-18a455c9 options"><label class="_span data-v-18a455c9">每日自动创建</label> <label class="_span data-v-18a455c9">监督者上限100</label> <label class="_span data-v-18a455c9">不允许围观</label></view>
+      <view class="_div data-v-18a455c9 information">
+        <view class="_p data-v-18a455c9">
+          <view class="_i data-v-18a455c9 iconfont icon-jiandu"></view>监督者 120
+        </view>
+        <view class="_p data-v-18a455c9">
+          <view class="_i data-v-18a455c9 iconfont icon-fangwenliang"></view>访问量 120
+        </view>
+        <view class="_p data-v-18a455c9">
+          <view class="_i data-v-18a455c9 iconfont icon-fangwen"></view>浏览人次 120
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

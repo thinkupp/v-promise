@@ -1,0 +1,4 @@
+<import src="/pages/appoint/components/about/AboutTab.vue.wxml" />
+<import src="/pages/appoint/components/about/Recommend.vue.wxml" /><template name="5180f9fc">
+  <view class="_div data-v-79f9e462 appoint-about"><template data="{{...$root[$kk+'0'], $root}}" is="5d2296e3"></template> <template data="{{...$root[$kk+'1'], $root}}" is="fadd6b9e"></template></view>
+</template>

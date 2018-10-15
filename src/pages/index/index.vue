@@ -6,27 +6,44 @@
     </div>
 
     <div class="content" :class="{empty: listData.length === 0}">
+      <item></item>
     </div>
   </div>
 </template>
 
 <script>
   import TopBar from './components/TopBar'
+  import Item from './components/Item'
+
   export default {
     data () {
       return {
-        listData: []
+        listData: [],
+        searchData: {
+          startIndex: 0,
+          count: 20
+        }
       }
     },
 
     components: {
-      TopBar
+      TopBar,
+      Item
     },
 
     methods: {
       handleCreate () {
         this.$route.toCreate();
+      },
+      fetchCreateAppoint () {
+        this.$api.fetchCreateAppoint( this.searchData ).then(res => {
+          console.log(res);
+        })
       }
+    },
+
+    onLoad () {
+      this.fetchCreateAppoint();
     }
   }
 </script>
@@ -61,6 +78,8 @@
 
   .content {
     flex: 1;
-
+    margin-top: 100rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
   }
 </style>
