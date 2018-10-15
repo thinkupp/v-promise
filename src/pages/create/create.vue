@@ -166,6 +166,7 @@
         this.formData.type = this.typeRange[this.createType];
 
         console.log(this.formData);
+        console.log(getApp().globalData.userId);
         this.$api.createAppoint( this.formData ).then(res => {
           console.log(res);
         })

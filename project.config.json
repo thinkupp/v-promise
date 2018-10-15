@@ -30,12 +30,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
 					"name": "Create",
-					"pathName": "pages/create/main"
+					"pathName": "pages/create/main",
+					"query": ""
 				}
 			]
 		}
