@@ -1,5 +1,5 @@
-<template name="0c7d2cc0">
-  <view class="_div data-v-18a455c9 appoint-card">
+<template name="2ecdeb29">
+  <view class="_div data-v-18a455c9 appoint-card" wx:if="{{detail.u}}">
     <view class="_div data-v-18a455c9 creator">
       <image src="{{detail.u.avatar}}" class="_img data-v-18a455c9 avatar"></image> <label class="_span data-v-18a455c9 nickname">{{detail.u.nickName}}</label>
     </view>
@@ -18,13 +18,13 @@
       <view class="_div data-v-18a455c9 options"><label wx:if="{{detail.autoCreate !== '从不'}}" class="_span data-v-18a455c9">{{detail.autoCreate}}自动创建</label> <label wx:if="{{detail.watcherMax}}" class="_span data-v-18a455c9">监督者上限 {{detail.watcherMax}}</label> <label wx:if="{{!detail.onlookers}}" class="_span data-v-18a455c9">不允许围观</label></view>
       <view class="_div data-v-18a455c9 information">
         <view class="_p data-v-18a455c9">
-          <view class="_i data-v-18a455c9 iconfont icon-jiandu"></view>监督者 120
+          <view class="_i data-v-18a455c9 iconfont icon-jiandu"></view>监督者 {{detail.watcherNumber}}
         </view>
         <view class="_p data-v-18a455c9">
-          <view class="_i data-v-18a455c9 iconfont icon-fangwenliang"></view>访问量 120
+          <view class="_i data-v-18a455c9 iconfont icon-fangwenliang"></view>访问量 {{detail.accessNumber}}
         </view>
         <view class="_p data-v-18a455c9">
-          <view class="_i data-v-18a455c9 iconfont icon-fangwen"></view>浏览人次 120
+          <view class="_i data-v-18a455c9 iconfont icon-fangwen"></view>浏览人次 {{detail.browsePeopleNumber}}
         </view>
       </view>
     </view>

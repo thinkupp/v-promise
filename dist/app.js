@@ -155,24 +155,6 @@ if (false) {(function () {
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$route = __WEBPACK_IMPORTED_MODULE_1__RouteServer__["a" /* default */];
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$api = __WEBPACK_IMPORTED_MODULE_2__ApiServer__["a" /* default */];
 
-/***/ }),
-
-/***/ 74:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var to = function to(url) {
-  wx.navigateTo({ url: url });
-};
-
-var toCreate = function toCreate() {
-  to('/pages/create/main');
-};
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  toCreate: toCreate
-});
-
 /***/ })
 
 },[62]);

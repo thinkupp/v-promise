@@ -1,5 +1,5 @@
 <template>
-  <div class="appoint-card">
+  <div class="appoint-card" v-if="detail.u">
     <div class="creator">
       <img :src="detail.u.avatar" class="avatar">
       <span class="nickname">{{detail.u.nickName}}</span>
@@ -31,9 +31,9 @@
       </div>
 
       <div class="information">
-        <p><i class="iconfont icon-jiandu"></i>监督者 120</p>
-        <p><i class="iconfont icon-fangwenliang"></i>访问量 120</p>
-        <p><i class="iconfont icon-fangwen"></i>浏览人次 120</p>
+        <p><i class="iconfont icon-jiandu"></i>监督者 {{detail.watcherNumber}}</p>
+        <p><i class="iconfont icon-fangwenliang"></i>访问量 {{detail.accessNumber}}</p>
+        <p><i class="iconfont icon-fangwen"></i>浏览人次 {{detail.browsePeopleNumber}}</p>
       </div>
     </div>
   </div>
@@ -44,9 +44,7 @@
     props: {
       detail: {
         type: Object,
-        default: function () {
-          return {}
-        }
+        default: null
       }
     }
   }

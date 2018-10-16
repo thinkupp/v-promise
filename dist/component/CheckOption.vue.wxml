@@ -1,5 +1,5 @@
-<import src="/component/VCheckBox.vue.wxml" /><template name="37eeaebb">
+<import src="/component/VCheckBox.vue.wxml" /><template name="c75633b8">
   <view class="_div data-v-1a0ff0c4 check-option common-cell">
-    <view class="_div data-v-1a0ff0c4 left"><label class="_span data-v-1a0ff0c4 title">{{title}}</label> <label class="_span data-v-1a0ff0c4 iconfont icon-wenhao icon" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}"></label></view> <template bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="6478c8d7"></template>
+    <view class="_div data-v-1a0ff0c4 left"><label class="_span data-v-1a0ff0c4 title">{{title}}</label> <label class="_span data-v-1a0ff0c4 iconfont icon-wenhao icon" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}"></label></view> <template bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="18a7c680"></template>
   </view>
 </template>

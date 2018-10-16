@@ -166,7 +166,7 @@
         this.formData.type = this.typeRange[this.createType];
 
         this.$api.createAppoint( this.formData ).then(res => {
-          wx.reLaunch({
+          wx.redirectTo({
             url: '/pages/appoint/main?id=' + res._id
           })
         })

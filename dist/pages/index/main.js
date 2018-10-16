@@ -127,12 +127,13 @@ if (false) {(function () {
       var _this = this;
 
       this.$api.fetchCreateAppoint(this.searchData).then(function (data) {
+        _this.listData = [];
         _this.listData = data;
       });
     }
   },
 
-  onLoad: function onLoad() {
+  onShow: function onShow() {
     this.fetchCreateAppoint();
   }
 });
@@ -351,6 +352,23 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__service_RouteServer__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_index__ = __webpack_require__(230);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -362,13 +380,30 @@ if (false) {(function () {
 //
 //
 
+
+
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   props: {
     item: {
       type: Object,
-      default: function _default() {
-        return {};
-      }
+      default: null
+    }
+  },
+
+  computed: {
+    startTime: function startTime() {
+      return Object(__WEBPACK_IMPORTED_MODULE_1__utils_index__["a" /* formatTime */])(this.item.startTime);
+    },
+    createTime: function createTime() {
+      return Object(__WEBPACK_IMPORTED_MODULE_1__utils_index__["a" /* formatTime */])(this.item.createTime);
+    }
+  },
+
+  methods: {
+    handleClick: function handleClick() {
+      __WEBPACK_IMPORTED_MODULE_0__service_RouteServer__["a" /* default */].toAppointDetail(this.item._id);
     }
   }
 });
@@ -381,7 +416,15 @@ if (false) {(function () {
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "item"
+    staticClass: "appoint-item",
+    attrs: {
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.handleClick
+    }
+  }, [_c('div', {
+    staticClass: "top"
   }, [_c('div', {
     staticClass: "user-info"
   }, [_c('img', {
@@ -389,9 +432,27 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "src": _vm.item.u.avatar
     }
-  }), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.item.u.nickName))])])])
+  }), _vm._v(" "), _c('span', {
+    staticClass: "nickname"
+  }, [_vm._v(_vm._s(_vm.item.u.nickName))])]), _vm._v(" "), _c('span', {
+    staticClass: "create-time"
+  }, [_vm._v(_vm._s(_vm.createTime))])]), _vm._v(" "), _c('p', {
+    staticClass: "appoint-type"
+  }, [_vm._v(_vm._s(_vm.item.type))]), _vm._v(" "), _c('div', {
+    staticClass: "footer"
+  }, [_c('span', {
+    staticClass: "startTime"
+  }, [_vm._v("开始时间：" + _vm._s(_vm.startTime))]), _vm._v(" "), _vm._m(0)])], 1)
 }
-var staticRenderFns = []
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "status"
+  }, [_c('span', {
+    staticClass: "status-option"
+  }, [_vm._v("监督中")]), _vm._v(" "), _c('span', {
+    staticClass: "status-option"
+  }, [_vm._v("进行中")])])
+}]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -431,13 +492,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       empty: _vm.listData.length === 0
     }
   }, _vm._l((_vm.listData), function(item, index) {
-    return _c('item', {
+    return (item) ? _c('item', {
       key: index,
       attrs: {
         "item": item,
         "mpcomid": '1-' + index
       }
-    })
+    }) : _vm._e()
   }))])
 }
 var staticRenderFns = []
@@ -450,6 +511,40 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-33b487e3", esExports)
   }
 }
+
+/***/ }),
+
+/***/ 230:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = formatTime;
+function formatNumber(n) {
+  var str = n.toString();
+  return str[1] ? str : '0' + str;
+}
+
+function formatTime(date) {
+  date = new Date(date);
+
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+
+  var t1 = [year, month, day].map(formatNumber).join('/');
+  var t2 = [hour, minute, second].map(formatNumber).join(':');
+
+  return t1 + ' ' + t2;
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = ({
+  formatNumber: formatNumber,
+  formatTime: formatTime
+});
 
 /***/ })
 

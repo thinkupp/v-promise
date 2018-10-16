@@ -4,6 +4,9 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  overflow-y: auto;
+  padding-bottom: 30rpx;
 }
 .index .bar-wrapper.data-v-33b487e3 {
   height: 242rpx;
@@ -50,20 +53,57 @@
   color: #FFFFFF;
 }
 
-.item.data-v-78ad695d {
+.appoint-item.data-v-78ad695d {
   width: 670rpx;
-  height: 150rpx;
   background: #f7f7f7;
   display: flex;
-  align-items: center;
-  margin-top: 30rpx;
-  padding: 0 10rpx;
+  flex-direction: column;
+  margin: 30rpx auto 0 auto;
+  padding: 20rpx;
   box-sizing: border-box;
 }
-.item .user-info.data-v-78ad695d {
+.appoint-item .top.data-v-78ad695d {
+  display: flex;
+  justify-content: space-between;
+}
+.appoint-item .top .create-time.data-v-78ad695d {
+  font-size: 26rpx;
+  color: #cbcbcb;
+}
+.appoint-item .top .user-info.data-v-78ad695d {
+  display: flex;
+  align-items: center;
+}
+.appoint-item .top .user-info .avatar.data-v-78ad695d {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+.appoint-item .top .user-info .nickname.data-v-78ad695d {
+  font-size: 30rpx;
+  margin-left: 10rpx;
+}
+.appoint-item .appoint-type.data-v-78ad695d {
+  text-align: center;
+  font-size: 39rpx;
+}
+.appoint-item .footer.data-v-78ad695d {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5rpx;
+  padding: 10rpx 0;
+}
+.appoint-item .footer .startTime.data-v-78ad695d {
+  font-size: 26rpx;
+}
+.appoint-item .footer .status.data-v-78ad695d {
   display: flex;
 }
-.item .user-info .avatar.data-v-78ad695d {
-  width: 100rpx;
-  height: 100rpx;
+.appoint-item .footer .status .status-option.data-v-78ad695d {
+  display: inline-block;
+  padding: 0 10rpx;
+  border: 1rpx solid #FF4081;
+  color: #FF4081;
+  font-size: 22rpx;
+  margin-left: 10rpx;
 }

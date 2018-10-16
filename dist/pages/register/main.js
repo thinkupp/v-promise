@@ -93,7 +93,6 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
   methods: {
     getUserInfo: function getUserInfo(e) {
-      console.log(getApp());
       var detail = e.mp.detail;
       if (detail.userInfo) {
         this.$api.register({

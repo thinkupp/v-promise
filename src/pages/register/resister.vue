@@ -8,7 +8,6 @@
   export default {
     methods: {
       getUserInfo (e) {
-        console.log(getApp());
         const detail = e.mp.detail;
         if (detail.userInfo) {
           this.$api.register({

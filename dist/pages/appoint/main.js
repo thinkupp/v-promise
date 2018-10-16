@@ -379,9 +379,7 @@ if (false) {(function () {
   props: {
     detail: {
       type: Object,
-      default: function _default() {
-        return {};
-      }
+      default: null
     }
   }
 });
@@ -393,7 +391,7 @@ if (false) {(function () {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.detail.u) ? _c('div', {
     staticClass: "appoint-card"
   }, [_c('div', {
     staticClass: "creator"
@@ -434,11 +432,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "information"
   }, [_c('p', [_c('i', {
     staticClass: "iconfont icon-jiandu"
-  }), _vm._v("监督者 120")], 1), _vm._v(" "), _c('p', [_c('i', {
+  }), _vm._v("监督者 " + _vm._s(_vm.detail.watcherNumber))], 1), _vm._v(" "), _c('p', [_c('i', {
     staticClass: "iconfont icon-fangwenliang"
-  }), _vm._v("访问量 120")], 1), _vm._v(" "), _c('p', [_c('i', {
+  }), _vm._v("访问量 " + _vm._s(_vm.detail.accessNumber))], 1), _vm._v(" "), _c('p', [_c('i', {
     staticClass: "iconfont icon-fangwen"
-  }), _vm._v("浏览人次 120")], 1)], 1)])], 1)
+  }), _vm._v("浏览人次 " + _vm._s(_vm.detail.browsePeopleNumber))], 1)], 1)])], 1) : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true

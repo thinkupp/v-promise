@@ -12,3 +12,7 @@
 <import src="/component/VCheckBox.vue.wxml" />
 <import src="/pages/appoint/components/about/AboutTab.vue.wxml" />
 <import src="/pages/appoint/components/about/Comment.vue.wxml" />
+<import src="/pages/appoint/components/HeaderTip.vue.wxml" />
+<import src="/pages/appoint/components/Confirm.vue.wxml" />
+<import src="/pages/appoint/components/about/About.vue.wxml" />
+<import src="/pages/appoint/components/Bottom.vue.wxml" />

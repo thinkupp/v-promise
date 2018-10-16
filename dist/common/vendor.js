@@ -6590,8 +6590,8 @@ module.exports = function (exec, skipClosing) {
 
 
 
-// const base_ip = 'http://192.168.0.100:3000/api';
-var base_ip = 'http://192.168.8.101:3000/api';
+var base_ip = 'http://192.168.0.100:3000/api';
+// const base_ip = 'http://192.168.8.101:3000/api';
 
 var request = function request(option) {
   return new __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
@@ -6996,7 +6996,28 @@ module.exports = g;
 /* 71 */,
 /* 72 */,
 /* 73 */,
-/* 74 */,
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var to = function to(url) {
+  wx.navigateTo({ url: url });
+};
+
+var toCreate = function toCreate() {
+  to('/pages/create/main');
+};
+
+var toAppointDetail = function toAppointDetail(id) {
+  to('/pages/appoint/main?id=' + id);
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  toCreate: toCreate,
+  toAppointDetail: toAppointDetail
+});
+
+/***/ }),
 /* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 

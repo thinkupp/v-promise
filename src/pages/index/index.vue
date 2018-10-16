@@ -6,7 +6,7 @@
     </div>
 
     <div class="content" :class="{empty: listData.length === 0}">
-      <item v-for="(item, index) in listData" :item="item" :key="index"></item>
+      <item v-if="item" v-for="(item, index) in listData" :item="item" :key="index"></item>
     </div>
   </div>
 </template>
@@ -35,14 +35,16 @@
       handleCreate () {
         this.$route.toCreate();
       },
+
       fetchCreateAppoint () {
         this.$api.fetchCreateAppoint( this.searchData ).then(data => {
+          this.listData = [];
           this.listData = data;
         })
       }
     },
 
-    onLoad () {
+    onShow () {
       this.fetchCreateAppoint();
     }
   }
@@ -53,6 +55,9 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    overflow-y: auto;
+    padding-bottom: 30rpx;
 
     .bar-wrapper {
       height: 242rpx;
