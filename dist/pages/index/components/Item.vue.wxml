@@ -5,7 +5,7 @@
         <image src="{{item.u.avatar}}" class="_img data-v-78ad695d avatar"></image> <label class="_span data-v-78ad695d nickname">{{item.u.nickName}}</label>
       </view> <label class="_span data-v-78ad695d create-time">{{createTime}}</label>
     </view>
-    <view class="_p data-v-78ad695d appoint-type">{{item.type}}</view>
+    <view class="_p data-v-78ad695d appoint-type"><label class="_span data-v-78ad695d type">{{item.type}}</label></view>
     <view class="_div data-v-78ad695d footer"><label class="_span data-v-78ad695d startTime">开始时间：{{startTime}}</label>
       <view class="_div data-v-78ad695d status"><label class="_span data-v-78ad695d status-option">监督中</label> <label class="_span data-v-78ad695d status-option">进行中</label></view>
     </view>

@@ -10,7 +10,9 @@
       <span class="create-time">{{createTime}}</span>
     </div>
 
-    <p class="appoint-type">{{item.type}}</p>
+    <p class="appoint-type">
+      <span class="type">{{item.type}}</span>
+    </p>
 
     <div class="footer">
       <span class="startTime">开始时间：{{startTime}}</span>
@@ -94,6 +96,29 @@
     .appoint-type {
       text-align: center;
       font-size: 39rpx;
+
+      .type {
+        position: relative;
+      }
+
+      .type:after, .type:before {
+        content: '';
+        width: 150rpx;
+        height: 2rpx;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #dddddd;
+        border-radius: 1rpx;
+      }
+
+      .type:after {
+        left: -190rpx;
+      }
+
+      .type:before {
+        right: -190rpx;
+      }
     }
 
     .footer {

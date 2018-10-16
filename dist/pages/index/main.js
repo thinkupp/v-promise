@@ -379,6 +379,8 @@ if (false) {(function () {
 //
 //
 //
+//
+//
 
 
 
@@ -438,7 +440,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "create-time"
   }, [_vm._v(_vm._s(_vm.createTime))])]), _vm._v(" "), _c('p', {
     staticClass: "appoint-type"
-  }, [_vm._v(_vm._s(_vm.item.type))]), _vm._v(" "), _c('div', {
+  }, [_c('span', {
+    staticClass: "type"
+  }, [_vm._v(_vm._s(_vm.item.type))])]), _vm._v(" "), _c('div', {
     staticClass: "footer"
   }, [_c('span', {
     staticClass: "startTime"
