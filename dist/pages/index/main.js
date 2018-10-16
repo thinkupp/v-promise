@@ -124,8 +124,10 @@ if (false) {(function () {
       this.$route.toCreate();
     },
     fetchCreateAppoint: function fetchCreateAppoint() {
-      this.$api.fetchCreateAppoint(this.searchData).then(function (res) {
-        console.log(res);
+      var _this = this;
+
+      this.$api.fetchCreateAppoint(this.searchData).then(function (data) {
+        _this.listData = data;
       });
     }
   },
@@ -355,15 +357,20 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  data: function data() {
-    return {};
-  },
-  created: function created() {},
-
-
-  methods: {}
+  props: {
+    item: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -375,7 +382,14 @@ if (false) {(function () {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "item"
-  })
+  }, [_c('div', {
+    staticClass: "user-info"
+  }, [_c('img', {
+    staticClass: "avatar",
+    attrs: {
+      "src": _vm.item.u.avatar
+    }
+  }), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.item.u.nickName))])])])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -416,11 +430,15 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     class: {
       empty: _vm.listData.length === 0
     }
-  }, [_c('item', {
-    attrs: {
-      "mpcomid": '1'
-    }
-  })], 1)])
+  }, _vm._l((_vm.listData), function(item, index) {
+    return _c('item', {
+      key: index,
+      attrs: {
+        "item": item,
+        "mpcomid": '1-' + index
+      }
+    })
+  }))])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -6,7 +6,7 @@
     </div>
 
     <div class="content" :class="{empty: listData.length === 0}">
-      <item></item>
+      <item v-for="(item, index) in listData" :item="item" :key="index"></item>
     </div>
   </div>
 </template>
@@ -36,8 +36,8 @@
         this.$route.toCreate();
       },
       fetchCreateAppoint () {
-        this.$api.fetchCreateAppoint( this.searchData ).then(res => {
-          console.log(res);
+        this.$api.fetchCreateAppoint( this.searchData ).then(data => {
+          this.listData = data;
         })
       }
     },

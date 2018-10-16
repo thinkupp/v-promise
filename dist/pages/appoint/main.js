@@ -88,7 +88,7 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_about_About__ = __webpack_require__(130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Bottom_vue__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Confirm_vue__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_ApiServer__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_ApiServer__ = __webpack_require__(43);
 //
 //
 //
@@ -374,8 +374,6 @@ if (false) {(function () {
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   props: {
@@ -408,7 +406,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "nickname"
   }, [_vm._v(_vm._s(_vm.detail.u.nickName))])]), _vm._v(" "), _c('p', {
     staticClass: "des"
-  }, [_vm._v("\n    \"这里是创建的时候写的备注之类的话\"\n  ")]), _vm._v(" "), _c('p', {
+  }, [_vm._v("\"这里是创建的时候写的备注之类的话\"")]), _vm._v(" "), _c('p', {
     staticClass: "item-name"
   }, [_vm._v("目标：")]), _vm._v(" "), _c('p', {
     staticClass: "target-content"
@@ -432,7 +430,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "about"
   }, [_c('div', {
     staticClass: "options"
-  }, [_c('span', [_vm._v("每日自动创建")]), _vm._v(" "), _c('span', [_vm._v("监督者上限100")]), _vm._v(" "), (!_vm.detail.onlookers) ? _c('span', [_vm._v("不允许围观")]) : _vm._e()]), _vm._v(" "), _c('div', {
+  }, [(_vm.detail.autoCreate !== '从不') ? _c('span', [_vm._v(_vm._s(_vm.detail.autoCreate) + "自动创建")]) : _vm._e(), _vm._v(" "), (_vm.detail.watcherMax) ? _c('span', [_vm._v("监督者上限 " + _vm._s(_vm.detail.watcherMax))]) : _vm._e(), _vm._v(" "), (!_vm.detail.onlookers) ? _c('span', [_vm._v("不允许围观")]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "information"
   }, [_c('p', [_c('i', {
     staticClass: "iconfont icon-jiandu"

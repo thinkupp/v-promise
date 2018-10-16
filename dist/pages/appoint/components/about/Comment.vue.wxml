@@ -1,4 +1,4 @@
-<template name="fa4d9cd8">
+<template name="5714c9dd">
   <view class="_div data-v-6080baf4">
     <view class="_ul data-v-6080baf4 comment" wx:if="{{commentList.length}}">
       <view class="_li data-v-6080baf4">

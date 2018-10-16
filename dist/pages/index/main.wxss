@@ -51,6 +51,19 @@
 }
 
 .item.data-v-78ad695d {
-  height: 70rpx;
+  width: 670rpx;
+  height: 150rpx;
   background: #f7f7f7;
+  display: flex;
+  align-items: center;
+  margin-top: 30rpx;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+}
+.item .user-info.data-v-78ad695d {
+  display: flex;
+}
+.item .user-info .avatar.data-v-78ad695d {
+  width: 100rpx;
+  height: 100rpx;
 }

@@ -1,3 +1,7 @@
-<template name="64fcd6bd">
-  <view class="_div data-v-78ad695d item"></view>
+<template name="3bed9214">
+  <view class="_div data-v-78ad695d item">
+    <view class="_div data-v-78ad695d user-info">
+      <image src="{{item.u.avatar}}" class="_img data-v-78ad695d avatar"></image> <label class="_span data-v-78ad695d">{{item.u.nickName}}</label>
+    </view>
+  </view>
 </template>

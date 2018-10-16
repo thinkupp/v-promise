@@ -1,9 +1,9 @@
-<template name="2ecdeb29">
+<template name="0c7d2cc0">
   <view class="_div data-v-18a455c9 appoint-card">
     <view class="_div data-v-18a455c9 creator">
       <image src="{{detail.u.avatar}}" class="_img data-v-18a455c9 avatar"></image> <label class="_span data-v-18a455c9 nickname">{{detail.u.nickName}}</label>
     </view>
-    <view class="_p data-v-18a455c9 des"> "这里是创建的时候写的备注之类的话" </view>
+    <view class="_p data-v-18a455c9 des">"这里是创建的时候写的备注之类的话"</view>
     <view class="_p data-v-18a455c9 item-name">目标：</view>
     <view class="_p data-v-18a455c9 target-content"><label class="_span data-v-18a455c9">[</label>
       {{detail.type}}
@@ -15,7 +15,7 @@
     </view>
     <view class="_p data-v-18a455c9 status">进行中</view>
     <view class="_div data-v-18a455c9 about">
-      <view class="_div data-v-18a455c9 options"><label class="_span data-v-18a455c9">每日自动创建</label> <label class="_span data-v-18a455c9">监督者上限100</label> <label wx:if="{{!detail.onlookers}}" class="_span data-v-18a455c9">不允许围观</label></view>
+      <view class="_div data-v-18a455c9 options"><label wx:if="{{detail.autoCreate !== '从不'}}" class="_span data-v-18a455c9">{{detail.autoCreate}}自动创建</label> <label wx:if="{{detail.watcherMax}}" class="_span data-v-18a455c9">监督者上限 {{detail.watcherMax}}</label> <label wx:if="{{!detail.onlookers}}" class="_span data-v-18a455c9">不允许围观</label></view>
       <view class="_div data-v-18a455c9 information">
         <view class="_p data-v-18a455c9">
           <view class="_i data-v-18a455c9 iconfont icon-jiandu"></view>监督者 120

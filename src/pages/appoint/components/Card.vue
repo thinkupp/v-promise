@@ -5,9 +5,7 @@
       <span class="nickname">{{detail.u.nickName}}</span>
     </div>
 
-    <p class="des">
-      "这里是创建的时候写的备注之类的话"
-    </p>
+    <p class="des">"这里是创建的时候写的备注之类的话"</p>
 
     <p class="item-name">目标：</p>
     <p class="target-content">
@@ -27,8 +25,8 @@
 
     <div class="about">
       <div class="options">
-        <span>每日自动创建</span>
-        <span>监督者上限100</span>
+        <span v-if="detail.autoCreate !== '从不'">{{detail.autoCreate}}自动创建</span>
+        <span v-if="detail.watcherMax">监督者上限 {{detail.watcherMax}}</span>
         <span v-if="!detail.onlookers">不允许围观</span>
       </div>
 

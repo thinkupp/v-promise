@@ -28,6 +28,9 @@
                content: JSON.stringify(err)
              })
            })
+         },
+         fail: function ( e ) {
+           console.log(e);
          }
        })
     }
