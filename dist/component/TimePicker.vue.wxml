@@ -1,4 +1,4 @@
-<template name="1fb892f8">
+<template name="1e72ff0d">
   <view class="_div data-v-5f8cd7e4 time-picker common-cell {{[!border ? 'hide-border' : '']}}"><label class="_span data-v-5f8cd7e4 left">{{title}}</label>
     <view class="_div data-v-5f8cd7e4 right">
       <picker bindchange="handleProxy" mode="date" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_picker data-v-5f8cd7e4">{{part1}}</picker>

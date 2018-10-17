@@ -29,7 +29,7 @@
 }
 .content.data-v-33b487e3 {
   flex: 1;
-  margin-top: 100rpx;
+  margin-top: 60rpx;
   padding: 0 30rpx;
   box-sizing: border-box;
 }

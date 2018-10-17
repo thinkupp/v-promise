@@ -38,7 +38,6 @@
 
       fetchCreateAppoint () {
         this.$api.fetchCreateAppoint( this.searchData ).then(data => {
-          this.listData = [];
           this.listData = data;
         })
       }
@@ -83,7 +82,7 @@
 
   .content {
     flex: 1;
-    margin-top: 100rpx;
+    margin-top: 60rpx;
     padding: 0 30rpx;
     box-sizing: border-box;
   }
