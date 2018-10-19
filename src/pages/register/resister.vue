@@ -14,7 +14,6 @@
             detail,
             systemInfo: wx.getSystemInfoSync(),
             scene: getApp().globalData.scene,
-            id: getApp().globalData.userId
           }).then(_ => {
             console.log("login the", _);
             wx.reLaunch({

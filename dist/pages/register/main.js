@@ -98,8 +98,7 @@ if (false) {(function () {
         this.$api.register({
           detail: detail,
           systemInfo: wx.getSystemInfoSync(),
-          scene: getApp().globalData.scene,
-          id: getApp().globalData.userId
+          scene: getApp().globalData.scene
         }).then(function (_) {
           console.log("login the", _);
           wx.reLaunch({
