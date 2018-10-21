@@ -20,6 +20,7 @@
       <div class="status">
         <span class="status-option">监督中</span>
         <span class="status-option">进行中</span>
+        <!--<span class="status-option">{{status[item.status]}}</span>-->
       </div>
     </div>
   </div>
@@ -29,8 +30,15 @@
   import RouteServer from '../../../service/RouteServer'
 
   import { formatTime } from '../../../utils/index'
+  import { appointStatus } from '../../../utils/types'
 
   export default {
+    data () {
+      return {
+        status: appointStatus
+      }
+    },
+
     props: {
       item: {
         type: Object,

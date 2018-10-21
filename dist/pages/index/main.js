@@ -354,6 +354,7 @@ if (false) {(function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__service_RouteServer__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_index__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_types__ = __webpack_require__(216);
 //
 //
 //
@@ -381,12 +382,21 @@ if (false) {(function () {
 //
 //
 //
+//
+
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+  data: function data() {
+    return {
+      status: __WEBPACK_IMPORTED_MODULE_2__utils_types__["a" /* appointStatus */]
+    };
+  },
+
+
   props: {
     item: {
       type: Object,

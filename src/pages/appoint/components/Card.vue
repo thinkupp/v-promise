@@ -43,17 +43,12 @@
 
 <script>
   import { formatTime } from '../../../utils/index'
+  import { appointStatus } from '../../../utils/types'
 
   export default {
     data () {
       return {
-        status: {
-          '0': '未开始',
-          '1': '进行中',
-          '2': '未完成',
-          '3': '按时完成',
-          '4': '超时完成'
-        }
+        status: appointStatus
       }
     },
 

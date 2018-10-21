@@ -371,6 +371,7 @@ if (false) {(function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_index__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_types__ = __webpack_require__(216);
 //
 //
 //
@@ -414,19 +415,14 @@ if (false) {(function () {
 //
 //
 //
+
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      status: {
-        '0': '未开始',
-        '1': '进行中',
-        '2': '未完成',
-        '3': '按时完成',
-        '4': '超时完成'
-      }
+      status: __WEBPACK_IMPORTED_MODULE_1__utils_types__["a" /* appointStatus */]
     };
   },
 
