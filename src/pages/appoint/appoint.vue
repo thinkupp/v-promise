@@ -4,7 +4,7 @@
 
     <div class="confirm-wrapper">
       <card :detail="appointData"></card>
-      <confirm></confirm>
+      <confirm @click="handleWatch" :loading="loading"></confirm>
     </div>
 
     <about :comments="comments"></about>
@@ -28,13 +28,14 @@
           startId: -1,
           size: 20
         },
-        comments: null
+        comments: null,
+        loading: false
       }
     },
 
     computed: {
       showWatcherButton () {
-        // 监督者
+        // 监督者本人
         // 已结束/按时完成/超时完成
         // 监督者已达到上限（显示）*
       }
@@ -86,6 +87,11 @@
             this.searchData.startId = comments[comments.length - 1].id;
           }
         })
+      },
+
+      handleWatch () {
+        if (this.loading) return;
+        this.loading = true;
       }
     },
 

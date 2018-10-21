@@ -1,5 +1,5 @@
 <template>
-  <button class="confirm" @click="handleClick">监督他</button>
+  <button class="confirm" :class="{loading}" @click="handleClick">监督他</button>
 </template>
 
 <script>
@@ -7,6 +7,13 @@
     methods: {
       handleClick () {
         this.$emit('click')
+      }
+    },
+
+    props: {
+      loading: {
+        type: Boolean,
+        default: false
       }
     }
   }
@@ -24,13 +31,15 @@
     left: 50%;
     bottom: -120rpx;
     transform: translateX(-50%);
-    /*top: 50%;*/
-    /*transform: translate(-50%, -50%);*/
     font-size: 30rpx;
     display: flex;
     justify-content: center;
     align-items: center;
     animation: animation 1s linear infinite;
+  }
+
+  .loading {
+    animation: loadingAnimation 0.6s linear infinite;
   }
 
   @keyframes animation {
@@ -44,6 +53,16 @@
 
     100% {
       transform: translateX(-50%) scale(0.9);
+    }
+  }
+
+  @keyframes loadingAnimation {
+    0% {
+      transform: translateX(-50%) rotate(0)
+    }
+
+    100% {
+      transform: translateX(-50%) rotate(360deg)
     }
   }
 </style>

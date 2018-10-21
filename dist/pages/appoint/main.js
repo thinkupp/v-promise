@@ -114,14 +114,15 @@ if (false) {(function () {
         startId: -1,
         size: 20
       },
-      comments: null
+      comments: null,
+      loading: false
     };
   },
 
 
   computed: {
     showWatcherButton: function showWatcherButton() {
-      // 监督者
+      // 监督者本人
       // 已结束/按时完成/超时完成
       // 监督者已达到上限（显示）*
     }
@@ -177,6 +178,10 @@ if (false) {(function () {
           _this3.searchData.startId = comments[comments.length - 1].id;
         }
       });
+    },
+    handleWatch: function handleWatch() {
+      if (this.loading) return;
+      this.loading = true;
     }
   },
 
@@ -1278,6 +1283,13 @@ if (false) {(function () {
     handleClick: function handleClick() {
       this.$emit('click');
     }
+  },
+
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    }
   }
 });
 
@@ -1289,6 +1301,9 @@ if (false) {(function () {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('button', {
     staticClass: "confirm",
+    class: {
+      loading: _vm.loading
+    },
     attrs: {
       "eventid": '0'
     },
@@ -1329,7 +1344,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('confirm', {
     attrs: {
+      "loading": _vm.loading,
+      "eventid": '0',
       "mpcomid": '2'
+    },
+    on: {
+      "click": _vm.handleWatch
     }
   })], 1), _vm._v(" "), _c('about', {
     attrs: {
@@ -1339,7 +1359,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('bottom', {
     ref: "bottom",
     attrs: {
-      "eventid": '0',
+      "eventid": '1',
       "mpcomid": '4'
     },
     on: {
