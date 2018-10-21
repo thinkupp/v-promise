@@ -2,8 +2,8 @@
 
 @font-face {
   font-family: 'iconfont';
-  src: url('//at.alicdn.com/t/font_864209_o6cqn4rqwt.eot');
-  src: url('//at.alicdn.com/t/font_864209_o6cqn4rqwt.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_864209_o6cqn4rqwt.woff') format('woff'), url('//at.alicdn.com/t/font_864209_o6cqn4rqwt.ttf') format('truetype'), url('//at.alicdn.com/t/font_864209_o6cqn4rqwt.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_864209_bv724hb135.eot');
+  src: url('//at.alicdn.com/t/font_864209_bv724hb135.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_864209_bv724hb135.woff') format('woff'), url('//at.alicdn.com/t/font_864209_bv724hb135.ttf') format('truetype'), url('//at.alicdn.com/t/font_864209_bv724hb135.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -53,6 +53,9 @@
 }
 .icon-zanwushuju:before {
   content: "\E60A";
+}
+.icon-loading:before {
+  content: "\E6AC";
 }
 ._button {
   padding: 0;

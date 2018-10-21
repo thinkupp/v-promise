@@ -40,7 +40,7 @@
 
     computed: {
       startTime () {
-        return formatTime( this.item.startTime )
+        return formatTime( this.item.startTime * 1000 )
       },
 
       createTime () {
@@ -50,7 +50,7 @@
 
     methods: {
       handleClick () {
-        RouteServer.toAppointDetail( this.item._id )
+        RouteServer.toAppointDetail( this.item.id )
       }
     }
   }

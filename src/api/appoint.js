@@ -8,9 +8,9 @@ const createAppoint = function ( data ) {
   })
 };
 
-const fetchCreateAppoint = function ( startIndex = 0, count = 20 ) {
+const fetchCreateAppoint = function ( { id, size } ) {
   return request({
-    url: '/appoint/create?startIndex=' + startIndex + '&count=' + count
+    url: '/appoint/create?id=' + id + '&size=' + size
   })
 };
 

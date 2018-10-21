@@ -20,8 +20,8 @@
       return {
         listData: [],
         searchData: {
-          startIndex: 0,
-          count: 20
+          id: 0,
+          size: 20
         }
       }
     },
@@ -39,6 +39,7 @@
       fetchCreateAppoint () {
         this.$api.fetchCreateAppoint( this.searchData ).then(data => {
           this.listData = data;
+//          this.searchData.id = this.listData[this.listData.length - 1].id;
         })
       }
     },

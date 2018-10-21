@@ -1,5 +1,5 @@
-// const base_ip = 'http://192.168.0.100:3000/api';
-const base_ip = 'http://192.168.8.101:3000/api';
+const base_ip = 'http://192.168.0.100:3000/api';
+// const base_ip = 'http://192.168.8.101:3000/api';
 
 const request = function ( option ) {
   return new Promise((resolve, reject) => {
@@ -11,7 +11,7 @@ const request = function ( option ) {
     wx.request(Object.assign({}, option, {
       success: function ( res ) {
         const data = res.data;
-        if (typeof data === 'object') {
+        if ( res.statusCode >= 200 && res.statusCode < 400 ) {
           resolve( data );
         } else {
           reject( data );

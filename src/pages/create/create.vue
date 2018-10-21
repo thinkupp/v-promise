@@ -44,7 +44,7 @@
           placeholder="请输入标题"></van-field>
 
         <van-field
-          :value="formData.desc"
+          :value="formData.des"
           label="描述"
           type="textarea"
           placeholder="描述"></van-field>
@@ -85,7 +85,7 @@
           type: '跑步',
           images: [],
           title: '有人监督，动力十足！',
-          desc: ''
+          des: ''
         }
       }
     },
@@ -167,7 +167,7 @@
 
         this.$api.createAppoint( this.formData ).then(res => {
           wx.redirectTo({
-            url: '/pages/appoint/main?id=' + res._id
+            url: '/pages/appoint/main?id=' + res.id
           })
         })
       },

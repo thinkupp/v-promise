@@ -18,5 +18,5 @@ const register = function ( data ) {
 
 export default {
   login,
-  register
+  register,
 }

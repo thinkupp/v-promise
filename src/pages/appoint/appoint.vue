@@ -7,9 +7,9 @@
       <confirm></confirm>
     </div>
 
-    <about></about>
+    <about :comments="comments"></about>
 
-    <bottom @publish="publish"></bottom>
+    <bottom ref="bottom" @publish="publish"></bottom>
   </div>
 </template>
 
@@ -20,12 +20,23 @@
   import Bottom from './components/Bottom.vue'
   import Confirm from './components/Confirm.vue'
 
-  import ApiServer from '../../service/ApiServer'
-
   export default {
     data() {
       return {
-        appointData: {}
+        appointData: {},
+        searchData: {
+          startId: -1,
+          size: 20
+        },
+        comments: null
+      }
+    },
+
+    computed: {
+      showWatcherButton () {
+        // 监督者
+        // 已结束/按时完成/超时完成
+        // 监督者已达到上限（显示）*
       }
     },
 
@@ -39,17 +50,47 @@
 
     methods: {
       publish ( value ) {
-        console.log('发表了评论：', value);
+        if (!value.trim()) return wx.showModal({
+          title: '提示',
+          content: '请输入评论的内容'
+        });
+
+        this.$api.publishComment({
+          appointId: this.appointData.id,
+          content: value.trim()
+        }).then(comment => {
+          this.$refs.bottom.clearInput();
+          this.comments.unshift(comment);
+        })
       },
 
       fetchAppointDetail ( id ) {
-        ApiServer.fetchAppointDetail( id ).then(res => {
+        this.$api.fetchAppointDetail( id ).then(res => {
           this.appointData = res;
+          this.fetchAppointComments();
+        })
+      },
+
+      fetchAppointComments () {
+        this.$api.fetchAppointComments({
+          appointId: this.appointData.id,
+          startId: this.searchData.startId,
+          size: this.searchData.size
+        }).then(comments => {
+          if (!this.comments) {
+            this.comments = comments;
+          } else {
+            this.comments = comments.concat(this.comments);
+          }
+          if (comments.length) {
+            this.searchData.startId = comments[comments.length - 1].id;
+          }
         })
       }
     },
 
     onLoad ( e ) {
+      console.log(e);
       this.fetchAppointDetail( e.id );
     }
   }

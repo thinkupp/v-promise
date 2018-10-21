@@ -2,7 +2,7 @@
   <div class="appoint-about">
     <tab></tab>
 
-    <comment></comment>
+    <comment :commentList="comments"></comment>
   </div>
 </template>
 
@@ -14,6 +14,15 @@
     components: {
       Tab,
       Comment
+    },
+
+    props: {
+      comments: {
+        type: Array,
+        default: function () {
+          return []
+        }
+      }
     }
   }
 </script>

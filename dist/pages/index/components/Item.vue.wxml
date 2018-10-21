@@ -1,4 +1,4 @@
-<template name="3bed9214">
+<template name="64fcd6bd">
   <view class="_div data-v-78ad695d appoint-item" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
     <view class="_div data-v-78ad695d top">
       <view class="_div data-v-78ad695d user-info">

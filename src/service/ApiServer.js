@@ -1,5 +1,6 @@
 import ApiUser from '../api/user';
 import ApiAppoint from '../api/appoint'
+import ApiComments from '../api/comments'
 
 const login = function ( data ) {
   return ApiUser.login( data );
@@ -14,11 +15,19 @@ const createAppoint = function ( data ) {
 };
 
 const fetchCreateAppoint = function ( params ) {
-  return ApiAppoint.fetchCreateAppoint( ...params )
+  return ApiAppoint.fetchCreateAppoint( params )
 };
 
 const fetchAppointDetail = function ( id ) {
   return ApiAppoint.fetchAppointDetail( id );
+};
+
+const publishComment = function ( data ) {
+  return ApiComments.publishComment( data );
+};
+
+const fetchAppointComments = function ( params ) {
+  return ApiComments.fetchAppointComments( params );
 }
 
 export default {
@@ -26,5 +35,7 @@ export default {
   register,
   createAppoint,
   fetchCreateAppoint,
-  fetchAppointDetail
+  fetchAppointDetail,
+  publishComment,
+  fetchAppointComments
 }

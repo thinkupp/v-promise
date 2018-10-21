@@ -1,6 +1,6 @@
 <template>
   <div class="speak">
-    <input type="text" @input="onInput" class="speak-input">
+    <input type="text" v-model="value" @input="onInput" class="speak-input">
     <button class="speak-button" @click="handleClick">发布</button>
     <div class="icon-wrapper">
       <i class="iconfont icon-fenxiang"></i>
@@ -10,13 +10,19 @@
 
 <script>
   export default {
+    data () {
+      return {
+        value: ''
+      }
+    },
+
     methods: {
-      onInput ( e ) {
-        this.value = e.mp.detail.value;
+      clearInput () {
+        this.value = ''
       },
 
       handleClick () {
-        this.$emit('publish', this.value )
+        this.$emit('publish', this.value );
       }
     }
   }

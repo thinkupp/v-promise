@@ -15,13 +15,15 @@
     </p>
 
     <p class="item-name">有效打卡时间：</p>
-    <p class="clock-in-time">2010/10/10 23:59:59 之前</p>
+    <p class="clock-in-time">
+      <span class="end-time">{{endTime}}</span> 之前
+    </p>
 
     <div class="images" v-if="detail.images.length">
       <img :src="image" v-for="(image, index) in detail.images" :key="index" class="image">
     </div>
 
-    <p class="status">进行中</p>
+    <p class="status">{{status[detail.status]}}</p>
 
     <div class="about">
       <div class="options">
@@ -33,18 +35,38 @@
       <div class="information">
         <p><i class="iconfont icon-jiandu"></i>监督者 {{detail.watcherNumber}}</p>
         <p><i class="iconfont icon-fangwenliang"></i>访问量 {{detail.accessNumber}}</p>
-        <p><i class="iconfont icon-fangwen"></i>浏览人次 {{detail.browsePeopleNumber}}</p>
+        <p><i class="iconfont icon-fangwen"></i>浏览人次 {{detail.visitNumber}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import { formatTime } from '../../../utils/index'
+
   export default {
+    data () {
+      return {
+        status: {
+          '0': '未开始',
+          '1': '进行中',
+          '2': '未完成',
+          '3': '按时完成',
+          '4': '超时完成'
+        }
+      }
+    },
+
     props: {
       detail: {
         type: Object,
         default: null
+      }
+    },
+
+    computed: {
+      endTime () {
+        return formatTime(this.detail.endTime)
       }
     }
   }
@@ -104,6 +126,10 @@
       margin-left: 32rpx;
     }
 
+    .end-time {
+      border-bottom: 1rpx solid #000;
+    }
+
     .target-content {
       font-size: 56rpx;
       color: #259B24;
@@ -124,6 +150,8 @@
       font-size: 30rpx;
       color: #333;
       margin-left: 32rpx;
+      padding: 10rpx 0;
+      text-align: center;
     }
 
     .images {
