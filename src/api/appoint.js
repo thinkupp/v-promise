@@ -18,10 +18,17 @@ const fetchAppointDetail = function ( id ) {
   return request({
     url: '/appoint/' + id
   })
+};
+
+const fetchJoinAppoint = function ( {startId, size} ) {
+  return request({
+    url: '/appoint/join?startId=' + startId + '&size=' + size
+  })
 }
 
 export default {
   createAppoint,
   fetchCreateAppoint,
-  fetchAppointDetail
+  fetchAppointDetail,
+  fetchJoinAppoint
 }

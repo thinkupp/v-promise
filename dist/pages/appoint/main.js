@@ -127,6 +127,7 @@ if (false) {(function () {
       // 监督者已达到上限（显示）*
     },
     disableComment: function disableComment() {
+      // 不是监督者并且不是创建者的时候没有评论权
       return !this.appointData.watching && getApp().globalData.userId !== this.appointData.creatorId;
     }
   },
@@ -186,7 +187,6 @@ if (false) {(function () {
   },
 
   onLoad: function onLoad(e) {
-    console.log(e);
     this.fetchAppointDetail(e.id);
   }
 });

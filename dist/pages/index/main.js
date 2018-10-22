@@ -98,6 +98,10 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -105,11 +109,19 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      listData: [],
-      searchData: {
+      createAppointList: [],
+      joinAppointList: [],
+
+      createSearchData: {
         id: 0,
         size: 20
-      }
+      },
+
+      joinSearchData: {
+        startId: -1,
+        size: 20
+      },
+      currentIndex: 0
     };
   },
 
@@ -126,15 +138,36 @@ if (false) {(function () {
     fetchCreateAppoint: function fetchCreateAppoint() {
       var _this = this;
 
-      this.$api.fetchCreateAppoint(this.searchData).then(function (data) {
-        _this.listData = data;
+      this.$api.fetchCreateAppoint(this.createSearchData).then(function (data) {
+        _this.createAppointList = data;
         //          this.searchData.id = this.listData[this.listData.length - 1].id;
       });
+    },
+    fetchJoinAppoint: function fetchJoinAppoint() {
+      var _this2 = this;
+
+      this.$api.fetchJoinAppoint(this.joinSearchData).then(function (res) {
+        _this2.joinAppointList = res;
+      });
+    },
+    topBarChange: function topBarChange(index) {
+      this.currentIndex = index;
+      if (index === 0 && !this.createAppointList.length) {
+        this.fetchCreateAppoint();
+      }
+
+      if (index === 1 && !this.joinAppointList.length) {
+        this.fetchJoinAppoint();
+      }
     }
   },
 
   onShow: function onShow() {
-    this.fetchCreateAppoint();
+    if (this.currentIndex === 0) {
+      this.fetchCreateAppoint();
+    } else {
+      this.fetchJoinAppoint();
+    }
   }
 });
 
@@ -401,6 +434,11 @@ if (false) {(function () {
     item: {
       type: Object,
       default: null
+    },
+
+    showWatchTip: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -456,17 +494,15 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "footer"
   }, [_c('span', {
     staticClass: "startTime"
-  }, [_vm._v("开始时间：" + _vm._s(_vm.startTime))]), _vm._v(" "), _vm._m(0)])], 1)
-}
-var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_vm._v("开始时间：" + _vm._s(_vm.startTime))]), _vm._v(" "), _c('div', {
     staticClass: "status"
-  }, [_c('span', {
+  }, [(_vm.showWatchTip) ? _c('span', {
     staticClass: "status-option"
-  }, [_vm._v("监督中")]), _vm._v(" "), _c('span', {
+  }, [_vm._v("监督中")]) : _vm._e(), _vm._v(" "), _c('span', {
     staticClass: "status-option"
-  }, [_vm._v("进行中")])])
-}]
+  }, [_vm._v("进行中")])])])], 1)
+}
+var staticRenderFns = []
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -490,30 +526,48 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "bar-wrapper"
   }, [_c('top-bar', {
     attrs: {
+      "eventid": '0',
       "mpcomid": '0'
+    },
+    on: {
+      "change": _vm.topBarChange
     }
   }), _vm._v(" "), _c('button', {
     staticClass: "create-button",
     attrs: {
-      "eventid": '0'
+      "eventid": '1'
     },
     on: {
       "click": _vm.handleCreate
     }
-  }, [_vm._v("创建")])], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("创建")])], 1), _vm._v(" "), (_vm.currentIndex === 0) ? _c('div', {
     staticClass: "content",
     class: {
-      empty: _vm.listData.length === 0
+      empty: _vm.createAppointList.length === 0
     }
-  }, _vm._l((_vm.listData), function(item, index) {
-    return (item) ? _c('item', {
+  }, _vm._l((_vm.createAppointList), function(item, index) {
+    return _c('item', {
       key: index,
       attrs: {
         "item": item,
         "mpcomid": '1-' + index
       }
-    }) : _vm._e()
-  }))])
+    })
+  })) : _vm._e(), _vm._v(" "), (_vm.currentIndex === 1) ? _c('div', {
+    staticClass: "content",
+    class: {
+      empty: _vm.joinAppointList.length === 0
+    }
+  }, _vm._l((_vm.joinAppointList), function(item, index) {
+    return _c('item', {
+      key: index,
+      attrs: {
+        "showWatchTip": true,
+        "item": item,
+        "mpcomid": '2-' + index
+      }
+    })
+  })) : _vm._e()])
 }
 var staticRenderFns = []
 render._withStripped = true

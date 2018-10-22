@@ -1,12 +1,16 @@
 <template>
   <div class="index">
     <div class="bar-wrapper">
-      <top-bar></top-bar>
+      <top-bar @change="topBarChange"></top-bar>
       <button class="create-button" @click="handleCreate">创建</button>
     </div>
 
-    <div class="content" :class="{empty: listData.length === 0}">
-      <item v-if="item" v-for="(item, index) in listData" :item="item" :key="index"></item>
+    <div class="content" v-if="currentIndex === 0" :class="{empty: createAppointList.length === 0}">
+      <item v-for="(item, index) in createAppointList" :item="item" :key="index"></item>
+    </div>
+
+    <div class="content" v-if="currentIndex === 1" :class="{empty: joinAppointList.length === 0}">
+      <item :showWatchTip="true" v-for="(item, index) in joinAppointList" :item="item" :key="index"></item>
     </div>
   </div>
 </template>
@@ -18,11 +22,19 @@
   export default {
     data () {
       return {
-        listData: [],
-        searchData: {
+        createAppointList: [],
+        joinAppointList: [],
+
+        createSearchData: {
           id: 0,
           size: 20
-        }
+        },
+
+        joinSearchData: {
+          startId: -1,
+          size: 20
+        },
+        currentIndex: 0
       }
     },
 
@@ -37,15 +49,36 @@
       },
 
       fetchCreateAppoint () {
-        this.$api.fetchCreateAppoint( this.searchData ).then(data => {
-          this.listData = data;
+        this.$api.fetchCreateAppoint( this.createSearchData ).then(data => {
+          this.createAppointList = data;
 //          this.searchData.id = this.listData[this.listData.length - 1].id;
         })
+      },
+
+      fetchJoinAppoint () {
+        this.$api.fetchJoinAppoint(this.joinSearchData).then(res => {
+          this.joinAppointList = res;
+        })
+      },
+
+      topBarChange ( index ) {
+        this.currentIndex = index;
+        if (index === 0 && !this.createAppointList.length) {
+          this.fetchCreateAppoint();
+        }
+
+        if (index === 1 && !this.joinAppointList.length) {
+          this.fetchJoinAppoint();
+        }
       }
     },
 
     onShow () {
-      this.fetchCreateAppoint();
+      if (this.currentIndex === 0) {
+        this.fetchCreateAppoint();
+      } else {
+        this.fetchJoinAppoint();
+      }
     }
   }
 </script>

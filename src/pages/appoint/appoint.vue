@@ -41,6 +41,7 @@
       },
 
       disableComment () {
+        // 不是监督者并且不是创建者的时候没有评论权
         return !this.appointData.watching && getApp().globalData.userId !== this.appointData.creatorId;
       }
     },
@@ -97,7 +98,6 @@
     },
 
     onLoad ( e ) {
-      console.log(e);
       this.fetchAppointDetail( e.id );
     }
   }

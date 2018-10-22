@@ -18,7 +18,7 @@
       <span class="startTime">开始时间：{{startTime}}</span>
 
       <div class="status">
-        <span class="status-option">监督中</span>
+        <span class="status-option" v-if="showWatchTip">监督中</span>
         <span class="status-option">进行中</span>
         <!--<span class="status-option">{{status[item.status]}}</span>-->
       </div>
@@ -43,6 +43,11 @@
       item: {
         type: Object,
         default: null
+      },
+
+      showWatchTip: {
+        type: Boolean,
+        default: false
       }
     },
 

@@ -224,6 +224,10 @@ var fetchAppointComments = function fetchAppointComments(params) {
   return __WEBPACK_IMPORTED_MODULE_2__api_comments__["a" /* default */].fetchAppointComments(params);
 };
 
+var fetchJoinAppoint = function fetchJoinAppoint(params) {
+  return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].fetchJoinAppoint(params);
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   login: login,
   register: register,
@@ -231,7 +235,8 @@ var fetchAppointComments = function fetchAppointComments(params) {
   fetchCreateAppoint: fetchCreateAppoint,
   fetchAppointDetail: fetchAppointDetail,
   publishComment: publishComment,
-  fetchAppointComments: fetchAppointComments
+  fetchAppointComments: fetchAppointComments,
+  fetchJoinAppoint: fetchJoinAppoint
 });
 
 /***/ }),
@@ -296,10 +301,20 @@ var fetchAppointDetail = function fetchAppointDetail(id) {
   });
 };
 
+var fetchJoinAppoint = function fetchJoinAppoint(_ref2) {
+  var startId = _ref2.startId,
+      size = _ref2.size;
+
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/appoint/join?startId=' + startId + '&size=' + size
+  });
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   createAppoint: createAppoint,
   fetchCreateAppoint: fetchCreateAppoint,
-  fetchAppointDetail: fetchAppointDetail
+  fetchAppointDetail: fetchAppointDetail,
+  fetchJoinAppoint: fetchJoinAppoint
 });
 
 /***/ }),

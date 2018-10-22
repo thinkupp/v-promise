@@ -28,6 +28,10 @@ const publishComment = function ( data ) {
 
 const fetchAppointComments = function ( params ) {
   return ApiComments.fetchAppointComments( params );
+};
+
+const fetchJoinAppoint = function ( params ) {
+  return ApiAppoint.fetchJoinAppoint( params );
 }
 
 export default {
@@ -37,5 +41,6 @@ export default {
   fetchCreateAppoint,
   fetchAppointDetail,
   publishComment,
-  fetchAppointComments
+  fetchAppointComments,
+  fetchJoinAppoint
 }
