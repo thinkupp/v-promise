@@ -1,12 +1,12 @@
+<import src="/component/TimePicker.vue.wxml" />
+<import src="/pages/create/components/AnMore.vue.wxml" />
+<import src="/component/CheckOption.vue.wxml" />
+<import src="/pages/create/components/UploadImage.vue.wxml" />
 <import src="/pages/appoint/components/HeaderTip.vue.wxml" />
 <import src="/pages/appoint/components/Card.vue.wxml" />
 <import src="/pages/appoint/components/Confirm.vue.wxml" />
 <import src="/pages/appoint/components/about/About.vue.wxml" />
 <import src="/pages/appoint/components/Bottom.vue.wxml" />
-<import src="/component/TimePicker.vue.wxml" />
-<import src="/pages/create/components/AnMore.vue.wxml" />
-<import src="/component/CheckOption.vue.wxml" />
-<import src="/pages/create/components/UploadImage.vue.wxml" />
 <import src="/pages/index/components/TopBar.vue.wxml" />
 <import src="/pages/index/components/Item.vue.wxml" />
 <import src="/component/VCheckBox.vue.wxml" />

@@ -1,4 +1,4 @@
 <import src="/pages/appoint/components/about/AboutTab.vue.wxml" />
-<import src="/pages/appoint/components/about/Comment.vue.wxml" /><template name="5180f9fc">
-  <view class="_div data-v-79f9e462 appoint-about"><template data="{{...$root[$kk+'0'], $root}}" is="5d2296e3"></template> <template data="{{...$root[$kk+'1'], $root}}" is="fa4d9cd8"></template></view>
+<import src="/pages/appoint/components/about/Comment.vue.wxml" /><template name="78e6998b">
+  <view class="_div data-v-79f9e462 appoint-about"><template data="{{...$root[$kk+'0'], $root}}" is="105a07ba"></template> <template data="{{...$root[$kk+'1'], $root}}" is="5714c9dd"></template></view>
 </template>

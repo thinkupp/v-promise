@@ -1,7 +1,7 @@
 <import src="/pages/index/components/TopBar.vue.wxml" />
-<import src="/pages/index/components/Item.vue.wxml" /><template name="12e9a57a">
+<import src="/pages/index/components/Item.vue.wxml" /><template name="1696d95a">
   <view class="_div data-v-33b487e3 index">
-    <view class="_div data-v-33b487e3 bar-wrapper"><template data="{{...$root[$kk+'0'], $root}}" is="c4b8cfb0"></template> <button class="_button data-v-33b487e3 create-button" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">创建</button></view>
-    <view class="_div data-v-33b487e3 content {{[listData.length === 0 ? 'empty' : '']}}"><template wx:if="{{item}}" wx:key="index" data="{{...$root[$kk+'1-'+index], $root}}" is="64fcd6bd" wx:for="{{listData}}" wx:for-index="index" wx:for-item="item"></template></view>
+    <view class="_div data-v-33b487e3 bar-wrapper"><template data="{{...$root[$kk+'0'], $root}}" is="7b52d9bf"></template> <button class="_button data-v-33b487e3 create-button" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">创建</button></view>
+    <view class="_div data-v-33b487e3 content {{[listData.length === 0 ? 'empty' : '']}}"><template wx:if="{{item}}" wx:key="index" data="{{...$root[$kk+'1-'+index], $root}}" is="3bed9214" wx:for="{{listData}}" wx:for-index="index" wx:for-item="item"></template></view>
   </view>
 </template>

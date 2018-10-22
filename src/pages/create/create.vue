@@ -137,19 +137,11 @@
       },
 
       onlookersQuestion () {
-        wx.showModal({
-          title: '说明',
-          content: '如不勾选此项，只有监督者才能看到此条约定的相关信息',
-          showCancel: false
-        })
+        this.$modal.onlookersQuestionTip();
       },
 
       privateQuestion () {
-        wx.showModal({
-          title: '说明',
-          content: '设置为私密后别人将无法在大厅中看到此条约定',
-          showCancel: false
-        })
+        this.$modal.privateQuestion();
       },
 
       handleSubmit () {

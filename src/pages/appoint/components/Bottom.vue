@@ -1,7 +1,10 @@
 <template>
   <div class="speak">
-    <input type="text" v-model="value" @input="onInput" class="speak-input">
-    <button class="speak-button" @click="handleClick">发布</button>
+    <div class="wrapper">
+      <input :disabled="disableComment" type="text" v-model="value" @input="onInput" class="speak-input">
+      <span class="tip" v-if="disableComment">监督者才可以评论</span>
+    </div>
+    <button :disabled="disableComment" class="speak-button" @click="handleClick">发布</button>
     <div class="icon-wrapper">
       <i class="iconfont icon-fenxiang"></i>
     </div>
@@ -22,7 +25,18 @@
       },
 
       handleClick () {
+        if (this.disableComment) {
+          return this.$modal.noCommentAuthority();
+        }
+
         this.$emit('publish', this.value );
+      }
+    },
+
+    props: {
+      disableComment: {
+        type: Boolean,
+        default: false
       }
     }
   }
@@ -69,6 +83,22 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    .wrapper {
+      position: relative;
+
+      .tip {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        color: #CCC;
+        z-index: 1000;
+      }
     }
   }
 </style>

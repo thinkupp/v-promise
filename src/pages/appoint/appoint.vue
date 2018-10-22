@@ -9,7 +9,7 @@
 
     <about :comments="comments"></about>
 
-    <bottom ref="bottom" @publish="publish"></bottom>
+    <bottom :disable-comment="disableComment" ref="bottom" @publish="publish"></bottom>
   </div>
 </template>
 
@@ -38,6 +38,10 @@
         // 监督者本人
         // 已结束/按时完成/超时完成
         // 监督者已达到上限（显示）*
+      },
+
+      disableComment () {
+        return !this.appointData.watching && getApp().globalData.userId !== this.appointData.creatorId;
       }
     },
 
@@ -51,10 +55,7 @@
 
     methods: {
       publish ( value ) {
-        if (!value.trim()) return wx.showModal({
-          title: '提示',
-          content: '请输入评论的内容'
-        });
+        if (!value.trim()) return this.$modal.emptyCommentTip();
 
         this.$api.publishComment({
           appointId: this.appointData.id,
