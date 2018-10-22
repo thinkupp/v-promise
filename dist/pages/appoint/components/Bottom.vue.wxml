@@ -1,4 +1,4 @@
-<template name="d4683f4a">
+<template name="66e6a884">
   <view class="_div data-v-34cceb24 speak">
     <view class="_div data-v-34cceb24 wrapper"><input disabled="{{disableComment}}" type="text" value="{{value}}" bindinput="handleProxy" class="_input data-v-34cceb24 speak-input" data-eventid="{{'0'}}" data-comkey="{{$k}}" /> <label class="_span data-v-34cceb24 tip" wx:if="{{disableComment}}">监督者才可以评论</label></view> <button disabled="{{disableComment}}" class="_button data-v-34cceb24 speak-button" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">发布</button>
     <view class="_div data-v-34cceb24 icon-wrapper">

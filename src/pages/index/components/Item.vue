@@ -19,7 +19,7 @@
 
       <div class="status">
         <span class="status-option" v-if="showWatchTip">监督中</span>
-        <span class="status-option">{{status[item.status]}}</span>
+        <span class="status-option" :class="'status_' + item.status">{{status[item.status]}}</span>
       </div>
     </div>
   </div>

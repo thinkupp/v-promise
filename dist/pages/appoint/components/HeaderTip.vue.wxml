@@ -1,10 +1,10 @@
-<template name="1d86fb64">
+<template name="a64144f6">
   <view class="_div data-v-6b8296e5 header-tip">
     <view class="_div data-v-6b8296e5 about">
-      <view class="_i data-v-6b8296e5 iconfont icon-shizhong"></view>
+      <view class="_i data-v-6b8296e5 iconfont {{iconClass}}"></view>
       <view class="_div data-v-6b8296e5 tip">
-        <view class="_p data-v-6b8296e5 title">约定已开启，已有100人监督！</view>
-        <view class="_p data-v-6b8296e5 des">千万别忘了打卡完成约定哦~</view>
+        <view class="_p data-v-6b8296e5 title {{titleClass}}">{{tipContent}}</view>
+        <view class="_p data-v-6b8296e5 des">{{detail.title}}</view>
       </view>
     </view>
     <view class="_i data-v-6b8296e5 iconfont icon-sanjiaoright"></view>

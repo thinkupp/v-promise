@@ -1,11 +1,11 @@
 <template>
   <div class="header-tip">
     <div class="about">
-      <i class="iconfont icon-shizhong"></i>
+      <i class="iconfont" :class="iconClass"></i>
 
       <div class="tip">
-        <p class="title">约定已开启，已有100人监督！</p>
-        <p class="des">千万别忘了打卡完成约定哦~</p>
+        <p class="title" :class="titleClass">{{tipContent}}</p>
+        <p class="des">{{detail.title}}</p>
       </div>
     </div>
 
@@ -15,6 +15,63 @@
 
 <script>
   export default {
+    data () {
+      return {
+        tipContent: '',
+        titleClass: ''
+      }
+    },
+
+    props: {
+      detail: {
+        type: Object,
+        default: function () {
+          return {}
+        }
+      }
+    },
+
+    computed: {
+      iconClass () {
+        if (!this.detail.u) return '';
+        const status = this.detail.status;
+        const isCreator = this.detail.creatorId === getApp().globalData.userId;
+        const people = isCreator ? '你' : this.detail.u.gender === '2' ? '她' : '他';
+        let classStr = '';
+        if (status === 0) {
+          this.tipContent = '约定未开启，' + (isCreator ? '邀请朋友来监督你！' : '晚点再来吧~');
+          classStr = 'icon-dengdai'
+        }
+
+        if (status === 1) {
+          if (this.detail.watcherNumber) {
+            this.tipContent = '约定已开启，已有' + (this.detail.watcherNumber + '人监督' + people + '！');
+          } else {
+            this.tipContent = '约定已开启，' + (isCreator ? '邀请朋友来监督你！' : '记得提醒' + people + '！');
+          }
+          classStr = 'icon-shizhong'
+        }
+
+        if (status === 2) {
+          this.tipContent = '约定已结束，未完成约定';
+          classStr = 'icon-jieshu'
+        }
+
+        if (status === 3) {
+          this.tipContent = '约定已结束，已按时完成！';
+          classStr = 'icon-anshiwancheng'
+        }
+
+        if (status === 4) {
+          this.tipContent = '约定已结束，超时完成了！';
+          classStr = 'icon-chaoshiwancheng'
+        }
+
+        const titleClass= 'status_' + this.detail.status;
+        this.titleClass = titleClass;
+        return classStr + ' ' + titleClass;
+      }
+    }
   }
 </script>
 
@@ -49,7 +106,7 @@
       height: 100%;
       align-items: center;
 
-      .icon-shizhong {
+      i {
         font-size: 52rpx;
         color: #87AA35;
       }

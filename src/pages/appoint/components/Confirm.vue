@@ -1,5 +1,5 @@
 <template>
-  <button class="confirm" :class="{loading}" @click="handleClick">监督他</button>
+  <button class="confirm" :class="{loading}" @click="handleClick">{{buttonText}}</button>
 </template>
 
 <script>
@@ -14,8 +14,13 @@
       loading: {
         type: Boolean,
         default: false
+      },
+
+      buttonText: {
+        type: String,
+        default: '监督'
       }
-    }
+    },
   }
 </script>
 

@@ -1,3 +1,3 @@
-<template name="b135605a">
+<template name="61a742ec">
   <view class="_div data-v-202347ea more common-cell {{on ? 'on' : 'off'}}" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}"><label class="_span data-v-202347ea more-text">{{title}}</label> <label class="_span data-v-202347ea iconfont icon-arrow more-icon {{[on ? 'select' : '']}}"></label></view>
 </template>

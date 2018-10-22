@@ -5,7 +5,8 @@
       <span class="nickname">{{detail.u.nickName}}</span>
     </div>
 
-    <p class="des">"这里是创建的时候写的备注之类的话"</p>
+    <!--<p class="des">"这里是创建的时候写的备注之类的话"</p>-->
+    <p class="des">{{detail.dsc}}</p>
 
     <p class="item-name">目标：</p>
     <p class="target-content">
@@ -23,7 +24,9 @@
       <img :src="image" v-for="(image, index) in detail.images" :key="index" class="image">
     </div>
 
-    <p class="status">{{status[detail.status]}}</p>
+    <!--<p class="status" :class="'status_' + detail.status">-->
+      <!--{{status[detail.status]}}-->
+    <!--</p>-->
 
     <div class="about">
       <div class="options">
@@ -168,6 +171,7 @@
       font-size: 36rpx;
       color: #5677FC;
       text-align: center;
+      padding: 10rpx 0;
     }
 
     .about {
@@ -190,14 +194,32 @@
 
       .information {
 
+
         p {
           display: flex;
           align-items: center;
 
           i {
             margin-right: 10rpx;
+            font-size: 36rpx;
           }
         }
+
+        i {
+          color: rgba(255, 22, 0, 0.1);
+        }
+
+        /*.icon-jiandu {*/
+          /*color: #ff1600;*/
+        /*}*/
+
+        /*.icon-fangwenliang {*/
+          /*color: #3F51B5;*/
+        /*}*/
+
+        /*.icon-fangwen {*/
+          /*color: #fc76b2;*/
+        /*}*/
       }
     }
   }

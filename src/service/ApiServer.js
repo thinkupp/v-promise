@@ -34,6 +34,10 @@ const fetchJoinAppoint = function ( params ) {
   return ApiAppoint.fetchJoinAppoint( params );
 }
 
+const watchAppoint = function ( appointId ) {
+  return ApiAppoint.watchAppoint( appointId );
+}
+
 export default {
   login,
   register,
@@ -42,5 +46,6 @@ export default {
   fetchAppointDetail,
   publishComment,
   fetchAppointComments,
-  fetchJoinAppoint
+  fetchJoinAppoint,
+  watchAppoint
 }

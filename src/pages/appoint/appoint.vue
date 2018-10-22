@@ -1,10 +1,10 @@
 <template>
   <div class="appoint">
-    <header-tip></header-tip>
+    <header-tip :detail="appointData"></header-tip>
 
     <div class="confirm-wrapper">
       <card :detail="appointData"></card>
-      <confirm @click="handleWatch" :loading="loading"></confirm>
+      <confirm @click="handleWatch" :loading="loading" :buttonText="watchButtonText"></confirm>
     </div>
 
     <about :comments="comments"></about>
@@ -29,7 +29,8 @@
           size: 20
         },
         comments: null,
-        loading: false
+        loading: false,
+        watchButtonText: '监督'
       }
     },
 
@@ -70,6 +71,7 @@
       fetchAppointDetail ( id ) {
         this.$api.fetchAppointDetail( id ).then(res => {
           this.appointData = res;
+          this.watchButtonText = '监督' + (this.appointData.u.gender === '2' ? '她' : '他');
           this.fetchAppointComments();
         })
       },
@@ -94,6 +96,11 @@
       handleWatch () {
         if (this.loading) return;
         this.loading = true;
+        this.$api.watchAppoint(this.appointData.id).then(res => {
+          this.loading = false;
+        }).catch (err => {
+          this.loading = false;
+        })
       }
     },
 

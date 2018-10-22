@@ -24,11 +24,22 @@ const fetchJoinAppoint = function ( {startId, size} ) {
   return request({
     url: '/appoint/join?startId=' + startId + '&size=' + size
   })
+};
+
+const watchAppoint = function ( appointId ) {
+  return request({
+    url: '/appoint/watch',
+    method: 'POST',
+    data: {
+      appointId
+    }
+  })
 }
 
 export default {
   createAppoint,
   fetchCreateAppoint,
   fetchAppointDetail,
-  fetchJoinAppoint
+  fetchJoinAppoint,
+  watchAppoint
 }

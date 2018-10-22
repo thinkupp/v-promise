@@ -4,6 +4,7 @@
       <input :disabled="disableComment" type="text" v-model="value" @input="onInput" class="speak-input">
       <span class="tip" v-if="disableComment">监督者才可以评论</span>
     </div>
+
     <button :disabled="disableComment" class="speak-button" @click="handleClick">发布</button>
     <div class="icon-wrapper">
       <i class="iconfont icon-fenxiang"></i>

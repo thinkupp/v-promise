@@ -115,7 +115,8 @@ if (false) {(function () {
         size: 20
       },
       comments: null,
-      loading: false
+      loading: false,
+      watchButtonText: '监督'
     };
   },
 
@@ -159,6 +160,7 @@ if (false) {(function () {
 
       this.$api.fetchAppointDetail(id).then(function (res) {
         _this2.appointData = res;
+        _this2.watchButtonText = '监督' + (_this2.appointData.u.gender === '2' ? '她' : '他');
         _this2.fetchAppointComments();
       });
     },
@@ -181,8 +183,15 @@ if (false) {(function () {
       });
     },
     handleWatch: function handleWatch() {
+      var _this4 = this;
+
       if (this.loading) return;
       this.loading = true;
+      this.$api.watchAppoint(this.appointData.id).then(function (res) {
+        _this4.loading = false;
+      }).catch(function (err) {
+        _this4.loading = false;
+      });
     }
   },
 
@@ -271,7 +280,66 @@ if (false) {(function () {
 //
 //
 
-/* harmony default export */ __webpack_exports__["a"] = ({});
+/* harmony default export */ __webpack_exports__["a"] = ({
+  data: function data() {
+    return {
+      tipContent: '',
+      titleClass: ''
+    };
+  },
+
+
+  props: {
+    detail: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    }
+  },
+
+  computed: {
+    iconClass: function iconClass() {
+      if (!this.detail.u) return '';
+      var status = this.detail.status;
+      var isCreator = this.detail.creatorId === getApp().globalData.userId;
+      var people = isCreator ? '你' : this.detail.u.gender === '2' ? '她' : '他';
+      var classStr = '';
+      if (status === 0) {
+        this.tipContent = '约定未开启，' + (isCreator ? '邀请朋友来监督你！' : '晚点再来吧~');
+        classStr = 'icon-dengdai';
+      }
+
+      if (status === 1) {
+        if (this.detail.watcherNumber) {
+          this.tipContent = '约定已开启，已有' + (this.detail.watcherNumber + '人监督' + people + '！');
+        } else {
+          this.tipContent = '约定已开启，' + (isCreator ? '邀请朋友来监督你！' : '记得提醒' + people + '！');
+        }
+        classStr = 'icon-shizhong';
+      }
+
+      if (status === 2) {
+        this.tipContent = '约定已结束，未完成约定';
+        classStr = 'icon-jieshu';
+      }
+
+      if (status === 3) {
+        this.tipContent = '约定已结束，已按时完成！';
+        classStr = 'icon-anshiwancheng';
+      }
+
+      if (status === 4) {
+        this.tipContent = '约定已结束，超时完成了！';
+        classStr = 'icon-chaoshiwancheng';
+      }
+
+      var titleClass = 'status_' + this.detail.status;
+      this.titleClass = titleClass;
+      return classStr + ' ' + titleClass;
+    }
+  }
+});
 
 /***/ }),
 /* 108 */
@@ -284,14 +352,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('div', {
     staticClass: "about"
   }, [_c('i', {
-    staticClass: "iconfont icon-shizhong"
+    staticClass: "iconfont",
+    class: _vm.iconClass
   }), _vm._v(" "), _c('div', {
     staticClass: "tip"
   }, [_c('p', {
-    staticClass: "title"
-  }, [_vm._v("约定已开启，已有100人监督！")]), _vm._v(" "), _c('p', {
+    staticClass: "title",
+    class: _vm.titleClass
+  }, [_vm._v(_vm._s(_vm.tipContent))]), _vm._v(" "), _c('p', {
     staticClass: "des"
-  }, [_vm._v("千万别忘了打卡完成约定哦~")])], 1)], 1), _vm._v(" "), _c('i', {
+  }, [_vm._v(_vm._s(_vm.detail.title))])], 1)], 1), _vm._v(" "), _c('i', {
     staticClass: "iconfont icon-sanjiaoright"
   })], 1)
 }
@@ -415,6 +485,9 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
 
 
 
@@ -460,7 +533,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "nickname"
   }, [_vm._v(_vm._s(_vm.detail.u.nickName))])]), _vm._v(" "), _c('p', {
     staticClass: "des"
-  }, [_vm._v("\"这里是创建的时候写的备注之类的话\"")]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.detail.dsc))]), _vm._v(" "), _c('p', {
     staticClass: "item-name"
   }, [_vm._v("目标：")]), _vm._v(" "), _c('p', {
     staticClass: "target-content"
@@ -480,9 +553,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "src": image
       }
     })
-  })) : _vm._e(), _vm._v(" "), _c('p', {
-    staticClass: "status"
-  }, [_vm._v(_vm._s(_vm.status[_vm.detail.status]))]), _vm._v(" "), _c('div', {
+  })) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "about"
   }, [_c('div', {
     staticClass: "options"
@@ -1135,6 +1206,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -1305,6 +1377,11 @@ if (false) {(function () {
     loading: {
       type: Boolean,
       default: false
+    },
+
+    buttonText: {
+      type: String,
+      default: '监督'
     }
   }
 });
@@ -1326,7 +1403,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.handleClick
     }
-  }, [_vm._v("监督他")])
+  }, [_vm._v(_vm._s(_vm.buttonText))])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1349,6 +1426,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "appoint"
   }, [_c('header-tip', {
     attrs: {
+      "detail": _vm.appointData,
       "mpcomid": '0'
     }
   }), _vm._v(" "), _c('div', {
@@ -1361,6 +1439,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('confirm', {
     attrs: {
       "loading": _vm.loading,
+      "buttonText": _vm.watchButtonText,
       "eventid": '0',
       "mpcomid": '2'
     },

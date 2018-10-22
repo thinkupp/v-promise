@@ -12,8 +12,8 @@ global.webpackJsonp([4],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise__);
 
 
-// const base_ip = 'http://192.168.0.100:3000/api';
-var base_ip = 'http://192.168.8.101:3000/api';
+var base_ip = 'http://192.168.0.100:3000/api';
+// const base_ip = 'http://192.168.8.101:3000/api';
 
 var request = function request(option) {
   return new __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
@@ -28,6 +28,14 @@ var request = function request(option) {
         if (res.statusCode >= 200 && res.statusCode < 400) {
           resolve(data);
         } else {
+          if (res.statusCode === 400) {
+            wx.showModal({
+              title: '提示',
+              content: data,
+              showCancel: false
+            });
+          }
+
           reject(data);
         }
       },
@@ -228,6 +236,10 @@ var fetchJoinAppoint = function fetchJoinAppoint(params) {
   return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].fetchJoinAppoint(params);
 };
 
+var watchAppoint = function watchAppoint(appointId) {
+  return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].watchAppoint(appointId);
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   login: login,
   register: register,
@@ -236,7 +248,8 @@ var fetchJoinAppoint = function fetchJoinAppoint(params) {
   fetchAppointDetail: fetchAppointDetail,
   publishComment: publishComment,
   fetchAppointComments: fetchAppointComments,
-  fetchJoinAppoint: fetchJoinAppoint
+  fetchJoinAppoint: fetchJoinAppoint,
+  watchAppoint: watchAppoint
 });
 
 /***/ }),
@@ -310,11 +323,22 @@ var fetchJoinAppoint = function fetchJoinAppoint(_ref2) {
   });
 };
 
+var watchAppoint = function watchAppoint(appointId) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/appoint/watch',
+    method: 'POST',
+    data: {
+      appointId: appointId
+    }
+  });
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   createAppoint: createAppoint,
   fetchCreateAppoint: fetchCreateAppoint,
   fetchAppointDetail: fetchAppointDetail,
-  fetchJoinAppoint: fetchJoinAppoint
+  fetchJoinAppoint: fetchJoinAppoint,
+  watchAppoint: watchAppoint
 });
 
 /***/ }),
@@ -359,7 +383,7 @@ var fetchAppointComments = function fetchAppointComments(_ref) {
 * 评论内容为空
 * */
 var emptyCommentTip = function emptyCommentTip() {
-  modal({
+  wx.showModal({
     title: '提示',
     content: '请输入评论的内容',
     showCancel: false

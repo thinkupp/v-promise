@@ -2,7 +2,7 @@
 * 评论内容为空
 * */
 const emptyCommentTip = function () {
-  modal({
+  wx.showModal({
     title: '提示',
     content: '请输入评论的内容',
     showCancel: false

@@ -498,7 +498,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [(_vm.showWatchTip) ? _c('span', {
     staticClass: "status-option"
   }, [_vm._v("监督中")]) : _vm._e(), _vm._v(" "), _c('span', {
-    staticClass: "status-option"
+    staticClass: "status-option",
+    class: 'status_' + _vm.item.status
   }, [_vm._v(_vm._s(_vm.status[_vm.item.status]))])])])], 1)
 }
 var staticRenderFns = []
