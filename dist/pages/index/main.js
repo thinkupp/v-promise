@@ -443,7 +443,7 @@ if (false) {(function () {
 
   computed: {
     startTime: function startTime() {
-      return Object(__WEBPACK_IMPORTED_MODULE_1__utils_index__["a" /* formatTime */])(this.item.startTime * 1000);
+      return Object(__WEBPACK_IMPORTED_MODULE_1__utils_index__["a" /* formatTime */])(this.item.startTime);
     },
     createTime: function createTime() {
       return Object(__WEBPACK_IMPORTED_MODULE_1__utils_index__["a" /* formatTime */])(this.item.createTime);

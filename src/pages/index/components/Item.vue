@@ -52,7 +52,7 @@
 
     computed: {
       startTime () {
-        return formatTime( this.item.startTime * 1000 )
+        return formatTime( this.item.startTime )
       },
 
       createTime () {
