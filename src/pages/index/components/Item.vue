@@ -18,7 +18,7 @@
       <span class="startTime">开始时间：{{startTime}}</span>
 
       <div class="status">
-        <span class="status-option" v-if="showWatchTip">监督中</span>
+        <span class="status-option" v-if="showWatchTip">{{watchTipContent}}</span>
         <span class="status-option" :class="'status_' + item.status">{{status[item.status]}}</span>
       </div>
     </div>
@@ -57,6 +57,14 @@
 
       createTime () {
         return formatTime( this.item.createTime )
+      },
+
+      watchTipContent () {
+        const currentTime = Date.now();
+        if (currentTime > this.item.endTime) {
+          return '已监督'
+        }
+        return '监督中'
       }
     },
 

@@ -447,6 +447,13 @@ if (false) {(function () {
     },
     createTime: function createTime() {
       return Object(__WEBPACK_IMPORTED_MODULE_1__utils_index__["a" /* formatTime */])(this.item.createTime);
+    },
+    watchTipContent: function watchTipContent() {
+      var currentTime = Date.now();
+      if (currentTime > this.item.endTime) {
+        return '已监督';
+      }
+      return '监督中';
     }
   },
 
@@ -497,7 +504,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "status"
   }, [(_vm.showWatchTip) ? _c('span', {
     staticClass: "status-option"
-  }, [_vm._v("监督中")]) : _vm._e(), _vm._v(" "), _c('span', {
+  }, [_vm._v(_vm._s(_vm.watchTipContent))]) : _vm._e(), _vm._v(" "), _c('span', {
     staticClass: "status-option",
     class: 'status_' + _vm.item.status
   }, [_vm._v(_vm._s(_vm.status[_vm.item.status]))])])])], 1)

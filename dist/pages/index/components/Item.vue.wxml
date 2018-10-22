@@ -7,7 +7,7 @@
     </view>
     <view class="_p data-v-78ad695d appoint-type"><label class="_span data-v-78ad695d type">{{item.type}}</label></view>
     <view class="_div data-v-78ad695d footer"><label class="_span data-v-78ad695d startTime">开始时间：{{startTime}}</label>
-      <view class="_div data-v-78ad695d status"><label class="_span data-v-78ad695d status-option" wx:if="{{showWatchTip}}">监督中</label> <label class="_span data-v-78ad695d status-option {{'status_' + item.status}}">{{status[item.status]}}</label></view>
+      <view class="_div data-v-78ad695d status"><label class="_span data-v-78ad695d status-option" wx:if="{{showWatchTip}}">{{watchTipContent}}</label> <label class="_span data-v-78ad695d status-option {{'status_' + item.status}}">{{status[item.status]}}</label></view>
     </view>
   </view>
 </template>
