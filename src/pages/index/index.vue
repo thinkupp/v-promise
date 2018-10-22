@@ -63,11 +63,11 @@
 
       topBarChange ( index ) {
         this.currentIndex = index;
-        if (index === 0 && !this.createAppointList.length) {
+        if (index === 0) {
           this.fetchCreateAppoint();
         }
 
-        if (index === 1 && !this.joinAppointList.length) {
+        if (index === 1) {
           this.fetchJoinAppoint();
         }
       }

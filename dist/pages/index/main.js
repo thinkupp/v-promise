@@ -152,11 +152,11 @@ if (false) {(function () {
     },
     topBarChange: function topBarChange(index) {
       this.currentIndex = index;
-      if (index === 0 && !this.createAppointList.length) {
+      if (index === 0) {
         this.fetchCreateAppoint();
       }
 
-      if (index === 1 && !this.joinAppointList.length) {
+      if (index === 1) {
         this.fetchJoinAppoint();
       }
     }
@@ -415,7 +415,6 @@ if (false) {(function () {
 //
 //
 //
-//
 
 
 
@@ -500,7 +499,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "status-option"
   }, [_vm._v("监督中")]) : _vm._e(), _vm._v(" "), _c('span', {
     staticClass: "status-option"
-  }, [_vm._v("进行中")])])])], 1)
+  }, [_vm._v(_vm._s(_vm.status[_vm.item.status]))])])])], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
