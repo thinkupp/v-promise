@@ -102,6 +102,12 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -121,8 +127,7 @@ if (false) {(function () {
 
       comments: null,
       loading: false,
-      watchButtonText: '监督',
-      isCreator: false
+      watchButtonText: '监督'
     };
   },
 
@@ -131,12 +136,12 @@ if (false) {(function () {
     showWatchButton: function showWatchButton() {
       // 监督者本人
       // 已结束/按时完成/超时完成
-      return !(this.isCreator || this.appointData.finishTime);
+      return !(this.appointData.isCreator || this.appointData.finishTime);
     },
     showWatcherHandle: function showWatcherHandle() {
       // 已经是监督者
       // 监督者本人
-      return this.isCreator || this.appointData.watching;
+      return this.appointData.isCreator || this.appointData.watching;
     },
     disableComment: function disableComment() {
       // 不是监督者并且不是创建者的时候没有评论权
@@ -177,7 +182,6 @@ if (false) {(function () {
       this.$api.fetchAppointDetail(id).then(function (res) {
         _this2.appointData = res;
         _this2.watchButtonText = '监督' + (_this2.appointData.u.gender === '2' ? '她' : '他');
-        _this2.isCreator = getApp().globalData.userId === _this2.appointData.creatorId;
         _this2.fetchAppointComments();
       });
     },
@@ -337,7 +341,7 @@ if (false) {(function () {
     iconClass: function iconClass() {
       if (!this.detail.u) return '';
       var status = this.detail.status;
-      var isCreator = this.detail.creatorId === getApp().globalData.userId;
+      var isCreator = this.detail.isCreator;
       var people = isCreator ? '你' : this.detail.u.gender === '2' ? '她' : '他';
       var classStr = '';
       if (status === 0) {
@@ -1532,12 +1536,46 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   props: {
     gender: {
       type: String,
       default: '1'
+    },
+
+    isCreator: {
+      type: Boolean,
+      default: false
+    },
+
+    isSupport: {
+      type: Number,
+      default: -1
+    },
+
+    support: {
+      type: Number,
+      default: 0
+    },
+
+    unSupport: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -1559,9 +1597,11 @@ if (false) {(function () {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "appoint-handle"
-  }, [_c('p', {
+  }, [(!_vm.isCreator) ? _c('p', {
     staticClass: "title"
-  }, [_vm._v("觉得" + _vm._s(_vm.gender === '2' ? '她' : '他') + "能完成这个约定吗？")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("觉得" + _vm._s(_vm.gender === '2' ? '她' : '他') + "能完成这个约定吗？")]) : _c('p', {
+    staticClass: "title"
+  }, [_vm._v("你的朋友们对你的支持情况：")]), _vm._v(" "), (_vm.support === -1) ? _c('div', {
     staticClass: "button-wrapper"
   }, [_c('button', {
     attrs: {
@@ -1581,7 +1621,27 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }, [_c('i', {
     staticClass: "iconfont icon-daozan"
-  }), _vm._v("\n      完不成\n    ")], 1)], 1)], 1)
+  }), _vm._v("\n      完不成\n    ")], 1)], 1) : _c('div', {
+    staticClass: "button-wrapper creator"
+  }, [_c('div', {
+    attrs: {
+      "eventid": '2'
+    },
+    on: {
+      "click": _vm.handleSupport
+    }
+  }, [_c('i', {
+    staticClass: "iconfont icon-zan"
+  }), _vm._v(" "), _c('span', [_vm._v("能完成")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.support))])], 1), _vm._v(" "), _c('div', {
+    attrs: {
+      "eventid": '3'
+    },
+    on: {
+      "click": _vm.handleUnSupport
+    }
+  }, [_c('i', {
+    staticClass: "iconfont icon-daozan"
+  }), _vm._v(" "), _c('span', [_vm._v("完不成")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.unSupport))])], 1)])], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1618,16 +1678,30 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "loading": _vm.loading,
       "buttonText": _vm.watchButtonText,
+      "eventid": '1',
+      "mpcomid": '3'
+    },
+    on: {
+      "click": _vm.handleWatch
+    }
+  }) : _c('confirm', {
+    attrs: {
+      "buttonText": "打卡",
+      "loading": _vm.loading,
       "eventid": '0',
       "mpcomid": '2'
     },
     on: {
       "click": _vm.handleWatch
     }
-  }) : _vm._e()], 1), _vm._v(" "), (_vm.showWatcherHandle) ? _c('handle', {
+  })], 1), _vm._v(" "), (_vm.showWatcherHandle) ? _c('handle', {
     attrs: {
-      "eventid": '1',
-      "mpcomid": '3'
+      "isCreator": _vm.appointData.isCreator,
+      "support": _vm.appointData.support,
+      "unSupport": _vm.appointData.unSupport,
+      "isSupport": _vm.appointData.isSupport,
+      "eventid": '2',
+      "mpcomid": '4'
     },
     on: {
       "support": _vm.handleSupport
@@ -1635,14 +1709,14 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }) : _vm._e(), _vm._v(" "), _c('about', {
     attrs: {
       "comments": _vm.comments,
-      "mpcomid": '4'
+      "mpcomid": '5'
     }
   }), _vm._v(" "), _c('bottom', {
     ref: "bottom",
     attrs: {
       "disable-comment": _vm.disableComment,
-      "eventid": '2',
-      "mpcomid": '5'
+      "eventid": '3',
+      "mpcomid": '6'
     },
     on: {
       "publish": _vm.publish

@@ -1,10 +1,19 @@
 <template name="708c6dd8">
   <view class="_div data-v-0f8d78a1 appoint-handle">
-    <view class="_p data-v-0f8d78a1 title">觉得{{gender === '2' ? '她' : '他'}}能完成这个约定吗？</view>
-    <view class="_div data-v-0f8d78a1 button-wrapper"><button bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_button data-v-0f8d78a1">
+    <view class="_p data-v-0f8d78a1 title" wx:if="{{!isCreator}}">觉得{{gender === '2' ? '她' : '他'}}能完成这个约定吗？</view>
+    <view class="_p data-v-0f8d78a1 title" wx:else>你的朋友们对你的支持情况：</view>
+    <view class="_div data-v-0f8d78a1 button-wrapper" wx:if="{{support === -1}}"><button bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_button data-v-0f8d78a1">
         <view class="_i data-v-0f8d78a1 iconfont icon-zan"></view> 能完成
       </button> <button bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_button data-v-0f8d78a1">
         <view class="_i data-v-0f8d78a1 iconfont icon-daozan"></view> 完不成
       </button></view>
+    <view class="_div data-v-0f8d78a1 button-wrapper creator" wx:else>
+      <view bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_div data-v-0f8d78a1">
+        <view class="_i data-v-0f8d78a1 iconfont icon-zan"></view> <label class="_span data-v-0f8d78a1">能完成</label> <label class="_span data-v-0f8d78a1">{{support}}</label>
+      </view>
+      <view bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_div data-v-0f8d78a1">
+        <view class="_i data-v-0f8d78a1 iconfont icon-daozan"></view> <label class="_span data-v-0f8d78a1">完不成</label> <label class="_span data-v-0f8d78a1">{{unSupport}}</label>
+      </view>
+    </view>
   </view>
 </template>

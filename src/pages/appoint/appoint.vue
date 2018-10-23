@@ -5,9 +5,15 @@
     <div class="confirm-wrapper">
       <card :detail="appointData"></card>
       <confirm v-if="showWatchButton" @click="handleWatch" :loading="loading" :buttonText="watchButtonText"></confirm>
+      <confirm buttonText="打卡" v-else @click="handleWatch" :loading="loading"></confirm>
     </div>
 
-    <handle v-if="showWatcherHandle" @support="handleSupport"></handle>
+    <handle :isCreator="appointData.isCreator"
+            :support="appointData.support"
+            :unSupport="appointData.unSupport"
+            :isSupport="appointData.isSupport"
+            v-if="showWatcherHandle"
+            @support="handleSupport"></handle>
 
     <about :comments="comments"></about>
 
@@ -35,7 +41,6 @@
         comments: null,
         loading: false,
         watchButtonText: '监督',
-        isCreator: false
       }
     },
 
@@ -43,13 +48,13 @@
       showWatchButton () {
         // 监督者本人
         // 已结束/按时完成/超时完成
-        return !(this.isCreator || this.appointData.finishTime)
+        return !(this.appointData.isCreator || this.appointData.finishTime)
       },
 
       showWatcherHandle () {
         // 已经是监督者
         // 监督者本人
-        return this.isCreator || this.appointData.watching;
+        return this.appointData.isCreator || this.appointData.watching;
       },
 
       disableComment () {
@@ -86,7 +91,6 @@
         this.$api.fetchAppointDetail( id ).then(res => {
           this.appointData = res;
           this.watchButtonText = '监督' + (this.appointData.u.gender === '2' ? '她' : '他');
-          this.isCreator = getApp().globalData.userId === this.appointData.creatorId;
           this.fetchAppointComments();
         })
       },

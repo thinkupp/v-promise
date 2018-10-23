@@ -35,7 +35,7 @@
       iconClass () {
         if (!this.detail.u) return '';
         const status = this.detail.status;
-        const isCreator = this.detail.creatorId === getApp().globalData.userId;
+        const isCreator = this.detail.isCreator;
         const people = isCreator ? '你' : this.detail.u.gender === '2' ? '她' : '他';
         let classStr = '';
         if (status === 0) {

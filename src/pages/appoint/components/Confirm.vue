@@ -26,21 +26,21 @@
 
 <style scoped lang="less">
   .confirm {
-    width: 160rpx;
-    height: 160rpx;
+    width: 100rpx;
+    height: 100rpx;
     background: #5677FC;
     color: #FFF;
     border-radius: 50%;
-    border: 20rpx solid #F8F8F8;
+    border: 10rpx solid #F8F8F8;
     position: absolute;
     left: 50%;
     bottom: -120rpx;
     transform: translateX(-50%);
-    font-size: 30rpx;
+    font-size: 20rpx;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: animation 1s linear infinite;
+    animation: animation 1s linear infinite, borderColorAnimation 3s linear infinite;
   }
 
   .loading {
@@ -68,6 +68,16 @@
 
     100% {
       transform: translateX(-50%) rotate(360deg)
+    }
+  }
+
+  @keyframes borderColorAnimation {
+    0% {
+      border-color: #efffee;
+    }
+
+    50% {
+      border-color: #d7dcdf;
     }
   }
 </style>

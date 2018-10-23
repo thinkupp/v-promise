@@ -397,21 +397,21 @@
 }
 
 .confirm.data-v-bf77ecd2 {
-  width: 160rpx;
-  height: 160rpx;
+  width: 100rpx;
+  height: 100rpx;
   background: #5677FC;
   color: #FFF;
   border-radius: 50%;
-  border: 20rpx solid #F8F8F8;
+  border: 10rpx solid #F8F8F8;
   position: absolute;
   left: 50%;
   bottom: -120rpx;
   transform: translateX(-50%);
-  font-size: 30rpx;
+  font-size: 20rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: animation-data-v-bf77ecd2 1s linear infinite;
+  animation: animation-data-v-bf77ecd2 1s linear infinite,borderColorAnimation-data-v-bf77ecd2 3s linear infinite;
 }
 .loading.data-v-bf77ecd2 {
   animation: loadingAnimation-data-v-bf77ecd2 0.6s linear infinite;
@@ -435,12 +435,23 @@
     transform: translateX(-50%) rotate(360deg);
 }
 }
+@keyframes borderColorAnimation-data-v-bf77ecd2 {
+0% {
+    border-color: #efffee;
+}
+50% {
+    border-color: #d7dcdf;
+}
+}
 
 .appoint-handle.data-v-0f8d78a1 {
   background: #FFF;
   margin-top: 75rpx;
-  padding: 20rpx 0;
+  padding: 60rpx 0 20rpx 0;
   margin-bottom: -50rpx;
+}
+.appoint-handle .finish.data-v-0f8d78a1 {
+  padding: 20rpx 0;
 }
 .appoint-handle .title.data-v-0f8d78a1 {
   text-align: center;
@@ -465,4 +476,15 @@
 }
 .appoint-handle .button-wrapper ._button ._i.data-v-0f8d78a1 {
   margin-right: 26rpx;
+}
+.appoint-handle .creator.data-v-0f8d78a1 {
+  display: flex;
+  justify-content: space-around;
+  font-size: 28rpx;
+}
+.appoint-handle .creator ._div.data-v-0f8d78a1 {
+  display: flex;
+  width: 200rpx;
+  justify-content: space-around;
+  align-items: center;
 }

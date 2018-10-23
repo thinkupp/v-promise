@@ -1,8 +1,9 @@
 <template>
   <div class="appoint-handle">
-    <p class="title">觉得{{gender === '2' ? '她' : '他'}}能完成这个约定吗？</p>
+    <p class="title" v-if="!isCreator">觉得{{gender === '2' ? '她' : '他'}}能完成这个约定吗？</p>
+    <p class="title" v-else>你的朋友们对你的支持情况：</p>
 
-    <div class="button-wrapper">
+    <div class="button-wrapper" v-if="support === -1">
       <button @click="handleSupport">
         <i class="iconfont icon-zan"></i>
         能完成
@@ -11,6 +12,19 @@
         <i class="iconfont icon-daozan"></i>
         完不成
       </button>
+    </div>
+
+    <div class="button-wrapper creator" v-else>
+      <div @click="handleSupport">
+        <i class="iconfont icon-zan"></i>
+        <span>能完成</span>
+        <span>{{support}}</span>
+      </div>
+      <div @click="handleUnSupport">
+        <i class="iconfont icon-daozan"></i>
+        <span>完不成</span>
+        <span>{{unSupport}}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -21,6 +35,26 @@
       gender: {
         type: String,
         default: '1'
+      },
+
+      isCreator: {
+        type: Boolean,
+        default: false
+      },
+
+      isSupport: {
+        type: Number,
+        default: -1
+      },
+
+      support: {
+        type: Number,
+        default: 0
+      },
+
+      unSupport: {
+        type: Number,
+        default: 0
       }
     },
 
@@ -40,8 +74,12 @@
   .appoint-handle {
     background: #FFF;
     margin-top: 75rpx;
-    padding: 20rpx 0;
+    padding: 60rpx 0 20rpx 0;
     margin-bottom: -50rpx;
+
+    .finish {
+      padding: 20rpx 0;
+    }
 
     .title {
       text-align: center;
@@ -68,6 +106,19 @@
         i {
           margin-right: 26rpx;
         }
+      }
+    }
+
+    .creator {
+      display: flex;
+      justify-content: space-around;
+      font-size: 28rpx;
+
+      div {
+        display: flex;
+        width: 200rpx;
+        justify-content: space-around;
+        align-items: center;
       }
     }
   }
