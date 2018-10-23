@@ -38,6 +38,10 @@ const watchAppoint = function ( appointId ) {
   return ApiAppoint.watchAppoint( appointId );
 }
 
+const supportAppoint = function ( params ) {
+  return ApiAppoint.supportAppoint( params )
+}
+
 export default {
   login,
   register,
@@ -47,5 +51,6 @@ export default {
   publishComment,
   fetchAppointComments,
   fetchJoinAppoint,
-  watchAppoint
+  watchAppoint,
+  supportAppoint
 }

@@ -21,7 +21,7 @@ app.$mount();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_appoint_vue__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_4f0313fe_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_appoint_vue__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_4f0313fe_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_appoint_vue__ = __webpack_require__(141);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -84,6 +84,7 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_about_About__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Bottom_vue__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Confirm_vue__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Handle_vue__ = __webpack_require__(137);
 //
 //
 //
@@ -99,6 +100,9 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+
 
 
 
@@ -114,18 +118,25 @@ if (false) {(function () {
         startId: -1,
         size: 20
       },
+
       comments: null,
       loading: false,
-      watchButtonText: '监督'
+      watchButtonText: '监督',
+      isCreator: false
     };
   },
 
 
   computed: {
-    showWatcherButton: function showWatcherButton() {
+    showWatchButton: function showWatchButton() {
       // 监督者本人
       // 已结束/按时完成/超时完成
-      // 监督者已达到上限（显示）*
+      return !(this.isCreator || this.appointData.finishTime);
+    },
+    showWatcherHandle: function showWatcherHandle() {
+      // 已经是监督者
+      // 监督者本人
+      return this.isCreator || this.appointData.watching;
     },
     disableComment: function disableComment() {
       // 不是监督者并且不是创建者的时候没有评论权
@@ -138,10 +149,12 @@ if (false) {(function () {
     Card: __WEBPACK_IMPORTED_MODULE_1__components_Card__["a" /* default */],
     About: __WEBPACK_IMPORTED_MODULE_2__components_about_About__["a" /* default */],
     Bottom: __WEBPACK_IMPORTED_MODULE_3__components_Bottom_vue__["a" /* default */],
-    Confirm: __WEBPACK_IMPORTED_MODULE_4__components_Confirm_vue__["a" /* default */]
+    Confirm: __WEBPACK_IMPORTED_MODULE_4__components_Confirm_vue__["a" /* default */],
+    Handle: __WEBPACK_IMPORTED_MODULE_5__components_Handle_vue__["a" /* default */]
   },
 
   methods: {
+    // 发表评论
     publish: function publish(value) {
       var _this = this;
 
@@ -155,15 +168,22 @@ if (false) {(function () {
         _this.comments.unshift(comment);
       });
     },
+
+
+    // 获取详情
     fetchAppointDetail: function fetchAppointDetail(id) {
       var _this2 = this;
 
       this.$api.fetchAppointDetail(id).then(function (res) {
         _this2.appointData = res;
         _this2.watchButtonText = '监督' + (_this2.appointData.u.gender === '2' ? '她' : '他');
+        _this2.isCreator = getApp().globalData.userId === _this2.appointData.creatorId;
         _this2.fetchAppointComments();
       });
     },
+
+
+    // 获取评论
     fetchAppointComments: function fetchAppointComments() {
       var _this3 = this;
 
@@ -182,6 +202,9 @@ if (false) {(function () {
         }
       });
     },
+
+
+    // 监督约定
     handleWatch: function handleWatch() {
       var _this4 = this;
 
@@ -191,6 +214,18 @@ if (false) {(function () {
         _this4.loading = false;
       }).catch(function (err) {
         _this4.loading = false;
+      });
+    },
+
+
+    // 支持/不支持 某约定
+    handleSupport: function handleSupport(support) {
+      // 0 -> 不支持 1 -> 支持
+      this.$api.supportAppoint({
+        appointId: this.appointData.id,
+        support: support
+      }).then(function (res) {
+        console.log(res);
       });
     }
   },
@@ -1421,6 +1456,149 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_Handle_vue__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_0f8d78a1_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_Handle_vue__ = __webpack_require__(140);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(138)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-0f8d78a1"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_Handle_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_0f8d78a1_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_Handle_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src/pages/appoint/components/Handle.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Handle.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0f8d78a1", Component.options)
+  } else {
+    hotAPI.reload("data-v-0f8d78a1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 138 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 139 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    gender: {
+      type: String,
+      default: '1'
+    }
+  },
+
+  methods: {
+    handleSupport: function handleSupport() {
+      this.$emit('support', 1);
+    },
+    handleUnSupport: function handleUnSupport() {
+      this.$emit('support', 0);
+    }
+  }
+});
+
+/***/ }),
+/* 140 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "appoint-handle"
+  }, [_c('p', {
+    staticClass: "title"
+  }, [_vm._v("觉得" + _vm._s(_vm.gender === '2' ? '她' : '他') + "能完成这个约定吗？")]), _vm._v(" "), _c('div', {
+    staticClass: "button-wrapper"
+  }, [_c('button', {
+    attrs: {
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.handleSupport
+    }
+  }, [_c('i', {
+    staticClass: "iconfont icon-zan"
+  }), _vm._v("\n      能完成\n    ")], 1), _vm._v(" "), _c('button', {
+    attrs: {
+      "eventid": '1'
+    },
+    on: {
+      "click": _vm.handleUnSupport
+    }
+  }, [_c('i', {
+    staticClass: "iconfont icon-daozan"
+  }), _vm._v("\n      完不成\n    ")], 1)], 1)], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0f8d78a1", esExports)
+  }
+}
+
+/***/ }),
+/* 141 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "appoint"
@@ -1436,7 +1614,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "detail": _vm.appointData,
       "mpcomid": '1'
     }
-  }), _vm._v(" "), _c('confirm', {
+  }), _vm._v(" "), (_vm.showWatchButton) ? _c('confirm', {
     attrs: {
       "loading": _vm.loading,
       "buttonText": _vm.watchButtonText,
@@ -1446,17 +1624,25 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.handleWatch
     }
-  })], 1), _vm._v(" "), _c('about', {
+  }) : _vm._e()], 1), _vm._v(" "), (_vm.showWatcherHandle) ? _c('handle', {
+    attrs: {
+      "eventid": '1',
+      "mpcomid": '3'
+    },
+    on: {
+      "support": _vm.handleSupport
+    }
+  }) : _vm._e(), _vm._v(" "), _c('about', {
     attrs: {
       "comments": _vm.comments,
-      "mpcomid": '3'
+      "mpcomid": '4'
     }
   }), _vm._v(" "), _c('bottom', {
     ref: "bottom",
     attrs: {
       "disable-comment": _vm.disableComment,
-      "eventid": '1',
-      "mpcomid": '4'
+      "eventid": '2',
+      "mpcomid": '5'
     },
     on: {
       "publish": _vm.publish

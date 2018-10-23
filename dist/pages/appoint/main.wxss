@@ -184,7 +184,6 @@
   font-size: 28rpx;
   color: #333;
   display: flex;
-  padding-bottom: 44rpx;
 }
 .tab ._li.data-v-346c3983 {
   flex: 1;
@@ -234,10 +233,9 @@
 .no-comment .icon-zanwushuju.data-v-6080baf4 {
   color: #e6e6e6;
   font-size: 100rpx;
-  margin-top: -50rpx;
 }
 .no-comment ._span.data-v-6080baf4 {
-  margin-top: 20rpx;
+  margin-top: 10rpx;
 }
 .loading.data-v-6080baf4 {
   font-size: 28rpx;
@@ -254,6 +252,7 @@
   animation: loading-rotate-data-v-6080baf4 1s linear infinite;
 }
 .loading ._span.data-v-6080baf4 {
+  margin-top: 20rpx;
 }
 @keyframes loading-rotate-data-v-6080baf4 {
 0% {
@@ -435,4 +434,35 @@
 100% {
     transform: translateX(-50%) rotate(360deg);
 }
+}
+
+.appoint-handle.data-v-0f8d78a1 {
+  background: #FFF;
+  margin-top: 75rpx;
+  padding: 20rpx 0;
+  margin-bottom: -50rpx;
+}
+.appoint-handle .title.data-v-0f8d78a1 {
+  text-align: center;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+.appoint-handle .button-wrapper.data-v-0f8d78a1 {
+  display: flex;
+  justify-content: space-around;
+}
+.appoint-handle .button-wrapper ._button.data-v-0f8d78a1 {
+  width: 200rpx;
+  height: 60rpx;
+  display: flex;
+  background: #1890FF;
+  border-radius: 10rpx;
+  color: #FFF;
+  font-size: 28rpx;
+  justify-content: center;
+  align-items: center;
+}
+.appoint-handle .button-wrapper ._button ._i.data-v-0f8d78a1 {
+  margin-right: 26rpx;
 }

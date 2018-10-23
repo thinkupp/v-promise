@@ -52,11 +52,11 @@
     .icon-zanwushuju {
       color: #e6e6e6;
       font-size: 100rpx;
-      margin-top: -50rpx;
+      /*margin-top: -50rpx;*/
     }
 
     span {
-      margin-top: 20rpx;
+      margin-top: 10rpx;
     }
   }
 
@@ -76,7 +76,7 @@
     }
 
     span {
-      /*margin-top: -50rpx;*/
+      margin-top: 20rpx;
     }
   }
 

@@ -4,8 +4,10 @@
 
     <div class="confirm-wrapper">
       <card :detail="appointData"></card>
-      <confirm @click="handleWatch" :loading="loading" :buttonText="watchButtonText"></confirm>
+      <confirm v-if="showWatchButton" @click="handleWatch" :loading="loading" :buttonText="watchButtonText"></confirm>
     </div>
+
+    <handle v-if="showWatcherHandle" @support="handleSupport"></handle>
 
     <about :comments="comments"></about>
 
@@ -19,6 +21,7 @@
   import About from './components/about/About'
   import Bottom from './components/Bottom.vue'
   import Confirm from './components/Confirm.vue'
+  import Handle from './components/Handle.vue'
 
   export default {
     data() {
@@ -28,23 +31,31 @@
           startId: -1,
           size: 20
         },
+
         comments: null,
         loading: false,
-        watchButtonText: '监督'
+        watchButtonText: '监督',
+        isCreator: false
       }
     },
 
     computed: {
-      showWatcherButton () {
+      showWatchButton () {
         // 监督者本人
         // 已结束/按时完成/超时完成
-        // 监督者已达到上限（显示）*
+        return !(this.isCreator || this.appointData.finishTime)
+      },
+
+      showWatcherHandle () {
+        // 已经是监督者
+        // 监督者本人
+        return this.isCreator || this.appointData.watching;
       },
 
       disableComment () {
         // 不是监督者并且不是创建者的时候没有评论权
         return !this.appointData.watching && getApp().globalData.userId !== this.appointData.creatorId;
-      }
+      },
     },
 
     components: {
@@ -52,10 +63,12 @@
       Card,
       About,
       Bottom,
-      Confirm
+      Confirm,
+      Handle
     },
 
     methods: {
+      // 发表评论
       publish ( value ) {
         if (!value.trim()) return this.$modal.emptyCommentTip();
 
@@ -68,14 +81,17 @@
         })
       },
 
+      // 获取详情
       fetchAppointDetail ( id ) {
         this.$api.fetchAppointDetail( id ).then(res => {
           this.appointData = res;
           this.watchButtonText = '监督' + (this.appointData.u.gender === '2' ? '她' : '他');
+          this.isCreator = getApp().globalData.userId === this.appointData.creatorId;
           this.fetchAppointComments();
         })
       },
 
+      // 获取评论
       fetchAppointComments () {
         this.$api.fetchAppointComments({
           appointId: this.appointData.id,
@@ -93,6 +109,7 @@
         })
       },
 
+      // 监督约定
       handleWatch () {
         if (this.loading) return;
         this.loading = true;
@@ -100,6 +117,17 @@
           this.loading = false;
         }).catch (err => {
           this.loading = false;
+        })
+      },
+
+      // 支持/不支持 某约定
+      handleSupport ( support ) {
+        // 0 -> 不支持 1 -> 支持
+        this.$api.supportAppoint({
+          appointId: this.appointData.id,
+          support
+        }).then(res => {
+          console.log(res);
         })
       }
     },

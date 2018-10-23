@@ -2,8 +2,8 @@
 
 @font-face {
   font-family: 'iconfont';
-  src: url('//at.alicdn.com/t/font_864209_1ah96zrxb7o.eot');
-  src: url('//at.alicdn.com/t/font_864209_1ah96zrxb7o.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_864209_1ah96zrxb7o.woff') format('woff'), url('//at.alicdn.com/t/font_864209_1ah96zrxb7o.ttf') format('truetype'), url('//at.alicdn.com/t/font_864209_1ah96zrxb7o.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_864209_81g87hvt084.eot');
+  src: url('//at.alicdn.com/t/font_864209_81g87hvt084.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_864209_81g87hvt084.woff') format('woff'), url('//at.alicdn.com/t/font_864209_81g87hvt084.ttf') format('truetype'), url('//at.alicdn.com/t/font_864209_81g87hvt084.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -77,6 +77,12 @@
 }
 .icon-anshiwancheng:before {
   content: "\E66A";
+}
+.icon-zan:before {
+  content: "\E63D";
+}
+.icon-daozan:before {
+  content: "\E604";
 }
 .status_0 {
   color: #5A9800 !important;

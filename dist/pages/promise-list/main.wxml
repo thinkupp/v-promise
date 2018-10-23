@@ -1,1 +1,1 @@
-<import src="/pages/promise-list/promise-list.vue.wxml" /><template is="58b95c1d" data="{{ ...$root['0'], $root }}"/>
+<import src="/pages/promise-list/promise-list.vue.wxml" /><template is="f0c2d818" data="{{ ...$root['0'], $root }}"/>

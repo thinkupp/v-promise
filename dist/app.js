@@ -12,8 +12,8 @@ global.webpackJsonp([4],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise__);
 
 
-var base_ip = 'http://192.168.0.100:3000/api';
-// const base_ip = 'http://192.168.8.101:3000/api';
+// const base_ip = 'http://192.168.0.100:3000/api';
+var base_ip = 'http://192.168.8.101:3000/api';
 
 var request = function request(option) {
   return new __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
@@ -240,6 +240,10 @@ var watchAppoint = function watchAppoint(appointId) {
   return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].watchAppoint(appointId);
 };
 
+var supportAppoint = function supportAppoint(params) {
+  return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].supportAppoint(params);
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   login: login,
   register: register,
@@ -249,7 +253,8 @@ var watchAppoint = function watchAppoint(appointId) {
   publishComment: publishComment,
   fetchAppointComments: fetchAppointComments,
   fetchJoinAppoint: fetchJoinAppoint,
-  watchAppoint: watchAppoint
+  watchAppoint: watchAppoint,
+  supportAppoint: supportAppoint
 });
 
 /***/ }),
@@ -333,12 +338,21 @@ var watchAppoint = function watchAppoint(appointId) {
   });
 };
 
+var supportAppoint = function supportAppoint(data) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/appoint/support',
+    method: 'POST',
+    data: data
+  });
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   createAppoint: createAppoint,
   fetchCreateAppoint: fetchCreateAppoint,
   fetchAppointDetail: fetchAppointDetail,
   fetchJoinAppoint: fetchJoinAppoint,
-  watchAppoint: watchAppoint
+  watchAppoint: watchAppoint,
+  supportAppoint: supportAppoint
 });
 
 /***/ }),

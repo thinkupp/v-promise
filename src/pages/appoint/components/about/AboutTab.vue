@@ -31,7 +31,7 @@
     font-size: 28rpx;
     color: #333;
     display: flex;
-    padding-bottom: 44rpx;
+    /*padding-bottom: 44rpx;*/
 
     li {
       flex: 1;

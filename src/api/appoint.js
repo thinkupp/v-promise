@@ -34,6 +34,14 @@ const watchAppoint = function ( appointId ) {
       appointId
     }
   })
+};
+
+const supportAppoint = function ( data ) {
+  return request({
+    url: '/appoint/support',
+    method: 'POST',
+    data
+  })
 }
 
 export default {
@@ -41,5 +49,6 @@ export default {
   fetchCreateAppoint,
   fetchAppointDetail,
   fetchJoinAppoint,
-  watchAppoint
+  watchAppoint,
+  supportAppoint
 }

@@ -1,6 +1,6 @@
-<import src="/pages/appoint/components/about/CommentList.vue.wxml" /><template name="fa4d9cd8">
+<import src="/pages/appoint/components/about/CommentList.vue.wxml" /><template name="5714c9dd">
   <view class="_div data-v-6080baf4">
-    <view class="_ul data-v-6080baf4 comment" wx:if="{{commentList && commentList.length}}"><template wx:key="index" data="{{...$root[$kk+'0-'+index], $root}}" is="b99e2d5c" wx:for="{{commentList}}" wx:for-index="index" wx:for-item="comment"></template></view>
+    <view class="_ul data-v-6080baf4 comment" wx:if="{{commentList && commentList.length}}"><template wx:key="index" data="{{...$root[$kk+'0-'+index], $root}}" is="43e5351b" wx:for="{{commentList}}" wx:for-index="index" wx:for-item="comment"></template></view>
     <view wx:elif="{{!commentList}}" class="_p data-v-6080baf4 loading"><label class="_span data-v-6080baf4">加载中~</label>
       <view class="_i data-v-6080baf4 iconfont icon-loading"></view>
     </view>
