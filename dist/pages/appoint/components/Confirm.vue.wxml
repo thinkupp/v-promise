@@ -1,1 +1,1 @@
-<template name="5f23bb40"><button class="_button data-v-bf77ecd2 confirm {{buttonClass}}" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">{{buttonText}}</button></template>
+<template name="9d3c0f92"><button class="_button data-v-bf77ecd2 confirm {{buttonClass}}" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">{{buttonText}}</button></template>

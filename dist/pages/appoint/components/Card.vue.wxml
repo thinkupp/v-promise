@@ -1,4 +1,4 @@
-<template name="0c7d2cc0">
+<template name="2ecdeb29">
   <view class="_div data-v-18a455c9 appoint-card" wx:if="{{detail.u}}">
     <view class="_div data-v-18a455c9 creator">
       <image src="{{detail.u.avatar}}" class="_img data-v-18a455c9 avatar"></image> <label class="_span data-v-18a455c9 nickname">{{detail.u.nickName}}</label>

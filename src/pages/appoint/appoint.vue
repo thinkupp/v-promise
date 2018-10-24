@@ -204,19 +204,23 @@
 
       // 点赞/取消点赞评论
       handleCommentLike ( {commentId, index} ) {
-        if (this.loading) return;
-        this.loading = true;
+        const comment = this.comments[index];
+        if (comment.loading) return;
+        comment.loading = true;
+        this.$set(this.comments, index, comment);
+
         this.$api.commentLike({
           appointId: this.appointData.id,
           commentId
         }).then(res => {
-          const comment = this.comments[index];
+//          const comment = this.comments[index];
+          comment.loading = false;
           comment.parise = res.number;
           comment.isLike = res.like;
           this.$set(this.comments, index, comment);
-          this.loading = false;
         }).catch(err => {
-          this.loading = false;
+          comment.loading = false;
+          this.$set(this.comments, index, comment);
         })
       }
     },

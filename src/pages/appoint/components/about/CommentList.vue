@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="handle" :class="{like: comment.isLike}" @click="handleClick">
+      <div class="handle" :class="{like: comment.isLike, animation: comment.loading}" @click="handleClick">
         <span class="zan-number">{{comment.parise}}</span>
         <i class="iconfont icon-weizan" v-if="!comment.isLike"></i>
         <i class="iconfont icon-yizan" v-else></i>
@@ -142,6 +142,12 @@
             color: #ff0010
           }
         }
+
+        &.animation {
+          i, span {
+            animation: handleAnimation 0.3s linear infinite 0.3s;
+          }
+        }
       }
     }
 
@@ -168,5 +174,19 @@
 
   .noLine:after {
     height: 0;
+  }
+
+  @keyframes handleAnimation {
+    0% {
+      color: #faffc9;
+    }
+
+    50% {
+      color: #ff0010
+    }
+
+    100% {
+      color: #faffc9;
+    }
   }
 </style>

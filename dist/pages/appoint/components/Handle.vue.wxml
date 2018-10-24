@@ -1,4 +1,4 @@
-<template name="708c6dd8">
+<template name="41a73601">
   <view class="_div data-v-0f8d78a1 appoint-handle {{[finish ? 'finish' : '']}}">
     <view class="_p data-v-0f8d78a1 title" wx:if="{{!isCreator}}">觉得{{gender === '2' ? '她' : '他'}}能完成这个约定吗？</view>
     <view class="_p data-v-0f8d78a1 title" wx:else>你的朋友们对你的支持情况：</view>

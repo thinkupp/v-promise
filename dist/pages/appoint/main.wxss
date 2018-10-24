@@ -327,6 +327,10 @@
 ._li .information .handle.like ._i.data-v-35967a9c {
   color: #ff0010;
 }
+._li .information .handle.animation ._i.data-v-35967a9c,
+._li .information .handle.animation ._span.data-v-35967a9c {
+  animation: handleAnimation-data-v-35967a9c 0.3s linear infinite 0.3s;
+}
 ._li .content.data-v-35967a9c {
   color: #888;
   margin-top: 10rpx;
@@ -347,6 +351,17 @@
 }
 .noLine.data-v-35967a9c:after {
   height: 0;
+}
+@keyframes handleAnimation-data-v-35967a9c {
+0% {
+    color: #faffc9;
+}
+50% {
+    color: #ff0010;
+}
+100% {
+    color: #faffc9;
+}
 }
 
 .speak.data-v-34cceb24 {
