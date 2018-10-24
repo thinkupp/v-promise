@@ -139,7 +139,6 @@
           this.loading = false;
           this.buttonAnimation = false;
         }).catch (err => {
-          console.log(err);
           this.loading = false;
           this.buttonAnimation =false;
         })
@@ -154,7 +153,6 @@
           appointId: this.appointData.id,
           support
         }).then(res => {
-          console.log(res);
           this.loading = false;
         }).catch(err => {
           this.loading = false;
@@ -173,7 +171,6 @@
         }).catch(err => {
           this.loading = false;
           this.buttonAnimation = false;
-          console.log(err);
         })
       },
 
@@ -182,7 +179,6 @@
         if (this.loading) return;
         this.loading = true;
         this.$api.supporters(this.appointData.id).then(res => {
-          console.log(res);
           this.loading = false;
         }).catch(err => {
           this.loading = false;
@@ -194,7 +190,6 @@
         if (this.loading) return;
         this.loading = true;
         this.$api.unSupporters(this.appointData.id).then(res => {
-          console.log(res);
           if (!res.length) {
             wx.showToast({
               title: '暂时没有反对者哦',

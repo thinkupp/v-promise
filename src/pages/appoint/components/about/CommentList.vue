@@ -15,9 +15,9 @@
       </div>
 
       <div class="handle" :class="{like: comment.isLike}" @click="handleClick">
+        <span class="zan-number">{{comment.parise}}</span>
         <i class="iconfont icon-weizan" v-if="!comment.isLike"></i>
         <i class="iconfont icon-yizan" v-else></i>
-        <span class="zan-number">{{comment.parise}}</span>
       </div>
     </div>
 
@@ -134,7 +134,7 @@
         color: #CCC;
 
         .zan-number {
-          margin-left: 8rpx;
+          margin-right: 8rpx;
         }
 
         &.like {

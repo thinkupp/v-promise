@@ -231,7 +231,6 @@ if (false) {(function () {
         _this4.loading = false;
         _this4.buttonAnimation = false;
       }).catch(function (err) {
-        console.log(err);
         _this4.loading = false;
         _this4.buttonAnimation = false;
       });
@@ -249,7 +248,6 @@ if (false) {(function () {
         appointId: this.appointData.id,
         support: support
       }).then(function (res) {
-        console.log(res);
         _this5.loading = false;
       }).catch(function (err) {
         _this5.loading = false;
@@ -271,7 +269,6 @@ if (false) {(function () {
       }).catch(function (err) {
         _this6.loading = false;
         _this6.buttonAnimation = false;
-        console.log(err);
       });
     },
 
@@ -283,7 +280,6 @@ if (false) {(function () {
       if (this.loading) return;
       this.loading = true;
       this.$api.supporters(this.appointData.id).then(function (res) {
-        console.log(res);
         _this7.loading = false;
       }).catch(function (err) {
         _this7.loading = false;
@@ -298,7 +294,6 @@ if (false) {(function () {
       if (this.loading) return;
       this.loading = true;
       this.$api.unSupporters(this.appointData.id).then(function (res) {
-        console.log(res);
         if (!res.length) {
           wx.showToast({
             title: '暂时没有反对者哦',
@@ -1231,13 +1226,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.handleClick
     }
-  }, [(!_vm.comment.isLike) ? _c('i', {
+  }, [_c('span', {
+    staticClass: "zan-number"
+  }, [_vm._v(_vm._s(_vm.comment.parise))]), _vm._v(" "), (!_vm.comment.isLike) ? _c('i', {
     staticClass: "iconfont icon-weizan"
   }) : _c('i', {
     staticClass: "iconfont icon-yizan"
-  }), _vm._v(" "), _c('span', {
-    staticClass: "zan-number"
-  }, [_vm._v(_vm._s(_vm.comment.parise))])], 1)]), _vm._v(" "), _c('p', {
+  })], 1)]), _vm._v(" "), _c('p', {
     staticClass: "content"
   }, [_vm._v(_vm._s(_vm.comment.content))])], 1)
 }
@@ -1582,6 +1577,24 @@ if (false) {(function () {
     buttonText: {
       type: String,
       default: '监督'
+    },
+
+    finish: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  computed: {
+    buttonClass: function buttonClass() {
+      var className = '';
+      if (this.loading) {
+        className = 'loading';
+      }
+      if (this.finish) {
+        className += ' finish';
+      }
+      return className;
     }
   }
 });
@@ -1594,9 +1607,7 @@ if (false) {(function () {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('button', {
     staticClass: "confirm",
-    class: {
-      loading: _vm.loading
-    },
+    class: _vm.buttonClass,
     attrs: {
       "eventid": '0'
     },
