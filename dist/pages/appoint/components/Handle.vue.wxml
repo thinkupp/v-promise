@@ -8,10 +8,10 @@
         <view class="_i data-v-0f8d78a1 iconfont icon-daozan"></view> 完不成
       </button></view>
     <view class="_div data-v-0f8d78a1 button-wrapper creator {{[!paddingTop ? 'finish' : '']}}" wx:else>
-      <view class="_div data-v-0f8d78a1">
+      <view bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_div data-v-0f8d78a1">
         <view class="_i data-v-0f8d78a1 iconfont icon-zan"></view> <label class="_span data-v-0f8d78a1">能完成</label> <label class="_span data-v-0f8d78a1">{{support}}</label>
       </view>
-      <view class="_div data-v-0f8d78a1">
+      <view bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_div data-v-0f8d78a1">
         <view class="_i data-v-0f8d78a1 iconfont icon-daozan"></view> <label class="_span data-v-0f8d78a1">完不成</label> <label class="_span data-v-0f8d78a1">{{unSupport}}</label>
       </view>
     </view>

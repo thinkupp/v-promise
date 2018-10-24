@@ -16,7 +16,7 @@ const fetchCreateAppoint = function ( { id, size } ) {
 
 const fetchAppointDetail = function ( id ) {
   return request({
-    url: '/appoint/' + id
+    url: '/appoint/detail/' + id
   })
 };
 
@@ -50,6 +50,18 @@ const clockIn = function ( appointId ) {
     data: { appointId },
     method: 'POST'
   })
+};
+
+const supporters = function ( appointId ) {
+  return request({
+    url: '/appoint/supporters?appoint_id=' + appointId,
+  })
+};
+
+const unSupporters = function ( appointId ) {
+  return request({
+    url: '/appoint/un-supporters?appoint_id=' + appointId
+  })
 }
 
 export default {
@@ -59,5 +71,7 @@ export default {
   fetchJoinAppoint,
   watchAppoint,
   supportAppoint,
-  clockIn
+  clockIn,
+  supporters,
+  unSupporters
 }

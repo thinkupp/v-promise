@@ -46,6 +46,14 @@ const clockIn = function ( appointId ) {
   return ApiAppoint.clockIn( appointId );
 }
 
+const supporters = function ( appointId ) {
+  return ApiAppoint.supporters( appointId );
+}
+
+const unSupporters = function ( appointId ) {
+  return ApiAppoint.unSupporters( appointId )
+}
+
 export default {
   login,
   register,
@@ -57,5 +65,7 @@ export default {
   fetchJoinAppoint,
   watchAppoint,
   supportAppoint,
-  clockIn
+  clockIn,
+  supporters,
+  unSupporters
 }

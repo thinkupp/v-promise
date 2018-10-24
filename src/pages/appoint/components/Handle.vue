@@ -15,12 +15,12 @@
     </div>
 
     <div class="button-wrapper creator" :class="{finish: !paddingTop}" v-else>
-      <div>
+      <div @click="fetchSupporters">
         <i class="iconfont icon-zan"></i>
         <span>能完成</span>
         <span>{{support}}</span>
       </div>
-      <div>
+      <div @click="fetchUnSupporters">
         <i class="iconfont icon-daozan"></i>
         <span>完不成</span>
         <span>{{unSupport}}</span>
@@ -70,6 +70,14 @@
 
       handleUnSupport () {
         this.$emit('support', 0);
+      },
+
+      fetchSupporters () {
+        this.$emit('supporters')
+      },
+
+      fetchUnSupporters () {
+        this.$emit('unSupporters')
       }
     }
   }

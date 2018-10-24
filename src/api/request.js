@@ -14,10 +14,14 @@ const request = function ( option ) {
         if ( res.statusCode >= 200 && res.statusCode < 400 ) {
           resolve( data );
         } else {
+          let message = data;
+          if (typeof data) {
+            message = data.message || data.toString();
+          }
           if (res.statusCode === 400) {
             wx.showModal({
               title: '提示',
-              content: data,
+              content: message,
               showCancel: false
             });
           }

@@ -4,14 +4,16 @@
 
     <div class="confirm-wrapper">
       <card :detail="appointData"></card>
-      <confirm v-if="showWatchButton" @click="handleWatch" :loading="loading" :buttonText="watchButtonText"></confirm>
-      <confirm buttonText="打卡" v-if="showClockInButton" @click="handleClockIn" :loading="loading"></confirm>
+      <confirm v-if="showWatchButton" @click="handleWatch" :loading="buttonAnimation" :buttonText="watchButtonText"></confirm>
+      <confirm buttonText="打卡" v-if="showClockInButton" @click="handleClockIn" :loading="buttonAnimation"></confirm>
     </div>
 
     <handle :isCreator="appointData.isCreator"
             :support="appointData.support"
             :unSupport="appointData.unSupport"
             :isSupport="appointData.isSupport"
+            @supporters="fetchSupporters"
+            @unSupporters="fetchUnSupporters"
             :finish="!showClockInButton"
             v-if="showWatcherHandle"
             @support="handleSupport"></handle>
@@ -40,8 +42,11 @@
         },
 
         comments: null,
-        loading: false,
         watchButtonText: '监督',
+
+        loading: false,
+        buttonAnimation: false,
+        commentLoading: false,
       }
     },
 
@@ -83,12 +88,17 @@
       publish ( value ) {
         if (!value.trim()) return this.$modal.emptyCommentTip();
 
+        if (this.commentLoading) return;
+        this.commentLoading = true;
         this.$api.publishComment({
           appointId: this.appointData.id,
           content: value.trim()
         }).then(comment => {
+          this.commentLoading = false;
           this.$refs.bottom.clearInput();
           this.comments.unshift(comment);
+        }).catch(err => {
+          this.commentLoading = false;
         })
       },
 
@@ -123,28 +133,77 @@
       handleWatch () {
         if (this.loading) return;
         this.loading = true;
+        this.buttonAnimation = true;
+
         this.$api.watchAppoint(this.appointData.id).then(res => {
           this.loading = false;
+          this.buttonAnimation = false;
         }).catch (err => {
+          console.log(err);
           this.loading = false;
+          this.buttonAnimation =false;
         })
       },
 
       // 支持/不支持 某约定
       handleSupport ( support ) {
         // 0 -> 不支持 1 -> 支持
+        if (this.loading) return;
+        this.loading = true;
         this.$api.supportAppoint({
           appointId: this.appointData.id,
           support
         }).then(res => {
           console.log(res);
+          this.loading = false;
+        }).catch(err => {
+          this.loading = false;
         })
       },
 
       // 打卡
       handleClockIn () {
+        if (this.loading) return;
+        this.loading = true;
+        this.buttonAnimation = true;
         this.$api.clockIn(this.appointData.id).then(res => {
+          this.loading = false;
+          this.buttonAnimation = false;
           this.fetchAppointDetail()
+        }).catch(err => {
+          this.loading = false;
+          this.buttonAnimation = false;
+          console.log(err);
+        })
+      },
+
+      // 获取支持者
+      fetchSupporters () {
+        if (this.loading) return;
+        this.loading = true;
+        this.$api.supporters(this.appointData.id).then(res => {
+          console.log(res);
+          this.loading = false;
+        }).catch(err => {
+          this.loading = false;
+        })
+      },
+
+      // 获取反对者
+      fetchUnSupporters () {
+        if (this.loading) return;
+        this.loading = true;
+        this.$api.unSupporters(this.appointData.id).then(res => {
+          console.log(res);
+          if (!res.length) {
+            wx.showToast({
+              title: '暂时没有反对者哦',
+              icon: 'none'
+            })
+          }
+          this.loading = false;
+        }).catch(err => {
+          this.loading = false;
         })
       }
     },

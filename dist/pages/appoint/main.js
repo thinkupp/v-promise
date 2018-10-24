@@ -109,6 +109,8 @@ if (false) {(function () {
 //
 //
 //
+//
+//
 
 
 
@@ -127,8 +129,11 @@ if (false) {(function () {
       },
 
       comments: null,
+      watchButtonText: '监督',
+
       loading: false,
-      watchButtonText: '监督'
+      buttonAnimation: false,
+      commentLoading: false
     };
   },
 
@@ -170,12 +175,17 @@ if (false) {(function () {
 
       if (!value.trim()) return this.$modal.emptyCommentTip();
 
+      if (this.commentLoading) return;
+      this.commentLoading = true;
       this.$api.publishComment({
         appointId: this.appointData.id,
         content: value.trim()
       }).then(function (comment) {
+        _this.commentLoading = false;
         _this.$refs.bottom.clearInput();
         _this.comments.unshift(comment);
+      }).catch(function (err) {
+        _this.commentLoading = false;
       });
     },
 
@@ -219,32 +229,89 @@ if (false) {(function () {
 
       if (this.loading) return;
       this.loading = true;
+      this.buttonAnimation = true;
+
       this.$api.watchAppoint(this.appointData.id).then(function (res) {
         _this4.loading = false;
+        _this4.buttonAnimation = false;
       }).catch(function (err) {
+        console.log(err);
         _this4.loading = false;
+        _this4.buttonAnimation = false;
       });
     },
 
 
     // 支持/不支持 某约定
     handleSupport: function handleSupport(support) {
+      var _this5 = this;
+
       // 0 -> 不支持 1 -> 支持
+      if (this.loading) return;
+      this.loading = true;
       this.$api.supportAppoint({
         appointId: this.appointData.id,
         support: support
       }).then(function (res) {
         console.log(res);
+        _this5.loading = false;
+      }).catch(function (err) {
+        _this5.loading = false;
       });
     },
 
 
     // 打卡
     handleClockIn: function handleClockIn() {
-      var _this5 = this;
+      var _this6 = this;
 
+      if (this.loading) return;
+      this.loading = true;
+      this.buttonAnimation = true;
       this.$api.clockIn(this.appointData.id).then(function (res) {
-        _this5.fetchAppointDetail();
+        _this6.loading = false;
+        _this6.buttonAnimation = false;
+        _this6.fetchAppointDetail();
+      }).catch(function (err) {
+        _this6.loading = false;
+        _this6.buttonAnimation = false;
+        console.log(err);
+      });
+    },
+
+
+    // 获取支持者
+    fetchSupporters: function fetchSupporters() {
+      var _this7 = this;
+
+      if (this.loading) return;
+      this.loading = true;
+      this.$api.supporters(this.appointData.id).then(function (res) {
+        console.log(res);
+        _this7.loading = false;
+      }).catch(function (err) {
+        _this7.loading = false;
+      });
+    },
+
+
+    // 获取反对者
+    fetchUnSupporters: function fetchUnSupporters() {
+      var _this8 = this;
+
+      if (this.loading) return;
+      this.loading = true;
+      this.$api.unSupporters(this.appointData.id).then(function (res) {
+        console.log(res);
+        if (!res.length) {
+          wx.showToast({
+            title: '暂时没有反对者哦',
+            icon: 'none'
+          });
+        }
+        _this8.loading = false;
+      }).catch(function (err) {
+        _this8.loading = false;
       });
     }
   },
@@ -1606,6 +1673,12 @@ if (false) {(function () {
     },
     handleUnSupport: function handleUnSupport() {
       this.$emit('support', 0);
+    },
+    fetchSupporters: function fetchSupporters() {
+      this.$emit('supporters');
+    },
+    fetchUnSupporters: function fetchUnSupporters() {
+      this.$emit('unSupporters');
     }
   }
 });
@@ -1650,9 +1723,23 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     class: {
       finish: !_vm.paddingTop
     }
-  }, [_c('div', [_c('i', {
+  }, [_c('div', {
+    attrs: {
+      "eventid": '2'
+    },
+    on: {
+      "click": _vm.fetchSupporters
+    }
+  }, [_c('i', {
     staticClass: "iconfont icon-zan"
-  }), _vm._v(" "), _c('span', [_vm._v("能完成")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.support))])], 1), _vm._v(" "), _c('div', [_c('i', {
+  }), _vm._v(" "), _c('span', [_vm._v("能完成")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.support))])], 1), _vm._v(" "), _c('div', {
+    attrs: {
+      "eventid": '3'
+    },
+    on: {
+      "click": _vm.fetchUnSupporters
+    }
+  }, [_c('i', {
     staticClass: "iconfont icon-daozan"
   }), _vm._v(" "), _c('span', [_vm._v("完不成")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.unSupport))])], 1)])], 1)
 }
@@ -1689,7 +1776,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), (_vm.showWatchButton) ? _c('confirm', {
     attrs: {
-      "loading": _vm.loading,
+      "loading": _vm.buttonAnimation,
       "buttonText": _vm.watchButtonText,
       "eventid": '0',
       "mpcomid": '2'
@@ -1700,7 +1787,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }) : _vm._e(), _vm._v(" "), (_vm.showClockInButton) ? _c('confirm', {
     attrs: {
       "buttonText": "打卡",
-      "loading": _vm.loading,
+      "loading": _vm.buttonAnimation,
       "eventid": '1',
       "mpcomid": '3'
     },
@@ -1718,6 +1805,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '4'
     },
     on: {
+      "supporters": _vm.fetchSupporters,
+      "unSupporters": _vm.fetchUnSupporters,
       "support": _vm.handleSupport
     }
   }) : _vm._e(), _vm._v(" "), _c('about', {

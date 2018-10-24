@@ -6,32 +6,39 @@ global.webpackJsonp([4],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise__);
+
 
 
 // const base_ip = 'http://192.168.0.100:3000/api';
 var base_ip = 'http://192.168.8.101:3000/api';
 
 var request = function request(option) {
-  return new __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
+  return new __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
     option.url = base_ip + option.url;
     var userId = getApp().globalData.userId;
     if (!option.header) option.header = {};
     if (userId) option.header.uid = userId;
 
-    wx.request(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, option, {
+    wx.request(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, option, {
       success: function success(res) {
         var data = res.data;
         if (res.statusCode >= 200 && res.statusCode < 400) {
           resolve(data);
         } else {
+          var message = data;
+          if (typeof data === 'undefined' ? 'undefined' : __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default()(data)) {
+            message = data.message || data.toString();
+          }
           if (res.statusCode === 400) {
             wx.showModal({
               title: '提示',
-              content: data,
+              content: message,
               showCancel: false
             });
           }
@@ -248,6 +255,14 @@ var clockIn = function clockIn(appointId) {
   return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].clockIn(appointId);
 };
 
+var supporters = function supporters(appointId) {
+  return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].supporters(appointId);
+};
+
+var unSupporters = function unSupporters(appointId) {
+  return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].unSupporters(appointId);
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   login: login,
   register: register,
@@ -259,7 +274,9 @@ var clockIn = function clockIn(appointId) {
   fetchJoinAppoint: fetchJoinAppoint,
   watchAppoint: watchAppoint,
   supportAppoint: supportAppoint,
-  clockIn: clockIn
+  clockIn: clockIn,
+  supporters: supporters,
+  unSupporters: unSupporters
 });
 
 /***/ }),
@@ -320,7 +337,7 @@ var fetchCreateAppoint = function fetchCreateAppoint(_ref) {
 
 var fetchAppointDetail = function fetchAppointDetail(id) {
   return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
-    url: '/appoint/' + id
+    url: '/appoint/detail/' + id
   });
 };
 
@@ -359,6 +376,18 @@ var clockIn = function clockIn(appointId) {
   });
 };
 
+var supporters = function supporters(appointId) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/appoint/supporters?appoint_id=' + appointId
+  });
+};
+
+var unSupporters = function unSupporters(appointId) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/appoint/un-supporters?appoint_id=' + appointId
+  });
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   createAppoint: createAppoint,
   fetchCreateAppoint: fetchCreateAppoint,
@@ -366,7 +395,9 @@ var clockIn = function clockIn(appointId) {
   fetchJoinAppoint: fetchJoinAppoint,
   watchAppoint: watchAppoint,
   supportAppoint: supportAppoint,
-  clockIn: clockIn
+  clockIn: clockIn,
+  supporters: supporters,
+  unSupporters: unSupporters
 });
 
 /***/ }),
