@@ -36,16 +36,16 @@
     display: flex;
     text-align: center;
     align-items: center;
-    background: #5677FC;
     font-size: 33rpx;
-    border-bottom-right-radius: 50%;
-    transition: border-radius 0.3s linear;
+    border-bottom-right-radius: 20%;
+    transition: all 0.3s linear;
+    background: linear-gradient(to right, #8dc8fc,  #5677FC);
 
     &.right {
       border-bottom-right-radius: 0;
-      border-bottom-left-radius: 50%;
+      border-bottom-left-radius: 20%;
+      background: linear-gradient(to left, #8dc8fc,  #5677FC);
     }
-
 
     li {
       flex: 1;
