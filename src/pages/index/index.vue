@@ -97,11 +97,11 @@
       position: relative;
 
       .create-button {
-        width: 380rpx;
+        width: 330rpx;
         height: 100rpx;
         line-height: 100rpx;
         background: #687CCC;
-        font-size: 36rpx;
+        font-size: 33rpx;
         position: absolute;
         bottom: -50rpx;
         left: 50%;

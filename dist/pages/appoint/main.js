@@ -323,7 +323,6 @@ if (false) {(function () {
         appointId: this.appointData.id,
         commentId: commentId
       }).then(function (res) {
-        //          const comment = this.comments[index];
         comment.loading = false;
         comment.parise = res.number;
         comment.isLike = res.like;
@@ -820,6 +819,15 @@ if (false) {(function () {
   methods: {
     commentLike: function commentLike(params) {
       this.$emit('comment-like', params);
+    },
+    tabChange: function tabChange(index) {
+      if (index) {
+        wx.showModal({
+          title: '提示',
+          content: '功能暂未开放！',
+          showCancel: false
+        });
+      }
     }
   }
 });
@@ -904,12 +912,19 @@ if (false) {(function () {
 //
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  data: function data() {
-    return {};
+  methods: {
+    handleClick: function handleClick(type) {
+      if (type === this.currentIndex) return;
+      this.$emit('change', type);
+    }
   },
 
-
-  methods: {}
+  props: {
+    currentIndex: {
+      type: Number,
+      default: 0
+    }
+  }
 });
 
 /***/ }),
@@ -921,11 +936,27 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   return _c('ul', {
     staticClass: "tab"
   }, [_c('li', {
-    staticClass: "recommend"
+    staticClass: "recommend",
+    attrs: {
+      "eventid": '0'
+    },
+    on: {
+      "click": function($event) {
+        _vm.handleClick(0)
+      }
+    }
   }, [_c('span', {
     staticClass: "select"
   }, [_vm._v("评论")])]), _vm._v(" "), _c('li', {
-    staticClass: "dynamic"
+    staticClass: "dynamic",
+    attrs: {
+      "eventid": '1'
+    },
+    on: {
+      "click": function($event) {
+        _vm.handleClick(1)
+      }
+    }
   }, [_c('span', [_vm._v("\n        动态\n        "), _c('span', {
     staticClass: "round"
   })])])], 1)
@@ -1306,13 +1337,17 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "appoint-about"
   }, [_c('tab', {
     attrs: {
+      "eventid": '0',
       "mpcomid": '0'
+    },
+    on: {
+      "change": _vm.tabChange
     }
   }), _vm._v(" "), _c('comment', {
     attrs: {
       "watching": _vm.watching,
       "commentList": _vm.comments,
-      "eventid": '0',
+      "eventid": '1',
       "mpcomid": '1'
     },
     on: {
@@ -1581,24 +1616,6 @@ if (false) {(function () {
     buttonText: {
       type: String,
       default: '监督'
-    },
-
-    finish: {
-      type: Boolean,
-      default: false
-    }
-  },
-
-  computed: {
-    buttonClass: function buttonClass() {
-      var className = '';
-      if (this.loading) {
-        className = 'loading';
-      }
-      if (this.finish) {
-        className += ' finish';
-      }
-      return className;
     }
   }
 });
@@ -1611,7 +1628,9 @@ if (false) {(function () {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('button', {
     staticClass: "confirm",
-    class: _vm.buttonClass,
+    class: {
+      loading: _vm.loading
+    },
     attrs: {
       "eventid": '0'
     },

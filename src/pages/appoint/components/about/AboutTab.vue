@@ -1,9 +1,9 @@
 <template>
   <ul class="tab">
-    <li class="recommend">
+    <li class="recommend" @click="handleClick(0)">
       <span class="select">评论</span>
     </li>
-    <li class="dynamic">
+    <li class="dynamic" @click="handleClick(1)">
         <span>
           动态
           <span class="round"></span>
@@ -14,14 +14,18 @@
 
 <script>
   export default {
-    data() {
-      return {
-
+    methods: {
+      handleClick ( type ) {
+        if (type === this.currentIndex) return;
+        this.$emit('change', type);
       }
     },
 
-    methods: {
-
+    props: {
+      currentIndex: {
+        type: Number,
+        default: 0
+      }
     }
   }
 </script>

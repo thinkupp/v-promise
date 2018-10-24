@@ -13,11 +13,11 @@
   position: relative;
 }
 .index .bar-wrapper .create-button.data-v-33b487e3 {
-  width: 380rpx;
+  width: 330rpx;
   height: 100rpx;
   line-height: 100rpx;
   background: #687CCC;
-  font-size: 36rpx;
+  font-size: 33rpx;
   position: absolute;
   bottom: -50rpx;
   left: 50%;
@@ -41,6 +41,13 @@
   text-align: center;
   align-items: center;
   background: #5677FC;
+  font-size: 33rpx;
+  border-bottom-right-radius: 50%;
+  transition: border-radius 0.3s linear;
+}
+.top-bar.right.data-v-f10bfa70 {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 50%;
 }
 .top-bar ._li.data-v-f10bfa70 {
   flex: 1;

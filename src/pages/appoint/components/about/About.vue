@@ -1,6 +1,6 @@
 <template>
   <div class="appoint-about">
-    <tab></tab>
+    <tab @change="tabChange"></tab>
 
     <comment :watching="watching" @comment-like="commentLike" :commentList="comments"></comment>
   </div>
@@ -33,6 +33,16 @@
     methods: {
       commentLike ( params ) {
         this.$emit('comment-like', params)
+      },
+
+      tabChange ( index ) {
+        if (index) {
+          wx.showModal({
+            title: '提示',
+            content: '功能暂未开放！',
+            showCancel: false
+          })
+        }
       }
     }
   }

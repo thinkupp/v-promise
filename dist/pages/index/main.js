@@ -249,6 +249,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -276,7 +277,10 @@ if (false) {(function () {
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('ul', {
-    staticClass: "top-bar"
+    staticClass: "top-bar",
+    class: {
+      right: _vm.currentIndex === 1
+    }
   }, [_c('li', {
     class: {
       select: _vm.currentIndex === 0

@@ -140,7 +140,7 @@
           this.buttonAnimation = false;
         }).catch (err => {
           this.loading = false;
-          this.buttonAnimation =false;
+          this.buttonAnimation = false;
         })
       },
 
@@ -213,7 +213,6 @@
           appointId: this.appointData.id,
           commentId
         }).then(res => {
-//          const comment = this.comments[index];
           comment.loading = false;
           comment.parise = res.number;
           comment.isLike = res.like;

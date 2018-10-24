@@ -329,7 +329,7 @@
 }
 ._li .information .handle.animation ._i.data-v-35967a9c,
 ._li .information .handle.animation ._span.data-v-35967a9c {
-  animation: handleAnimation-data-v-35967a9c 0.3s linear infinite 0.3s;
+  animation: handleAnimation-data-v-35967a9c 0.6s linear infinite 0.3s;
 }
 ._li .content.data-v-35967a9c {
   color: #888;
@@ -419,24 +419,21 @@
 }
 
 .confirm.data-v-bf77ecd2 {
-  width: 100rpx;
-  height: 100rpx;
+  width: 130rpx;
+  height: 130rpx;
   background: #5677FC;
   color: #FFF;
   border-radius: 50%;
-  border: 10rpx solid #F8F8F8;
+  border: 15rpx solid #F8F8F8;
   position: absolute;
   left: 50%;
   bottom: -120rpx;
   transform: translateX(-50%);
-  font-size: 20rpx;
+  font-size: 26rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: scale 0.3s;
-}
-.confirm.finish.data-v-bf77ecd2 {
-  transform: scale(0);
+  animation: animation-data-v-bf77ecd2 1s linear infinite,borderColorAnimation-data-v-bf77ecd2 3s linear infinite;
 }
 .loading.data-v-bf77ecd2 {
   animation: loadingAnimation-data-v-bf77ecd2 0.6s linear infinite;

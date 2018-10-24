@@ -145,7 +145,7 @@
 
         &.animation {
           i, span {
-            animation: handleAnimation 0.3s linear infinite 0.3s;
+            animation: handleAnimation 0.6s linear infinite 0.3s;
           }
         }
       }

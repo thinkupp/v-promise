@@ -1,5 +1,5 @@
 <template>
-  <button class="confirm" :class="buttonClass"  @click="handleClick">{{buttonText}}</button>
+  <button class="confirm" :class="{loading}"  @click="handleClick">{{buttonText}}</button>
 </template>
 
 <script>
@@ -19,24 +19,6 @@
       buttonText: {
         type: String,
         default: '监督'
-      },
-
-      finish: {
-        type: Boolean,
-        default: false
-      }
-    },
-
-    computed: {
-      buttonClass () {
-        let className = '';
-        if (this.loading) {
-          className = 'loading';
-        }
-        if (this.finish) {
-          className += ' finish';
-        }
-        return className;
       }
     }
   }
@@ -44,26 +26,21 @@
 
 <style scoped lang="less">
   .confirm {
-    width: 100rpx;
-    height: 100rpx;
+    width: 130rpx;
+    height: 130rpx;
     background: #5677FC;
     color: #FFF;
     border-radius: 50%;
-    border: 10rpx solid #F8F8F8;
+    border: 15rpx solid #F8F8F8;
     position: absolute;
     left: 50%;
     bottom: -120rpx;
     transform: translateX(-50%);
-    font-size: 20rpx;
+    font-size: 26rpx;
     display: flex;
     justify-content: center;
     align-items: center;
-    /*animation: animation 1s linear infinite, borderColorAnimation 3s linear infinite;*/
-    transition: scale 0.3s;
-
-    &.finish {
-      transform: scale(0);
-    }
+    animation: animation 1s linear infinite, borderColorAnimation 3s linear infinite;
   }
 
   .loading {
