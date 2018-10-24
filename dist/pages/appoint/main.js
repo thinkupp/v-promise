@@ -152,10 +152,6 @@ if (false) {(function () {
     showClockInButton: function showClockInButton() {
       // 创建者本人 并且 约定进行中(目前暂且允许超时完成)
       return this.appointData.isCreator && !this.appointData.finishTime;
-    },
-    disableComment: function disableComment() {
-      // 不是监督者并且不是创建者的时候没有评论权
-      return !this.appointData.watching && getApp().globalData.userId !== this.appointData.creatorId;
     }
   },
 
@@ -317,8 +313,11 @@ if (false) {(function () {
 
 
     // 点赞/取消点赞评论
-    handleCommentLike: function handleCommentLike(commentId) {
+    handleCommentLike: function handleCommentLike(_ref) {
       var _this9 = this;
+
+      var commentId = _ref.commentId,
+          index = _ref.index;
 
       if (this.loading) return;
       this.loading = true;
@@ -326,7 +325,10 @@ if (false) {(function () {
         appointId: this.appointData.id,
         commentId: commentId
       }).then(function (res) {
-        console.log(res);
+        var comment = _this9.comments[index];
+        comment.parise = res.number;
+        comment.isLike = res.like;
+        _this9.$set(_this9.comments, index, comment);
         _this9.loading = false;
       }).catch(function (err) {
         _this9.loading = false;
@@ -808,12 +810,17 @@ if (false) {(function () {
       default: function _default() {
         return [];
       }
+    },
+
+    watching: {
+      type: Boolean,
+      default: false
     }
   },
 
   methods: {
-    commentLike: function commentLike(commentId) {
-      this.$emit('comment-like', commentId);
+    commentLike: function commentLike(params) {
+      this.$emit('comment-like', params);
     }
   }
 });
@@ -1026,6 +1033,11 @@ if (false) {(function () {
     commentList: {
       type: Array,
       default: null
+    },
+
+    watching: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -1034,8 +1046,11 @@ if (false) {(function () {
   },
 
   methods: {
-    handleLike: function handleLike(commentId) {
-      this.$emit('comment-like', commentId);
+    handleLike: function handleLike(commentId, index) {
+      this.$emit('comment-like', {
+        commentId: commentId,
+        index: index
+      });
     }
   }
 });
@@ -1130,6 +1145,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -1143,6 +1159,11 @@ if (false) {(function () {
     },
 
     noLine: {
+      type: Boolean,
+      default: false
+    },
+
+    watching: {
       type: Boolean,
       default: false
     }
@@ -1192,7 +1213,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     class: {
       creator: _vm.creator
     }
-  }, [_vm._v(_vm._s(_vm.comment.nickName))]), _vm._v(" "), (_vm.comment.watching) ? _c('span', {
+  }, [_vm._v(_vm._s(_vm.comment.nickName))]), _vm._v(" "), (_vm.watching) ? _c('span', {
     staticClass: "watcher"
   }, [_vm._v("督")]) : _vm._e(), _vm._v(" "), _c('span', {
     staticClass: "report"
@@ -1200,6 +1221,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "time"
   }, [_vm._v(_vm._s(_vm.createTime))])])]), _vm._v(" "), _c('div', {
     staticClass: "handle",
+    class: {
+      like: _vm.comment.isLike
+    },
     attrs: {
       "eventid": '0'
     },
@@ -1237,13 +1261,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     return _c('comment-list', {
       key: index,
       attrs: {
+        "watching": _vm.watching,
         "noLine": index === _vm.commentList.length - 1,
         "comment": comment,
         "eventid": '0-' + index,
         "mpcomid": '0-' + index
       },
       on: {
-        "like": _vm.handleLike
+        "like": function($event) {
+          _vm.handleLike($event, index)
+        }
       }
     })
   })) : (!_vm.commentList) ? _c('p', {
@@ -1281,6 +1308,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('comment', {
     attrs: {
+      "watching": _vm.watching,
       "commentList": _vm.comments,
       "eventid": '0',
       "mpcomid": '1'
@@ -1379,6 +1407,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -1393,10 +1422,9 @@ if (false) {(function () {
       this.value = '';
     },
     handleClick: function handleClick() {
-      if (this.disableComment) {
-        return this.$modal.noCommentAuthority();
-      }
-
+      // if (this.disableComment) {
+      //   return this.$modal.noCommentAuthority();
+      // }
       this.$emit('publish', this.value);
     }
   },
@@ -1428,7 +1456,6 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }],
     staticClass: "speak-input",
     attrs: {
-      "disabled": _vm.disableComment,
       "type": "text",
       "eventid": '0'
     },
@@ -1441,9 +1468,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         _vm.value = $event.target.value
       }, _vm.onInput]
     }
-  }), _vm._v(" "), (_vm.disableComment) ? _c('span', {
-    staticClass: "tip"
-  }, [_vm._v("监督者才可以评论")]) : _vm._e()]), _vm._v(" "), _c('button', {
+  })]), _vm._v(" "), _c('button', {
     staticClass: "speak-button",
     attrs: {
       "disabled": _vm.disableComment,
@@ -1862,6 +1887,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }) : _vm._e(), _vm._v(" "), _c('about', {
     attrs: {
       "comments": _vm.comments,
+      "watching": _vm.appointData.watching,
       "eventid": '3',
       "mpcomid": '5'
     },
@@ -1871,7 +1897,6 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('bottom', {
     ref: "bottom",
     attrs: {
-      "disable-comment": _vm.disableComment,
       "eventid": '4',
       "mpcomid": '6'
     },

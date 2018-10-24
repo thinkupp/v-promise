@@ -18,9 +18,9 @@
             v-if="showWatcherHandle"
             @support="handleSupport"></handle>
 
-    <about :comments="comments" @comment-like="handleCommentLike"></about>
+    <about :comments="comments" @comment-like="handleCommentLike" :watching="appointData.watching"></about>
 
-    <bottom :disable-comment="disableComment" ref="bottom" @publish="publish"></bottom>
+    <bottom ref="bottom" @publish="publish"></bottom>
   </div>
 </template>
 
@@ -68,10 +68,10 @@
         return this.appointData.isCreator && !this.appointData.finishTime;
       },
 
-      disableComment () {
-        // 不是监督者并且不是创建者的时候没有评论权
-        return !this.appointData.watching && getApp().globalData.userId !== this.appointData.creatorId;
-      }
+      // disableComment () {
+      //   // 不是监督者并且不是创建者的时候没有评论权
+      //   return !this.appointData.watching && getApp().globalData.userId !== this.appointData.creatorId;
+      // }
     },
 
     components: {
@@ -208,14 +208,17 @@
       },
 
       // 点赞/取消点赞评论
-      handleCommentLike ( commentId ) {
+      handleCommentLike ( {commentId, index} ) {
         if (this.loading) return;
         this.loading = true;
         this.$api.commentLike({
           appointId: this.appointData.id,
           commentId
         }).then(res => {
-          console.log(res);
+          const comment = this.comments[index];
+          comment.parise = res.number;
+          comment.isLike = res.like;
+          this.$set(this.comments, index, comment);
           this.loading = false;
         }).catch(err => {
           this.loading = false;

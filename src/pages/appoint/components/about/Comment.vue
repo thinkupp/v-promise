@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="comment" v-if="commentList && commentList.length">
-      <comment-list @like="handleLike" :noLine="index === commentList.length - 1" v-for="(comment, index) in commentList" :comment="comment" :key="index"></comment-list>
+      <comment-list :watching="watching" @like="handleLike($event, index)" :noLine="index === commentList.length - 1" v-for="(comment, index) in commentList" :comment="comment" :key="index"></comment-list>
     </ul>
 
     <p v-else-if="!commentList" class="loading">
@@ -24,6 +24,11 @@
       commentList: {
         type: Array,
         default: null
+      },
+
+      watching: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -32,8 +37,11 @@
     },
 
     methods: {
-      handleLike ( commentId ) {
-        this.$emit('comment-like', commentId)
+      handleLike ( commentId, index ) {
+        this.$emit('comment-like', {
+          commentId,
+          index
+        })
       }
     }
   }

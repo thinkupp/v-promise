@@ -3,17 +3,18 @@
     <div class="information">
       <div class="creator">
         <img :src="comment.avatar" class="avatar">
+
         <div class="right">
           <div class="top">
             <span class="nickname" :class="{creator}">{{comment.nickName}}</span>
-            <span class="watcher" v-if="comment.watching">督</span>
+            <span class="watcher" v-if="watching">督</span>
             <span class="report">举报</span>
           </div>
           <span class="time">{{createTime}}</span>
         </div>
       </div>
 
-      <div class="handle" @click="handleClick">
+      <div class="handle" :class="{like: comment.isLike}" @click="handleClick">
         <i class="iconfont icon-dianzan"></i>
         <span class="zan-number">{{comment.parise}}</span>
       </div>
@@ -36,6 +37,11 @@
       },
 
       noLine: {
+        type: Boolean,
+        default: false
+      },
+
+      watching: {
         type: Boolean,
         default: false
       }
@@ -61,7 +67,7 @@
 
 <style scoped lang="less">
   li {
-    margin-top: 50rpx;
+    margin-top: 30rpx;
     position: relative;
     padding-bottom: 10rpx;
 
@@ -121,17 +127,26 @@
 
       .handle {
         display: flex;
+        font-size: 28rpx;
+        align-items: center;
+        padding: 6rpx;
+        color: #CCC;
 
         .zan-number {
-          margin-left: 16rpx;
-          color: #333;
+          margin-left: 8rpx;
+        }
+
+        &.like {
+          .zan-number, i {
+            color: #ff0010
+          }
         }
       }
     }
 
     .content {
       color: #888;
-      margin-top: 20rpx;
+      margin-top: 10rpx;
       padding: 0 20rpx;
       box-sizing: border-box;
       word-wrap: break-word;

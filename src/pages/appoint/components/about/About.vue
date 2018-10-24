@@ -2,7 +2,7 @@
   <div class="appoint-about">
     <tab></tab>
 
-    <comment @comment-like="commentLike" :commentList="comments"></comment>
+    <comment :watching="watching" @comment-like="commentLike" :commentList="comments"></comment>
   </div>
 </template>
 
@@ -22,12 +22,17 @@
         default: function () {
           return []
         }
+      },
+
+      watching: {
+        type: Boolean,
+        default: false
       }
     },
 
     methods: {
-      commentLike (commentId) {
-        this.$emit('comment-like', commentId)
+      commentLike ( params ) {
+        this.$emit('comment-like', params)
       }
     }
   }

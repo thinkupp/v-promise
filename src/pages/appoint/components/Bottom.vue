@@ -1,8 +1,9 @@
 <template>
   <div class="speak">
     <div class="wrapper">
-      <input :disabled="disableComment" type="text" v-model="value" @input="onInput" class="speak-input">
-      <span class="tip" v-if="disableComment">监督者才可以评论</span>
+      <input type="text" v-model="value" @input="onInput" class="speak-input">
+      <!--<input :disabled="disableComment" type="text" v-model="value" @input="onInput" class="speak-input">-->
+      <!--<span class="tip" v-if="disableComment">监督者才可以评论</span>-->
     </div>
 
     <button :disabled="disableComment" class="speak-button" @click="handleClick">发布</button>
@@ -26,10 +27,9 @@
       },
 
       handleClick () {
-        if (this.disableComment) {
-          return this.$modal.noCommentAuthority();
-        }
-
+        // if (this.disableComment) {
+        //   return this.$modal.noCommentAuthority();
+        // }
         this.$emit('publish', this.value );
       }
     },
