@@ -8,7 +8,8 @@
         </view>
       </view>
       <view class="_div data-v-35967a9c handle {{[comment.isLike ? 'like' : '']}}" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
-        <view class="_i data-v-35967a9c iconfont icon-dianzan"></view> <label class="_span data-v-35967a9c zan-number">{{comment.parise}}</label>
+        <view class="_i data-v-35967a9c iconfont icon-weizan" wx:if="{{!comment.isLike}}"></view>
+        <view class="_i data-v-35967a9c iconfont icon-yizan" wx:else></view> <label class="_span data-v-35967a9c zan-number">{{comment.parise}}</label>
       </view>
     </view>
     <view class="_p data-v-35967a9c content">{{comment.content}}</view>

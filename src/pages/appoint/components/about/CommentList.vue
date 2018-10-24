@@ -15,7 +15,8 @@
       </div>
 
       <div class="handle" :class="{like: comment.isLike}" @click="handleClick">
-        <i class="iconfont icon-dianzan"></i>
+        <i class="iconfont icon-weizan" v-if="!comment.isLike"></i>
+        <i class="iconfont icon-yizan" v-else></i>
         <span class="zan-number">{{comment.parise}}</span>
       </div>
     </div>

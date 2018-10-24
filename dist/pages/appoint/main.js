@@ -1146,6 +1146,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -1230,8 +1231,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.handleClick
     }
-  }, [_c('i', {
-    staticClass: "iconfont icon-dianzan"
+  }, [(!_vm.comment.isLike) ? _c('i', {
+    staticClass: "iconfont icon-weizan"
+  }) : _c('i', {
+    staticClass: "iconfont icon-yizan"
   }), _vm._v(" "), _c('span', {
     staticClass: "zan-number"
   }, [_vm._v(_vm._s(_vm.comment.parise))])], 1)]), _vm._v(" "), _c('p', {
