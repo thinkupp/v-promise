@@ -7,7 +7,7 @@
           <view class="_div data-v-35967a9c top"><label class="_span data-v-35967a9c nickname {{[creator ? 'creator' : '']}}">{{comment.nickName}}</label> <label class="_span data-v-35967a9c watcher" wx:if="{{comment.watching}}">督</label> <label class="_span data-v-35967a9c report">举报</label></view> <label class="_span data-v-35967a9c time">{{createTime}}</label>
         </view>
       </view>
-      <view class="_div data-v-35967a9c handle">
+      <view class="_div data-v-35967a9c handle" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
         <view class="_i data-v-35967a9c iconfont icon-dianzan"></view> <label class="_span data-v-35967a9c zan-number">{{comment.parise}}</label>
       </view>
     </view>

@@ -263,6 +263,10 @@ var unSupporters = function unSupporters(appointId) {
   return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].unSupporters(appointId);
 };
 
+var commentLike = function commentLike(data) {
+  return __WEBPACK_IMPORTED_MODULE_2__api_comments__["a" /* default */].commentLike(data);
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   login: login,
   register: register,
@@ -276,7 +280,8 @@ var unSupporters = function unSupporters(appointId) {
   supportAppoint: supportAppoint,
   clockIn: clockIn,
   supporters: supporters,
-  unSupporters: unSupporters
+  unSupporters: unSupporters,
+  commentLike: commentLike
 });
 
 /***/ }),
@@ -427,9 +432,18 @@ var fetchAppointComments = function fetchAppointComments(_ref) {
   });
 };
 
+var commentLike = function commentLike(data) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/comment/like',
+    data: data,
+    method: 'POST'
+  });
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   publishComment: publishComment,
-  fetchAppointComments: fetchAppointComments
+  fetchAppointComments: fetchAppointComments,
+  commentLike: commentLike
 });
 
 /***/ }),

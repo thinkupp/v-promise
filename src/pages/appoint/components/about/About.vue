@@ -2,7 +2,7 @@
   <div class="appoint-about">
     <tab></tab>
 
-    <comment :commentList="comments"></comment>
+    <comment @comment-like="commentLike" :commentList="comments"></comment>
   </div>
 </template>
 
@@ -22,6 +22,12 @@
         default: function () {
           return []
         }
+      }
+    },
+
+    methods: {
+      commentLike (commentId) {
+        this.$emit('comment-like', commentId)
       }
     }
   }

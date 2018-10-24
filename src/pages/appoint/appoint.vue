@@ -18,7 +18,7 @@
             v-if="showWatcherHandle"
             @support="handleSupport"></handle>
 
-    <about :comments="comments"></about>
+    <about :comments="comments" @comment-like="handleCommentLike"></about>
 
     <bottom :disable-comment="disableComment" ref="bottom" @publish="publish"></bottom>
   </div>
@@ -201,6 +201,21 @@
               icon: 'none'
             })
           }
+          this.loading = false;
+        }).catch(err => {
+          this.loading = false;
+        })
+      },
+
+      // 点赞/取消点赞评论
+      handleCommentLike ( commentId ) {
+        if (this.loading) return;
+        this.loading = true;
+        this.$api.commentLike({
+          appointId: this.appointData.id,
+          commentId
+        }).then(res => {
+          console.log(res);
           this.loading = false;
         }).catch(err => {
           this.loading = false;

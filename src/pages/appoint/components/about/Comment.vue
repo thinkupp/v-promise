@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="comment" v-if="commentList && commentList.length">
-      <comment-list :noLine="index === commentList.length - 1" v-for="(comment, index) in commentList" :comment="comment" :key="index"></comment-list>
+      <comment-list @like="handleLike" :noLine="index === commentList.length - 1" v-for="(comment, index) in commentList" :comment="comment" :key="index"></comment-list>
     </ul>
 
     <p v-else-if="!commentList" class="loading">
@@ -29,6 +29,12 @@
 
     components: {
       CommentList
+    },
+
+    methods: {
+      handleLike ( commentId ) {
+        this.$emit('comment-like', commentId)
+      }
     }
   }
 </script>

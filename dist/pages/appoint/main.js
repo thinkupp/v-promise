@@ -313,6 +313,24 @@ if (false) {(function () {
       }).catch(function (err) {
         _this8.loading = false;
       });
+    },
+
+
+    // 点赞/取消点赞评论
+    handleCommentLike: function handleCommentLike(commentId) {
+      var _this9 = this;
+
+      if (this.loading) return;
+      this.loading = true;
+      this.$api.commentLike({
+        appointId: this.appointData.id,
+        commentId: commentId
+      }).then(function (res) {
+        console.log(res);
+        _this9.loading = false;
+      }).catch(function (err) {
+        _this9.loading = false;
+      });
     }
   },
 
@@ -791,6 +809,12 @@ if (false) {(function () {
         return [];
       }
     }
+  },
+
+  methods: {
+    commentLike: function commentLike(commentId) {
+      this.$emit('comment-like', commentId);
+    }
   }
 });
 
@@ -1007,6 +1031,12 @@ if (false) {(function () {
 
   components: {
     CommentList: __WEBPACK_IMPORTED_MODULE_0__CommentList_vue__["a" /* default */]
+  },
+
+  methods: {
+    handleLike: function handleLike(commentId) {
+      this.$emit('comment-like', commentId);
+    }
   }
 });
 
@@ -1125,6 +1155,12 @@ if (false) {(function () {
     creator: function creator() {
       return this.comment.userId === getApp().globalData.userId;
     }
+  },
+
+  methods: {
+    handleClick: function handleClick() {
+      this.$emit('like', this.comment.id);
+    }
   }
 });
 
@@ -1163,7 +1199,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("举报")])]), _vm._v(" "), _c('span', {
     staticClass: "time"
   }, [_vm._v(_vm._s(_vm.createTime))])])]), _vm._v(" "), _c('div', {
-    staticClass: "handle"
+    staticClass: "handle",
+    attrs: {
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.handleClick
+    }
   }, [_c('i', {
     staticClass: "iconfont icon-dianzan"
   }), _vm._v(" "), _c('span', {
@@ -1197,7 +1239,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "noLine": index === _vm.commentList.length - 1,
         "comment": comment,
+        "eventid": '0-' + index,
         "mpcomid": '0-' + index
+      },
+      on: {
+        "like": _vm.handleLike
       }
     })
   })) : (!_vm.commentList) ? _c('p', {
@@ -1236,7 +1282,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('comment', {
     attrs: {
       "commentList": _vm.comments,
+      "eventid": '0',
       "mpcomid": '1'
+    },
+    on: {
+      "comment-like": _vm.commentLike
     }
   })], 1)
 }
@@ -1812,13 +1862,17 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }) : _vm._e(), _vm._v(" "), _c('about', {
     attrs: {
       "comments": _vm.comments,
+      "eventid": '3',
       "mpcomid": '5'
+    },
+    on: {
+      "comment-like": _vm.handleCommentLike
     }
   }), _vm._v(" "), _c('bottom', {
     ref: "bottom",
     attrs: {
       "disable-comment": _vm.disableComment,
-      "eventid": '3',
+      "eventid": '4',
       "mpcomid": '6'
     },
     on: {

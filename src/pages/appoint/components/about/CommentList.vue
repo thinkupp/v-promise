@@ -13,7 +13,7 @@
         </div>
       </div>
 
-      <div class="handle">
+      <div class="handle" @click="handleClick">
         <i class="iconfont icon-dianzan"></i>
         <span class="zan-number">{{comment.parise}}</span>
       </div>
@@ -48,6 +48,12 @@
 
       creator () {
         return this.comment.userId === getApp().globalData.userId
+      }
+    },
+
+    methods: {
+      handleClick () {
+        this.$emit('like', this.comment.id);
       }
     }
   }
