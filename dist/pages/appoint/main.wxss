@@ -450,7 +450,7 @@
   padding: 60rpx 0 20rpx 0;
   margin-bottom: -50rpx;
 }
-.appoint-handle .finish.data-v-0f8d78a1 {
+.appoint-handle.finish.data-v-0f8d78a1 {
   padding: 20rpx 0;
 }
 .appoint-handle .title.data-v-0f8d78a1 {

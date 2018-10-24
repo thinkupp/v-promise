@@ -244,6 +244,10 @@ var supportAppoint = function supportAppoint(params) {
   return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].supportAppoint(params);
 };
 
+var clockIn = function clockIn(appointId) {
+  return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].clockIn(appointId);
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   login: login,
   register: register,
@@ -254,7 +258,8 @@ var supportAppoint = function supportAppoint(params) {
   fetchAppointComments: fetchAppointComments,
   fetchJoinAppoint: fetchJoinAppoint,
   watchAppoint: watchAppoint,
-  supportAppoint: supportAppoint
+  supportAppoint: supportAppoint,
+  clockIn: clockIn
 });
 
 /***/ }),
@@ -346,13 +351,22 @@ var supportAppoint = function supportAppoint(data) {
   });
 };
 
+var clockIn = function clockIn(appointId) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/appoint/clock-in',
+    data: { appointId: appointId },
+    method: 'POST'
+  });
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   createAppoint: createAppoint,
   fetchCreateAppoint: fetchCreateAppoint,
   fetchAppointDetail: fetchAppointDetail,
   fetchJoinAppoint: fetchJoinAppoint,
   watchAppoint: watchAppoint,
-  supportAppoint: supportAppoint
+  supportAppoint: supportAppoint,
+  clockIn: clockIn
 });
 
 /***/ }),

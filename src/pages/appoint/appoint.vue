@@ -5,13 +5,14 @@
     <div class="confirm-wrapper">
       <card :detail="appointData"></card>
       <confirm v-if="showWatchButton" @click="handleWatch" :loading="loading" :buttonText="watchButtonText"></confirm>
-      <confirm buttonText="打卡" v-else @click="handleWatch" :loading="loading"></confirm>
+      <confirm buttonText="打卡" v-if="showClockInButton" @click="handleClockIn" :loading="loading"></confirm>
     </div>
 
     <handle :isCreator="appointData.isCreator"
             :support="appointData.support"
             :unSupport="appointData.unSupport"
             :isSupport="appointData.isSupport"
+            :finish="!showClockInButton"
             v-if="showWatcherHandle"
             @support="handleSupport"></handle>
 
@@ -46,9 +47,9 @@
 
     computed: {
       showWatchButton () {
-        // 监督者本人
-        // 已结束/按时完成/超时完成
-        return !(this.appointData.isCreator || this.appointData.finishTime)
+        // 未开始/进行中
+        const appointStatus = this.appointData.status;
+        return appointStatus === 0 || appointStatus === 1;
       },
 
       showWatcherHandle () {
@@ -57,10 +58,15 @@
         return this.appointData.isCreator || this.appointData.watching;
       },
 
+      showClockInButton () {
+        // 创建者本人 并且 约定进行中(目前暂且允许超时完成)
+        return this.appointData.isCreator && !this.appointData.finishTime;
+      },
+
       disableComment () {
         // 不是监督者并且不是创建者的时候没有评论权
         return !this.appointData.watching && getApp().globalData.userId !== this.appointData.creatorId;
-      },
+      }
     },
 
     components: {
@@ -87,8 +93,8 @@
       },
 
       // 获取详情
-      fetchAppointDetail ( id ) {
-        this.$api.fetchAppointDetail( id ).then(res => {
+      fetchAppointDetail () {
+        this.$api.fetchAppointDetail( this.appointId ).then(res => {
           this.appointData = res;
           this.watchButtonText = '监督' + (this.appointData.u.gender === '2' ? '她' : '他');
           this.fetchAppointComments();
@@ -133,11 +139,19 @@
         }).then(res => {
           console.log(res);
         })
+      },
+
+      // 打卡
+      handleClockIn () {
+        this.$api.clockIn(this.appointData.id).then(res => {
+          this.fetchAppointDetail()
+        })
       }
     },
 
     onLoad ( e ) {
-      this.fetchAppointDetail( e.id );
+      this.appointId = e.id;
+      this.fetchAppointDetail();
     }
   }
 </script>

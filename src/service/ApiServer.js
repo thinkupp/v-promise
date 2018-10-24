@@ -40,6 +40,10 @@ const watchAppoint = function ( appointId ) {
 
 const supportAppoint = function ( params ) {
   return ApiAppoint.supportAppoint( params )
+};
+
+const clockIn = function ( appointId ) {
+  return ApiAppoint.clockIn( appointId );
 }
 
 export default {
@@ -52,5 +56,6 @@ export default {
   fetchAppointComments,
   fetchJoinAppoint,
   watchAppoint,
-  supportAppoint
+  supportAppoint,
+  clockIn
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="appoint-handle">
+  <div class="appoint-handle" :class="{finish}">
     <p class="title" v-if="!isCreator">觉得{{gender === '2' ? '她' : '他'}}能完成这个约定吗？</p>
     <p class="title" v-else>你的朋友们对你的支持情况：</p>
 
@@ -14,13 +14,13 @@
       </button>
     </div>
 
-    <div class="button-wrapper creator" v-else>
-      <div @click="handleSupport">
+    <div class="button-wrapper creator" :class="{finish: !paddingTop}" v-else>
+      <div>
         <i class="iconfont icon-zan"></i>
         <span>能完成</span>
         <span>{{support}}</span>
       </div>
-      <div @click="handleUnSupport">
+      <div>
         <i class="iconfont icon-daozan"></i>
         <span>完不成</span>
         <span>{{unSupport}}</span>
@@ -55,6 +55,11 @@
       unSupport: {
         type: Number,
         default: 0
+      },
+
+      finish: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -77,7 +82,7 @@
     padding: 60rpx 0 20rpx 0;
     margin-bottom: -50rpx;
 
-    .finish {
+    &.finish {
       padding: 20rpx 0;
     }
 

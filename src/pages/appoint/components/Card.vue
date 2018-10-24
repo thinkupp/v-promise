@@ -37,8 +37,8 @@
 
       <div class="information">
         <p><i class="iconfont icon-jiandu"></i>监督者 {{detail.watcherNumber}}</p>
-        <p><i class="iconfont icon-fangwenliang"></i>访问量 {{detail.accessNumber}}</p>
-        <p><i class="iconfont icon-fangwen"></i>浏览人次 {{detail.visitNumber}}</p>
+        <p><i class="iconfont icon-fangwenliang"></i>访问量 {{detail.access}}</p>
+        <p><i class="iconfont icon-fangwen"></i>浏览人次 {{detail.visit}}</p>
       </div>
     </div>
   </div>

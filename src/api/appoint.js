@@ -42,6 +42,14 @@ const supportAppoint = function ( data ) {
     method: 'POST',
     data
   })
+};
+
+const clockIn = function ( appointId ) {
+  return request({
+    url: '/appoint/clock-in',
+    data: { appointId },
+    method: 'POST'
+  })
 }
 
 export default {
@@ -50,5 +58,6 @@ export default {
   fetchAppointDetail,
   fetchJoinAppoint,
   watchAppoint,
-  supportAppoint
+  supportAppoint,
+  clockIn
 }

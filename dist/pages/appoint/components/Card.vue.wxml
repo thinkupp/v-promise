@@ -20,10 +20,10 @@
           <view class="_i data-v-18a455c9 iconfont icon-jiandu"></view>监督者 {{detail.watcherNumber}}
         </view>
         <view class="_p data-v-18a455c9">
-          <view class="_i data-v-18a455c9 iconfont icon-fangwenliang"></view>访问量 {{detail.accessNumber}}
+          <view class="_i data-v-18a455c9 iconfont icon-fangwenliang"></view>访问量 {{detail.access}}
         </view>
         <view class="_p data-v-18a455c9">
-          <view class="_i data-v-18a455c9 iconfont icon-fangwen"></view>浏览人次 {{detail.visitNumber}}
+          <view class="_i data-v-18a455c9 iconfont icon-fangwen"></view>浏览人次 {{detail.visit}}
         </view>
       </view>
     </view>
