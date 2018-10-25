@@ -17,12 +17,6 @@
     <an-more @change="anMoreChange"></an-more>
 
     <div class="more-option" v-show="showAnMore">
-      <van-cell-group>
-        <picker @change="autoCreateChange" :value="formData.autoCreate" :range="createRange">
-          <van-cell title="自动创建" label="00:00 系统自动创建" :value="createRange[autoCreateIndex]" value-class="create-type"></van-cell>
-        </picker>
-      </van-cell-group>
-
       <check-option
         :select="formData.onlookers"
         @change="onlookersChange"
@@ -30,7 +24,7 @@
         title="允许围观"></check-option>
 
       <check-option
-        :select="private"
+        :select="formData.private"
         @change="privateChange"
         @question="privateQuestion"
         title="私密"></check-option>
@@ -69,19 +63,16 @@
         timeRange: [[ 1, 2, 3 ], ['分钟', '小时']],
         showAction: false,
         showAnMore: false,
-        desc: '有你们在一旁，我可能动力会大些！',
         effectiveIndex: [1, 1],
         tmpEffectiveIndex: [1, 1],
         tmpTimeRange: [[ 1, 2, 3 ], ['分钟', '小时']],
         createType: 1,          // 约定类型
-        autoCreateIndex: 0,     // 自动创建选项
 
         formData: {
           startTime: '',
           onlookers: true,
           private: false,
           effectiveTime: 120,
-          autoCreate: '',
           type: '跑步',
           images: [],
           title: '有人监督，动力十足！',
@@ -154,7 +145,6 @@
         }
 
         this.formData.effectiveTime = time;
-        this.formData.autoCreate = this.createRange[this.autoCreateIndex];
         this.formData.type = this.typeRange[this.createType];
 
         this.$api.createAppoint( this.formData ).then(res => {
@@ -203,6 +193,36 @@
 
       uploadSuccess ( image ) {
         this.formData.images.push( image );
+      },
+    },
+
+    onLoad ( e ) {
+      if (e.edit) {
+        const editData = JSON.parse(JSON.stringify(wx.getStorageSync('APPONT_EDIT_DATA')));
+        wx.removeStorageSync('APPONT_EDIT_DATA');
+        /*
+        *
+        * startTime: '',
+          onlookers: true,
+          private: false,
+          effectiveTime: 120,
+          autoCreate: '',
+          type: '跑步',
+          images: [],
+          title: '有人监督，动力十足！',
+          des: ''
+        * */
+        // this.formData = {
+        //   onlookers: editData.onlookers,
+        //   effectiveTime: editData.effectiveTime,
+        //   type: editData.type,
+        //   title: editData.title,
+        //   des: editData.des,
+        //   private: editData.private,
+        //   images: editData.images,
+        // }
+        //
+        // console.log(this.formData);
       }
     },
 

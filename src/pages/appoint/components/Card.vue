@@ -1,8 +1,15 @@
 <template>
   <div class="appoint-card" v-if="detail.u">
     <div class="creator">
-      <img :src="detail.u.avatar" class="avatar">
-      <span class="nickname">{{detail.u.nickName}}</span>
+      <div class="user">
+        <img :src="detail.u.avatar" class="avatar">
+        <span class="nickname">{{detail.u.nickName}}</span>
+      </div>
+
+      <div class="handle">
+        <button @click="handleBack">回首页</button>
+        <button @click="handleEdit">编辑</button>
+      </div>
     </div>
 
     <!--<p class="des">"这里是创建的时候写的备注之类的话"</p>-->
@@ -66,13 +73,28 @@
       endTime () {
         return formatTime(this.detail.endTime)
       }
+    },
+
+    methods: {
+      handleBack () {
+        wx.switchTab({
+          url: '/pages/index/main'
+        })
+      },
+
+      handleEdit () {
+        wx.setStorageSync('APPONT_EDIT_DATA', this.detail);
+        wx.navigateTo({
+          url: '/pages/create/main?edit=1'
+        })
+      }
     }
   }
 </script>
 
 <style lang="less" scoped>
   .appoint-card {
-    padding: 26rpx 70rpx;
+    padding: 26rpx 50rpx;
     box-sizing: border-box;
     background: #FFF;
     border-radius: 20rpx;
@@ -102,6 +124,38 @@
     .creator {
       display: flex;
       align-items: center;
+      padding-bottom: 20rpx;
+      position: relative;
+      justify-content: space-between;
+
+      .user {
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .handle {
+        display: flex;
+        align-items: center;
+
+        button {
+          background: #FFF;
+          padding: 0 20rpx;
+          font-size: 30rpx;
+        }
+      }
+
+      &:after {
+        width: 100%;
+        height: 2rpx;
+        background: #CCC;
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, -50%) scaleY(0.5);
+        padding: 0 50rpx;
+      }
 
       .avatar {
         width: 60rpx;

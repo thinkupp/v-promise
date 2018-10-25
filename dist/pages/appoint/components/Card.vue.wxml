@@ -1,7 +1,10 @@
-<template name="2ecdeb29">
+<template name="0c7d2cc0">
   <view class="_div data-v-18a455c9 appoint-card" wx:if="{{detail.u}}">
     <view class="_div data-v-18a455c9 creator">
-      <image src="{{detail.u.avatar}}" class="_img data-v-18a455c9 avatar"></image> <label class="_span data-v-18a455c9 nickname">{{detail.u.nickName}}</label>
+      <view class="_div data-v-18a455c9 user">
+        <image src="{{detail.u.avatar}}" class="_img data-v-18a455c9 avatar"></image> <label class="_span data-v-18a455c9 nickname">{{detail.u.nickName}}</label>
+      </view>
+      <view class="_div data-v-18a455c9 handle"><button bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_button data-v-18a455c9">回首页</button> <button bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_button data-v-18a455c9">编辑</button></view>
     </view>
     <view class="_p data-v-18a455c9 des">{{detail.dsc}}</view>
     <view class="_p data-v-18a455c9 item-name">目标：</view>

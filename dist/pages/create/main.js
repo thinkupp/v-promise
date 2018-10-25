@@ -83,16 +83,13 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__component_TimePicker_vue__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_AnMore_vue__ = __webpack_require__(167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_CheckOption_vue__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_UploadImage_vue__ = __webpack_require__(179);
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component_TimePicker_vue__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_AnMore_vue__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_CheckOption_vue__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_UploadImage_vue__ = __webpack_require__(179);
+
 //
 //
 //
@@ -158,19 +155,16 @@ if (false) {(function () {
       timeRange: [[1, 2, 3], ['分钟', '小时']],
       showAction: false,
       showAnMore: false,
-      desc: '有你们在一旁，我可能动力会大些！',
       effectiveIndex: [1, 1],
       tmpEffectiveIndex: [1, 1],
       tmpTimeRange: [[1, 2, 3], ['分钟', '小时']],
       createType: 1, // 约定类型
-      autoCreateIndex: 0, // 自动创建选项
 
       formData: {
         startTime: '',
         onlookers: true,
         private: false,
         effectiveTime: 120,
-        autoCreate: '',
         type: '跑步',
         images: [],
         title: '有人监督，动力十足！',
@@ -235,7 +229,6 @@ if (false) {(function () {
       }
 
       this.formData.effectiveTime = time;
-      this.formData.autoCreate = this.createRange[this.autoCreateIndex];
       this.formData.type = this.typeRange[this.createType];
 
       this.$api.createAppoint(this.formData).then(function (res) {
@@ -284,11 +277,42 @@ if (false) {(function () {
     }
   },
 
+  onLoad: function onLoad(e) {
+    if (e.edit) {
+      var editData = JSON.parse(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()(wx.getStorageSync('APPONT_EDIT_DATA')));
+      wx.removeStorageSync('APPONT_EDIT_DATA');
+      /*
+      *
+      * startTime: '',
+        onlookers: true,
+        private: false,
+        effectiveTime: 120,
+        autoCreate: '',
+        type: '跑步',
+        images: [],
+        title: '有人监督，动力十足！',
+        des: ''
+      * */
+      // this.formData = {
+      //   onlookers: editData.onlookers,
+      //   effectiveTime: editData.effectiveTime,
+      //   type: editData.type,
+      //   title: editData.title,
+      //   des: editData.des,
+      //   private: editData.private,
+      //   images: editData.images,
+      // }
+      //
+      // console.log(this.formData);
+    }
+  },
+
+
   components: {
-    TimePicker: __WEBPACK_IMPORTED_MODULE_0__component_TimePicker_vue__["a" /* default */],
-    AnMore: __WEBPACK_IMPORTED_MODULE_1__components_AnMore_vue__["a" /* default */],
-    CheckOption: __WEBPACK_IMPORTED_MODULE_2__component_CheckOption_vue__["a" /* default */],
-    UploadImage: __WEBPACK_IMPORTED_MODULE_3__components_UploadImage_vue__["a" /* default */]
+    TimePicker: __WEBPACK_IMPORTED_MODULE_1__component_TimePicker_vue__["a" /* default */],
+    AnMore: __WEBPACK_IMPORTED_MODULE_2__components_AnMore_vue__["a" /* default */],
+    CheckOption: __WEBPACK_IMPORTED_MODULE_3__component_CheckOption_vue__["a" /* default */],
+    UploadImage: __WEBPACK_IMPORTED_MODULE_4__components_UploadImage_vue__["a" /* default */]
   }
 });
 
@@ -975,33 +999,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       expression: "showAnMore"
     }],
     staticClass: "more-option"
-  }, [_c('van-cell-group', {
-    attrs: {
-      "mpcomid": '7'
-    }
-  }, [_c('picker', {
-    attrs: {
-      "value": _vm.formData.autoCreate,
-      "range": _vm.createRange,
-      "eventid": '4'
-    },
-    on: {
-      "change": _vm.autoCreateChange
-    }
-  }, [_c('van-cell', {
-    attrs: {
-      "title": "自动创建",
-      "label": "00:00 系统自动创建",
-      "value": _vm.createRange[_vm.autoCreateIndex],
-      "value-class": "create-type",
-      "mpcomid": '6'
-    }
-  })], 1)], 1), _vm._v(" "), _c('check-option', {
+  }, [_c('check-option', {
     attrs: {
       "select": _vm.formData.onlookers,
       "title": "允许围观",
-      "eventid": '5',
-      "mpcomid": '8'
+      "eventid": '4',
+      "mpcomid": '6'
     },
     on: {
       "change": _vm.onlookersChange,
@@ -1009,10 +1012,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('check-option', {
     attrs: {
-      "select": _vm.private,
+      "select": _vm.formData.private,
       "title": "私密",
-      "eventid": '6',
-      "mpcomid": '9'
+      "eventid": '5',
+      "mpcomid": '7'
     },
     on: {
       "change": _vm.privateChange,
@@ -1020,22 +1023,22 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('upload-image', {
     attrs: {
-      "eventid": '7',
-      "mpcomid": '10'
+      "eventid": '6',
+      "mpcomid": '8'
     },
     on: {
       "success": _vm.uploadSuccess
     }
   }), _vm._v(" "), _c('van-cell-group', {
     attrs: {
-      "mpcomid": '13'
+      "mpcomid": '11'
     }
   }, [_c('van-field', {
     attrs: {
       "value": _vm.formData.title,
       "label": "标题",
       "placeholder": "请输入标题",
-      "mpcomid": '11'
+      "mpcomid": '9'
     }
   }), _vm._v(" "), _c('van-field', {
     attrs: {
@@ -1043,12 +1046,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "label": "描述",
       "type": "textarea",
       "placeholder": "描述",
-      "mpcomid": '12'
+      "mpcomid": '10'
     }
   })], 1)], 1), _vm._v(" "), _c('button', {
     staticClass: "submit-button",
     attrs: {
-      "eventid": '8'
+      "eventid": '7'
     },
     on: {
       "click": _vm.handleSubmit

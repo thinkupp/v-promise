@@ -219,8 +219,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('time-picker', __WEBPACK_I
 
 
 
-var base_ip = 'http://192.168.0.100:3000/api';
-// const base_ip = 'http://192.168.8.101:3000/api';
+// const base_ip = 'http://192.168.0.100:3000/api';
+var base_ip = 'http://192.168.8.101:3000/api';
 
 var request = function request(option) {
   return new __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
@@ -296,6 +296,7 @@ var somePlugin = {
     __WEBPACK_IMPORTED_MODULE_2_vue___default.a.mixin({
       onUnload: function onUnload() {
         if (this.$options.data) {
+          console.log(this.$data, this.$options.data());
           __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()(this.$data, this.$options.data());
         }
       }

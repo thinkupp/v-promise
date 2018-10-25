@@ -628,6 +628,13 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -651,6 +658,20 @@ if (false) {(function () {
     endTime: function endTime() {
       return Object(__WEBPACK_IMPORTED_MODULE_0__utils_index__["a" /* formatTime */])(this.detail.endTime);
     }
+  },
+
+  methods: {
+    handleBack: function handleBack() {
+      wx.switchTab({
+        url: '/pages/index/main'
+      });
+    },
+    handleEdit: function handleEdit() {
+      wx.setStorageSync('APPONT_EDIT_DATA', this.detail);
+      wx.navigateTo({
+        url: '/pages/create/main?edit=1'
+      });
+    }
   }
 });
 
@@ -664,6 +685,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "appoint-card"
   }, [_c('div', {
     staticClass: "creator"
+  }, [_c('div', {
+    staticClass: "user"
   }, [_c('img', {
     staticClass: "avatar",
     attrs: {
@@ -671,7 +694,23 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "nickname"
-  }, [_vm._v(_vm._s(_vm.detail.u.nickName))])]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.detail.u.nickName))])]), _vm._v(" "), _c('div', {
+    staticClass: "handle"
+  }, [_c('button', {
+    attrs: {
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.handleBack
+    }
+  }, [_vm._v("回首页")]), _vm._v(" "), _c('button', {
+    attrs: {
+      "eventid": '1'
+    },
+    on: {
+      "click": _vm.handleEdit
+    }
+  }, [_vm._v("编辑")])], 1)]), _vm._v(" "), _c('p', {
     staticClass: "des"
   }, [_vm._v(_vm._s(_vm.detail.dsc))]), _vm._v(" "), _c('p', {
     staticClass: "item-name"
