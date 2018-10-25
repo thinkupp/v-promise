@@ -17,7 +17,6 @@ const somePlugin = {
     Vue.mixin({
       onUnload() {
         if( this.$options.data ) {
-          console.log(this.$data, this.$options.data());
           Object.assign(this.$data, this.$options.data())
         }
       }

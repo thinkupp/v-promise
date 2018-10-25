@@ -14,8 +14,8 @@
             detail,
             systemInfo: wx.getSystemInfoSync(),
             scene: getApp().globalData.scene,
-          }).then(_ => {
-            console.log("login the", _);
+          }).then(res => {
+            getApp().globalData.u = res.u;
             wx.reLaunch({
               url: '/pages/index/main'
             })

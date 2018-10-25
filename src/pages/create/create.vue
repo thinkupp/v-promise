@@ -62,7 +62,7 @@
         createRange: ['从不', '每天', '工作日', '节假日'],
         timeRange: [[ 1, 2, 3 ], ['分钟', '小时']],
         showAction: false,
-        showAnMore: false,
+        showAnMore: true,
         effectiveIndex: [1, 1],
         tmpEffectiveIndex: [1, 1],
         tmpTimeRange: [[ 1, 2, 3 ], ['分钟', '小时']],

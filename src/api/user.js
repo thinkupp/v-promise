@@ -16,7 +16,16 @@ const register = function ( data ) {
   })
 };
 
+const accessRecord = function ( data ) {
+  return request({
+    url: '/users/access-record',
+    data,
+    method: 'POST'
+  })
+}
+
 export default {
   login,
   register,
+  accessRecord
 }

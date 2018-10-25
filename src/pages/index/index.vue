@@ -6,7 +6,7 @@
     </div>
 
     <div class="content" v-if="currentIndex === 0" :class="{empty: createAppointList.length === 0}">
-      <item v-for="(item, index) in createAppointList" :item="item" :key="index"></item>
+      <item :self="true" v-for="(item, index) in createAppointList" :item="item" :key="index"></item>
     </div>
 
     <div class="content" v-if="currentIndex === 1" :class="{empty: joinAppointList.length === 0}">

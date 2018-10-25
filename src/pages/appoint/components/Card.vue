@@ -37,7 +37,6 @@
 
     <div class="about">
       <div class="options">
-        <span v-if="detail.autoCreate !== '从不'">{{detail.autoCreate}}自动创建</span>
         <span v-if="detail.watcherMax">监督者上限 {{detail.watcherMax}}</span>
         <span v-if="!detail.onlookers">不允许围观</span>
       </div>

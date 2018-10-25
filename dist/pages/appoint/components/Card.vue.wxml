@@ -17,7 +17,7 @@
       <image src="{{image}}" wx:key="index" key="{{index}}" class="_img data-v-18a455c9 image" wx:for="{{detail.images}}" wx:for-index="index" wx:for-item="image"></image>
     </view>
     <view class="_div data-v-18a455c9 about">
-      <view class="_div data-v-18a455c9 options"><label wx:if="{{detail.autoCreate !== '从不'}}" class="_span data-v-18a455c9">{{detail.autoCreate}}自动创建</label> <label wx:if="{{detail.watcherMax}}" class="_span data-v-18a455c9">监督者上限 {{detail.watcherMax}}</label> <label wx:if="{{!detail.onlookers}}" class="_span data-v-18a455c9">不允许围观</label></view>
+      <view class="_div data-v-18a455c9 options"><label wx:if="{{detail.watcherMax}}" class="_span data-v-18a455c9">监督者上限 {{detail.watcherMax}}</label> <label wx:if="{{!detail.onlookers}}" class="_span data-v-18a455c9">不允许围观</label></view>
       <view class="_div data-v-18a455c9 information">
         <view class="_p data-v-18a455c9">
           <view class="_i data-v-18a455c9 iconfont icon-jiandu"></view>监督者 {{detail.watcherNumber}}

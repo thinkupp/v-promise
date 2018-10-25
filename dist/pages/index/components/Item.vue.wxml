@@ -1,8 +1,11 @@
 <template name="3bed9214">
   <view class="_div data-v-78ad695d appoint-item" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
     <view class="_div data-v-78ad695d top">
-      <view class="_div data-v-78ad695d user-info">
+      <view class="_div data-v-78ad695d user-info" wx:if="{{!self}}">
         <image src="{{item.u.avatar}}" class="_img data-v-78ad695d avatar"></image> <label class="_span data-v-78ad695d nickname">{{item.u.nickName}}</label>
+      </view>
+      <view class="_div data-v-78ad695d user-info" wx:else>
+        <image src="{{selfInfo.avatar}}" class="_img data-v-78ad695d avatar"></image> <label class="_span data-v-78ad695d nickname">{{selfInfo.nickName}}</label>
       </view> <label class="_span data-v-78ad695d create-time">{{createTime}}</label>
     </view>
     <view class="_p data-v-78ad695d appoint-type"><label class="_span data-v-78ad695d type">{{item.type}}</label></view>
