@@ -56,7 +56,11 @@ const unSupporters = function ( appointId ) {
 
 const commentLike = function ( data ) {
   return ApiComments.commentLike( data )
-}
+};
+
+const accessRecord = function ( data ) {
+  return ApiUser.accessRecord( data )
+};
 
 export default {
   login,
@@ -72,5 +76,6 @@ export default {
   clockIn,
   supporters,
   unSupporters,
-  commentLike
+  commentLike,
+  accessRecord
 }

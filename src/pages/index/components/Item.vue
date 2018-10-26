@@ -2,9 +2,14 @@
   <div class="appoint-item" @click="handleClick">
 
     <div class="top">
-      <div class="user-info">
+      <div class="user-info" v-if="!self">
         <img :src="item.u.avatar" class="avatar">
         <span class="nickname">{{item.u.nickName}}</span>
+      </div>
+
+      <div class="user-info" v-else>
+        <img :src="selfInfo.avatar" class="avatar">
+        <span class="nickname">{{selfInfo.nickName}}</span>
       </div>
 
       <span class="create-time">{{createTime}}</span>
@@ -15,7 +20,10 @@
     </p>
 
     <div class="footer">
-      <span class="startTime">开始时间：{{startTime}}</span>
+      <p class="startTime">
+        <span>{{item.title}}</span>
+        <!--<span v-if="!item.finishTime">开始时间：{{startTime}}</span>-->
+      </p>
 
       <div class="status">
         <span class="status-option" v-if="showWatchTip">{{watchTipContent}}</span>
@@ -34,7 +42,8 @@
   export default {
     data () {
       return {
-        status: appointStatus
+        status: appointStatus,
+        selfInfo: {}
       }
     },
 
@@ -47,6 +56,11 @@
       showWatchTip: {
         type: Boolean,
         default: false
+      },
+
+      self: {
+        type: Boolean,
+        default: true
       }
     },
 
@@ -65,6 +79,12 @@
           return '已监督'
         }
         return '监督中'
+      }
+    },
+
+    mounted () {
+      if (this.self) {
+        this.selfInfo = getApp().globalData.u;
       }
     },
 

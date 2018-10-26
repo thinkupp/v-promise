@@ -17,12 +17,6 @@
     <an-more @change="anMoreChange"></an-more>
 
     <div class="more-option" v-show="showAnMore">
-      <van-cell-group>
-        <picker @change="autoCreateChange" :value="formData.autoCreate" :range="createRange">
-          <van-cell title="自动创建" label="00:00 系统自动创建" :value="createRange[autoCreateIndex]" value-class="create-type"></van-cell>
-        </picker>
-      </van-cell-group>
-
       <check-option
         :select="formData.onlookers"
         @change="onlookersChange"
@@ -30,7 +24,7 @@
         title="允许围观"></check-option>
 
       <check-option
-        :select="private"
+        :select="formData.private"
         @change="privateChange"
         @question="privateQuestion"
         title="私密"></check-option>
@@ -41,17 +35,23 @@
         <van-field
           :value="formData.title"
           label="标题"
+		  @input="titleChange"
           placeholder="请输入标题"></van-field>
 
         <van-field
           :value="formData.des"
           label="描述"
           type="textarea"
+		  @input="desChange"
           placeholder="描述"></van-field>
       </van-cell-group>
     </div>
-
-    <button class="submit-button" @click="handleSubmit">提交</button>
+	
+	<div class="footer">
+		<button class="go-home" @click="goHome">首页</button>
+		<button class="submit-button" @click="handleSubmit">{{editing ? "编辑" : "提交"}}</button>
+	</div>
+   
   </div>
 </template>
 
@@ -68,25 +68,24 @@
         createRange: ['从不', '每天', '工作日', '节假日'],
         timeRange: [[ 1, 2, 3 ], ['分钟', '小时']],
         showAction: false,
-        showAnMore: false,
-        desc: '有你们在一旁，我可能动力会大些！',
+        showAnMore: true,
         effectiveIndex: [1, 1],
         tmpEffectiveIndex: [1, 1],
         tmpTimeRange: [[ 1, 2, 3 ], ['分钟', '小时']],
         createType: 1,          // 约定类型
-        autoCreateIndex: 0,     // 自动创建选项
 
         formData: {
           startTime: '',
           onlookers: true,
           private: false,
           effectiveTime: 120,
-          autoCreate: '',
           type: '跑步',
           images: [],
           title: '有人监督，动力十足！',
           des: ''
-        }
+        },
+
+		editing: false,
       }
     },
 
@@ -145,7 +144,11 @@
       },
 
       handleSubmit () {
-        const mIndex = this.effectiveIndex[0];
+		this.editing ? this.updateAppoint() : this.createAppoint();
+      },
+
+	  createAppoint () {
+	    const mIndex = this.effectiveIndex[0];
         const mType = this.effectiveIndex[1];
         let time = this.timeRange[0][mIndex];
         if (mType === 1) {
@@ -154,15 +157,22 @@
         }
 
         this.formData.effectiveTime = time;
-        this.formData.autoCreate = this.createRange[this.autoCreateIndex];
         this.formData.type = this.typeRange[this.createType];
-
         this.$api.createAppoint( this.formData ).then(res => {
           wx.redirectTo({
             url: '/pages/appoint/main?id=' + res.id
           })
         })
-      },
+	  },
+
+	  updateAppoint () {
+		this.formData.startTime = new Date(this.formData.startTime).getTime();
+		this.$api.updateAppoint(this.formData).then(res => {
+		  wx.redirectTo({
+			url: '/pages/appoint/main?id=' + res.id
+		  })
+		})
+	  },
 
       timeTypeChange ( e ) {
         const { column, value } = e.mp.detail;
@@ -203,6 +213,50 @@
 
       uploadSuccess ( image ) {
         this.formData.images.push( image );
+      },
+
+	  goHome () {
+		this.$route.toIndex();
+	  },
+
+	  titleChange ( e ) {
+		this.formData.title = e.mp.detail;
+	  },
+
+	  desChange ( e ) {
+		this.formData.des = e.mp.detail;
+	  }
+    },
+
+    onLoad ( e ) {
+      if (e.edit) {
+        const editData = JSON.parse(JSON.stringify(wx.getStorageSync('APPONT_EDIT_DATA')));
+        wx.removeStorageSync('APPONT_EDIT_DATA');
+        /*
+        *
+        * startTime: '',
+          onlookers: true,
+          private: false,
+          effectiveTime: 120,
+          autoCreate: '',
+          type: '跑步',
+          images: [],
+          title: '有人监督，动力十足！',
+          des: ''
+        * */
+         this.formData = {
+           onlookers: editData.onlookers,
+           effectiveTime: editData.effectiveTime,
+           type: editData.type,
+           title: editData.title,
+           des: editData.des,
+           private: editData.private,
+           images: editData.images,
+		   id: editData.id,
+         }
+        
+         console.log(this.formData);
+		 this.editing = true;
       }
     },
 
@@ -224,12 +278,25 @@
     /*overflow-y: auto;*/
 
     .submit-button {
-      height: 100rpx;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background: #aedefc;
+     
     }
   }
+
+	.footer {
+		display: flex;
+		height: 100rpx;
+      	position: absolute;
+      	left: 0;
+      	bottom: 0;
+      	width: 100%;
+
+		.go-home {
+			flex: 2;
+		}
+
+		.submit-button {
+		    background: #aedefc;
+			flex: 3;
+		}
+	}
 </style>

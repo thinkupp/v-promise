@@ -14,6 +14,7 @@
              code: e.code,
            }).then(res => {
              getApp().globalData.userId = res.id;
+             getApp().globalData.u = res.u;
              let path = '/pages/register/main';
              if ( res.regStatus ) {
                path = '/pages/index/main';

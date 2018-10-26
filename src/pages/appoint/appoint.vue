@@ -179,6 +179,12 @@
         if (this.loading) return;
         this.loading = true;
         this.$api.supporters(this.appointData.id).then(res => {
+          if (!res.length) {
+            wx.showToast({
+              title: '暂时没有支持者哦~',
+              icon: 'none'
+            })
+          }
           this.loading = false;
         }).catch(err => {
           this.loading = false;

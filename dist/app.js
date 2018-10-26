@@ -219,8 +219,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('time-picker', __WEBPACK_I
 
 
 
-var base_ip = 'http://192.168.0.100:3000/api';
-// const base_ip = 'http://192.168.8.101:3000/api';
+// const base_ip = 'http://192.168.0.100:3000/api';
+var base_ip = 'http://192.168.8.101:3000/api';
 
 var request = function request(option) {
   return new __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
@@ -477,6 +477,10 @@ var commentLike = function commentLike(data) {
   return __WEBPACK_IMPORTED_MODULE_2__api_comments__["a" /* default */].commentLike(data);
 };
 
+var accessRecord = function accessRecord(data) {
+  return __WEBPACK_IMPORTED_MODULE_0__api_user__["a" /* default */].accessRecord(data);
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   login: login,
   register: register,
@@ -491,7 +495,8 @@ var commentLike = function commentLike(data) {
   clockIn: clockIn,
   supporters: supporters,
   unSupporters: unSupporters,
-  commentLike: commentLike
+  commentLike: commentLike,
+  accessRecord: accessRecord
 });
 
 /***/ }),
@@ -519,9 +524,18 @@ var register = function register(data) {
   });
 };
 
+var accessRecord = function accessRecord(data) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/users/access-record',
+    data: data,
+    method: 'POST'
+  });
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   login: login,
-  register: register
+  register: register,
+  accessRecord: accessRecord
 });
 
 /***/ })
