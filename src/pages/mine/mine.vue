@@ -10,7 +10,7 @@
     </div>
 
     <van-cell-group>
-      <van-cell title="我的足迹" />
+      <van-cell title="我的足迹" @click="fetchVisitRecord"/>
       <van-cell title="意见反馈" />
       <van-cell title="举报" />
     </van-cell-group>
@@ -36,7 +36,14 @@
         this.$api.accessRecord([]).then(res => {
           console.log(res);
         })
-      }
+      },
+
+	  fetchVisitRecord () {
+		console.log('visit');
+		this.$api.accessRecord().then(res => {
+			console.log(res);
+		})
+	  }
     }
   }
 </script>
