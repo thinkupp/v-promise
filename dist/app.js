@@ -229,6 +229,7 @@ var request = function request(option) {
     if (!option.header) option.header = {};
     if (userId) option.header.uid = userId;
 
+    wx.showNavigationBarLoading();
     wx.request(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, option, {
       success: function success(res) {
         var data = res.data;
@@ -250,8 +251,13 @@ var request = function request(option) {
           reject(data);
         }
       },
+
       fail: function fail(err) {
         reject(err);
+      },
+
+      complete: function complete() {
+        wx.hideNavigationBarLoading();
       }
     }));
   });

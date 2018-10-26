@@ -16,7 +16,7 @@
   width: 330rpx;
   height: 100rpx;
   line-height: 100rpx;
-  background: #687CCC;
+  background: rgba(104, 124, 204, 0.9);
   font-size: 33rpx;
   position: absolute;
   bottom: -50rpx;
@@ -41,14 +41,14 @@
   text-align: center;
   align-items: center;
   font-size: 33rpx;
-  border-bottom-right-radius: 20%;
-  transition: all 0.3s linear;
-  background: linear-gradient(to right, #8dc8fc, #5677FC);
+  border-bottom-right-radius: 30%;
+  transition: border-radius 0.3s linear;
+  background: linear-gradient(to right, #a0c5fc, #5677FC);
 }
 .top-bar.right.data-v-f10bfa70 {
   border-bottom-right-radius: 0;
-  border-bottom-left-radius: 20%;
-  background: linear-gradient(to left, #8dc8fc, #5677FC);
+  border-bottom-left-radius: 30%;
+  background: linear-gradient(to left, #a0c5fc, #5677FC);
 }
 .top-bar ._li.data-v-f10bfa70 {
   flex: 1;
@@ -97,6 +97,7 @@
 }
 .appoint-item .appoint-type .type.data-v-78ad695d {
   position: relative;
+  color: #333;
 }
 .appoint-item .appoint-type .type.data-v-78ad695d:after,
 .appoint-item .appoint-type .type.data-v-78ad695d:before {

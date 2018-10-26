@@ -8,6 +8,7 @@ const request = function ( option ) {
     if ( !option.header ) option.header = {};
     if ( userId ) option.header.uid = userId;
 
+    wx.showNavigationBarLoading();
     wx.request(Object.assign({}, option, {
       success: function ( res ) {
         const data = res.data;
@@ -29,8 +30,13 @@ const request = function ( option ) {
           reject( data );
         }
       },
+
       fail: function ( err ) {
         reject( err )
+      },
+
+      complete: function () {
+        wx.hideNavigationBarLoading();
       }
     }))
   })

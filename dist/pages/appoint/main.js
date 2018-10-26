@@ -1212,6 +1212,11 @@ if (false) {(function () {
   methods: {
     handleClick: function handleClick() {
       this.$emit('like', this.comment.id);
+    },
+    handleClickContent: function handleClickContent() {
+      wx.showActionSheet({
+        itemList: ['回复', '举报', '复制']
+      });
     }
   }
 });
@@ -1268,7 +1273,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }) : _c('i', {
     staticClass: "iconfont icon-yizan"
   })], 1)]), _vm._v(" "), _c('p', {
-    staticClass: "content"
+    staticClass: "content",
+    attrs: {
+      "eventid": '1'
+    },
+    on: {
+      "click": _vm.handleClickContent
+    }
   }, [_vm._v(_vm._s(_vm.comment.content))])], 1)
 }
 var staticRenderFns = []

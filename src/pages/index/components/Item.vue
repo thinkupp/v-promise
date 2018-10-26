@@ -119,6 +119,10 @@
 
       .type {
         position: relative;
+        /*background-image: -webkit-linear-gradient(bottom, #a0c5fc, #5677FC);*/
+        /*-webkit-background-clip: text;*/
+        /*-webkit-text-fill-color: transparent;*/
+        color: #333;
       }
 
       .type:after, .type:before {

@@ -100,7 +100,8 @@
         width: 330rpx;
         height: 100rpx;
         line-height: 100rpx;
-        background: #687CCC;
+        /*background: #687CCC;*/
+        background: rgba(104, 124, 204, 0.9);
         font-size: 33rpx;
         position: absolute;
         bottom: -50rpx;

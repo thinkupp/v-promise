@@ -12,6 +12,6 @@
         <view class="_i data-v-35967a9c iconfont icon-yizan" wx:else></view>
       </view>
     </view>
-    <view class="_p data-v-35967a9c content">{{comment.content}}</view>
+    <view class="_p data-v-35967a9c content" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">{{comment.content}}</view>
   </view>
 </template>
