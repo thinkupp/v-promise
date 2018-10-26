@@ -20,7 +20,10 @@
     </p>
 
     <div class="footer">
-      <span class="startTime">开始时间：{{startTime}}</span>
+      <p class="startTime">
+        <span>{{item.title}}</span>
+        <!--<span v-if="!item.finishTime">开始时间：{{startTime}}</span>-->
+      </p>
 
       <div class="status">
         <span class="status-option" v-if="showWatchTip">{{watchTipContent}}</span>

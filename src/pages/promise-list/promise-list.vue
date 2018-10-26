@@ -12,8 +12,10 @@
       }
     },
 
-    created() {
-
+    mounted() {
+      this.$api.fetchAllAppoint().then(res => {
+        console.log(res);
+      })
     },
 
     methods: {

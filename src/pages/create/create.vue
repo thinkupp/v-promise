@@ -35,17 +35,23 @@
         <van-field
           :value="formData.title"
           label="标题"
+		  @input="titleChange"
           placeholder="请输入标题"></van-field>
 
         <van-field
           :value="formData.des"
           label="描述"
           type="textarea"
+		  @input="desChange"
           placeholder="描述"></van-field>
       </van-cell-group>
     </div>
-
-    <button class="submit-button" @click="handleSubmit">提交</button>
+	
+	<div class="footer">
+		<button class="go-home" @click="goHome">首页</button>
+		<button class="submit-button" @click="handleSubmit">{{editing ? "编辑" : "提交"}}</button>
+	</div>
+   
   </div>
 </template>
 
@@ -77,7 +83,9 @@
           images: [],
           title: '有人监督，动力十足！',
           des: ''
-        }
+        },
+
+		editing: false,
       }
     },
 
@@ -136,7 +144,11 @@
       },
 
       handleSubmit () {
-        const mIndex = this.effectiveIndex[0];
+		this.editing ? this.updateAppoint() : this.createAppoint();
+      },
+
+	  createAppoint () {
+	    const mIndex = this.effectiveIndex[0];
         const mType = this.effectiveIndex[1];
         let time = this.timeRange[0][mIndex];
         if (mType === 1) {
@@ -146,13 +158,21 @@
 
         this.formData.effectiveTime = time;
         this.formData.type = this.typeRange[this.createType];
-
         this.$api.createAppoint( this.formData ).then(res => {
           wx.redirectTo({
             url: '/pages/appoint/main?id=' + res.id
           })
         })
-      },
+	  },
+
+	  updateAppoint () {
+		this.formData.startTime = new Date(this.formData.startTime).getTime();
+		this.$api.updateAppoint(this.formData).then(res => {
+		  wx.redirectTo({
+			url: '/pages/appoint/main?id=' + res.id
+		  })
+		})
+	  },
 
       timeTypeChange ( e ) {
         const { column, value } = e.mp.detail;
@@ -194,6 +214,18 @@
       uploadSuccess ( image ) {
         this.formData.images.push( image );
       },
+
+	  goHome () {
+		this.$route.toIndex();
+	  },
+
+	  titleChange ( e ) {
+		this.formData.title = e.mp.detail;
+	  },
+
+	  desChange ( e ) {
+		this.formData.des = e.mp.detail;
+	  }
     },
 
     onLoad ( e ) {
@@ -212,17 +244,19 @@
           title: '有人监督，动力十足！',
           des: ''
         * */
-        // this.formData = {
-        //   onlookers: editData.onlookers,
-        //   effectiveTime: editData.effectiveTime,
-        //   type: editData.type,
-        //   title: editData.title,
-        //   des: editData.des,
-        //   private: editData.private,
-        //   images: editData.images,
-        // }
-        //
-        // console.log(this.formData);
+         this.formData = {
+           onlookers: editData.onlookers,
+           effectiveTime: editData.effectiveTime,
+           type: editData.type,
+           title: editData.title,
+           des: editData.des,
+           private: editData.private,
+           images: editData.images,
+		   id: editData.id,
+         }
+        
+         console.log(this.formData);
+		 this.editing = true;
       }
     },
 
@@ -244,12 +278,25 @@
     /*overflow-y: auto;*/
 
     .submit-button {
-      height: 100rpx;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background: #aedefc;
+     
     }
   }
+
+	.footer {
+		display: flex;
+		height: 100rpx;
+      	position: absolute;
+      	left: 0;
+      	bottom: 0;
+      	width: 100%;
+
+		.go-home {
+			flex: 2;
+		}
+
+		.submit-button {
+		    background: #aedefc;
+			flex: 3;
+		}
+	}
 </style>

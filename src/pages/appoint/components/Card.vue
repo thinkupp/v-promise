@@ -13,7 +13,7 @@
     </div>
 
     <!--<p class="des">"这里是创建的时候写的备注之类的话"</p>-->
-    <p class="des">{{detail.dsc}}</p>
+    <p class="des">{{detail.des}}</p>
 
     <p class="item-name">目标：</p>
     <p class="target-content">
