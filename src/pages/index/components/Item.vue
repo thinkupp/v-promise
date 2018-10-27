@@ -26,7 +26,7 @@
       </p>
 
       <div class="status" v-if="!item.lastTime">
-        <span class="status-option" v-if="showWatchTip">{{watchTipContent}}</span>
+        <span class="status-option" v-if="showWatchTip && item.watching">{{watchTipContent}}</span>
         <span class="status-option" :class="'status_' + item.status">{{status[item.status]}}</span>
       </div>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-		<Item v-for="(list, index) in listData" :key="index" :item="list"></Item>
+		<Item :showWatchTip="true" v-for="(list, index) in listData" :key="index" :item="list"></Item>
   </div>
 </template>
 
