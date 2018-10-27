@@ -5,11 +5,11 @@
       <button class="create-button" @click="handleCreate">创建</button>
     </div>
 
-    <div class="content" v-if="currentIndex === 0" :class="{empty: createAppointList.length === 0}">
+    <div class="content" v-show="currentIndex === 0" :class="{empty: createAppointList.length === 0}">
       <item :self="true" v-for="(item, index) in createAppointList" :item="item" :key="index"></item>
     </div>
 
-    <div class="content" v-if="currentIndex === 1" :class="{empty: joinAppointList.length === 0}">
+    <div class="content" v-show="currentIndex === 1" :class="{empty: joinAppointList.length === 0}">
       <item :showWatchTip="true" v-for="(item, index) in joinAppointList" :item="item" :key="index"></item>
     </div>
   </div>
