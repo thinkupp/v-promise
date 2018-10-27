@@ -10,7 +10,14 @@ const toAppointDetail = function ( id ) {
   to('/pages/appoint/main?id=' + id);
 }
 
+const toIndex = function () {
+  wx.switchTab({
+    url: '/pages/index/main'
+  })
+}
+
 export default {
   toCreate,
-  toAppointDetail
+  toAppointDetail,
+  toIndex
 };

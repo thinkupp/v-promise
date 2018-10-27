@@ -9,7 +9,7 @@
 
       <div class="user-info" v-else>
         <img :src="selfInfo.avatar" class="avatar">
-        <span class="nickname">{{selfInfo.nickName}}</span>
+        <span class="nickname">{{selfInfo.nickName}}{{selfInfo.a}}</span>
       </div>
 
       <span class="create-time">{{createTime}}</span>
@@ -25,10 +25,12 @@
         <!--<span v-if="!item.finishTime">开始时间：{{startTime}}</span>-->
       </p>
 
-      <div class="status">
+      <div class="status" v-if="!item.lastTime">
         <span class="status-option" v-if="showWatchTip">{{watchTipContent}}</span>
         <span class="status-option" :class="'status_' + item.status">{{status[item.status]}}</span>
       </div>
+
+			<span v-else>{{item.lastTime}}</span>
     </div>
   </div>
 </template>
@@ -60,7 +62,7 @@
 
       self: {
         type: Boolean,
-        default: true
+        default: false
       }
     },
 

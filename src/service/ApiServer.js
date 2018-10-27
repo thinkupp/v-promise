@@ -62,6 +62,14 @@ const accessRecord = function ( data ) {
   return ApiUser.accessRecord( data )
 };
 
+const updateAppoint = function ( data ) {
+  return ApiAppoint.updateAppoint( data )
+};
+
+const fetchAllAppoint = function ( data ) {
+	return ApiAppoint.allAppoint( data );
+}
+
 export default {
   login,
   register,
@@ -77,5 +85,7 @@ export default {
   supporters,
   unSupporters,
   commentLike,
-  accessRecord
+  accessRecord,
+  updateAppoint,
+	fetchAllAppoint
 }
