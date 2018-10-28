@@ -1,32 +1,33 @@
 <template>
   <div class="appoint-handle" :class="{finish}">
-    <p class="title" v-if="!isCreator">觉得{{gender === '2' ? '她' : '他'}}能完成这个约定吗？</p>
-    <p class="title" v-else>你的朋友们对你的支持情况：</p>
+    <p class="title" v-if="isCreator">你的朋友们对你的支持情况：</p>
+    <p class="title" v-else>觉得{{gender === '2' ? '她' : '他'}}能完成这个约定吗？</p>
 
-    <div class="button-wrapper" v-if="support === -1">
+    <div class="button-wrapper" v-if="!isCreator && support === -1">
       <button @click="handleSupport">
         <i class="iconfont icon-zan"></i>
         能完成
       </button>
+
       <button @click="handleUnSupport">
         <i class="iconfont icon-daozan"></i>
         完不成
       </button>
     </div>
 
-    <div class="button-wrapper creator" :class="{finish: !paddingTop}" v-else>
+    <div class="button-wrapper creator" v-if="isCreator || (!isCreator && support > -1)" :class="{finish: !paddingTop}">
       <div @click="fetchSupporters">
-        <i class="iconfont icon-zan"></i>
-        <span>能完成</span>
-        <span>{{support}}</span>
+         <i class="iconfont icon-zan"></i>
+         <span>能完成</span>
+         <span>{{support}}</span>
       </div>
       <div @click="fetchUnSupporters">
-        <i class="iconfont icon-daozan"></i>
-        <span>完不成</span>
-        <span>{{unSupport}}</span>
+         <i class="iconfont icon-daozan"></i>
+         <span>完不成</span>
+         <span>{{unSupport}}</span>
       </div>
     </div>
-  </div>
+ </div>
 </template>
 
 <script>
