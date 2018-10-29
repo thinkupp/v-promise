@@ -18,8 +18,8 @@ const fetchCreateAppoint = function ( params ) {
   return ApiAppoint.fetchCreateAppoint( params )
 };
 
-const fetchAppointDetail = function ( id ) {
-  return ApiAppoint.fetchAppointDetail( id );
+const fetchAppointDetail = function ( params ) {
+  return ApiAppoint.fetchAppointDetail( params );
 };
 
 const publishComment = function ( data ) {

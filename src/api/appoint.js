@@ -14,9 +14,11 @@ const fetchCreateAppoint = function ( { id, size } ) {
   })
 };
 
-const fetchAppointDetail = function ( id ) {
+const fetchAppointDetail = function ( data ) {
   return request({
-    url: '/appoint/detail/' + id
+    url: '/appoint/detail',
+    data,
+    method: 'POST'
   })
 };
 

@@ -103,8 +103,11 @@
       },
 
       // 获取详情
-      fetchAppointDetail () {
-        this.$api.fetchAppointDetail( this.appointId ).then(res => {
+      fetchAppointDetail (refresh) {
+        this.$api.fetchAppointDetail({
+          refresh,
+          appointId: this.appointId
+        }).then(res => {
           this.appointData = res;
           this.watchButtonText = '监督' + (this.appointData.u.gender === '2' ? '她' : '他');
           this.fetchAppointComments();
@@ -166,6 +169,7 @@
           support
         }).then(res => {
           this.loading = false;
+          // this.appointData.isSupport = support;
           this.fetchAppointDetail();
         }).catch(err => {
           this.loading = false;
