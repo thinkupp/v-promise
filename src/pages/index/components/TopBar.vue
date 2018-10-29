@@ -3,7 +3,6 @@
     <li :class="{select: currentIndex === 0}" @click="handleClick(0)">
       <span class="title">我创建的</span>
     </li>
-
     <li :class="{select: currentIndex === 1}" @click="handleClick(1)">
       <span class="title">我参与的</span>
     </li>
@@ -37,14 +36,14 @@
     text-align: center;
     align-items: center;
     font-size: 33rpx;
-    border-bottom-right-radius: 20%;
-    transition: all 0.3s linear;
-    background: linear-gradient(to right, #8dc8fc,  #5677FC);
+    border-bottom-right-radius: 30%;
+    transition: border-radius 0.3s linear;
+    background: linear-gradient(to right, #a0c5fc,  #5677FC);
 
     &.right {
       border-bottom-right-radius: 0;
-      border-bottom-left-radius: 20%;
-      background: linear-gradient(to left, #8dc8fc,  #5677FC);
+      border-bottom-left-radius: 30%;
+      background: linear-gradient(to left, #a0c5fc,  #5677FC);
     }
 
     li {

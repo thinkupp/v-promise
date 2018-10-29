@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <p class="content">{{comment.content}}</p>
+    <p class="content" @click="handleClickContent">{{comment.content}}</p>
   </li>
 </template>
 
@@ -61,6 +61,12 @@
     methods: {
       handleClick () {
         this.$emit('like', this.comment.id);
+      },
+
+      handleClickContent () {
+        wx.showActionSheet({
+          itemList: ['回复', '举报', '复制']
+        })
       }
     }
   }

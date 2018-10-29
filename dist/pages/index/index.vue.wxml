@@ -1,8 +1,0 @@
-<import src="/pages/index/components/TopBar.vue.wxml" />
-<import src="/pages/index/components/Item.vue.wxml" /><template name="1696d95a">
-  <view class="_div data-v-33b487e3 index">
-    <view class="_div data-v-33b487e3 bar-wrapper"><template bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="7b52d9bf"></template> <button class="_button data-v-33b487e3 create-button" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">创建</button></view>
-    <view class="_div data-v-33b487e3 content {{[createAppointList.length === 0 ? 'empty' : '']}}" wx:if="{{currentIndex === 0}}"><template wx:key="index" data="{{...$root[$kk+'1-'+index], $root}}" is="3bed9214" wx:for="{{createAppointList}}" wx:for-index="index" wx:for-item="item"></template></view>
-    <view class="_div data-v-33b487e3 content {{[joinAppointList.length === 0 ? 'empty' : '']}}" wx:if="{{currentIndex === 1}}"><template wx:key="index" data="{{...$root[$kk+'2-'+index], $root}}" is="3bed9214" wx:for="{{joinAppointList}}" wx:for-index="index" wx:for-item="item"></template></view>
-  </view>
-</template>

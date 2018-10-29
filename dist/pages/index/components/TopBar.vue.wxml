@@ -1,6 +1,0 @@
-<template name="7b52d9bf">
-  <view class="_ul data-v-f10bfa70 top-bar {{[currentIndex === 1 ? 'right' : '']}}">
-    <view bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_li data-v-f10bfa70 {{[currentIndex === 0 ? 'select' : '']}}"><label class="_span data-v-f10bfa70 title">我创建的</label></view>
-    <view bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_li data-v-f10bfa70 {{[currentIndex === 1 ? 'select' : '']}}"><label class="_span data-v-f10bfa70 title">我参与的</label></view>
-  </view>
-</template>

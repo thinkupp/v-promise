@@ -1,4 +1,0 @@
-<import src="/pages/appoint/components/about/AboutTab.vue.wxml" />
-<import src="/pages/appoint/components/about/Comment.vue.wxml" /><template name="78e6998b">
-  <view class="_div data-v-79f9e462 appoint-about"><template bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="105a07ba"></template> <template bindcomment-like="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'1'], $root}}" is="5714c9dd"></template></view>
-</template>

@@ -62,12 +62,21 @@ const accessRecord = function ( data ) {
   return ApiUser.accessRecord( data )
 };
 
+<<<<<<< HEAD
 const fetchAllAppoint = function ( data ) {
   return ApiAppoint.fetchAllAppoint( data )
 };
 
 const updateAppoint = function ( data ) {
   return ApiAppoint.updateAppoint( data  )
+=======
+const updateAppoint = function ( data ) {
+  return ApiAppoint.updateAppoint( data )
+};
+
+const fetchAllAppoint = function ( data ) {
+	return ApiAppoint.allAppoint( data );
+>>>>>>> b277e4b5dc464556857103ed9858f406e86049b7
 }
 
 export default {
@@ -86,6 +95,11 @@ export default {
   unSupporters,
   commentLike,
   accessRecord,
+<<<<<<< HEAD
   fetchAllAppoint,
   updateAppoint
+=======
+  updateAppoint,
+	fetchAllAppoint
+>>>>>>> b277e4b5dc464556857103ed9858f406e86049b7
 }

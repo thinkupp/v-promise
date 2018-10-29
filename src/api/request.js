@@ -1,5 +1,5 @@
-// const base_ip = 'http://192.168.0.100:3000/api';
-const base_ip = 'http://192.168.8.101:3000/api';
+const base_ip = 'http://192.168.0.100:3000/api';
+// const base_ip = 'http://192.168.8.101:3000/api';
 
 const request = function ( option ) {
   return new Promise((resolve, reject) => {
@@ -8,6 +8,7 @@ const request = function ( option ) {
     if ( !option.header ) option.header = {};
     if ( userId ) option.header.uid = userId;
 
+    wx.showNavigationBarLoading();
     wx.request(Object.assign({}, option, {
       success: function ( res ) {
         const data = res.data;
@@ -29,8 +30,13 @@ const request = function ( option ) {
           reject( data );
         }
       },
+
       fail: function ( err ) {
         reject( err )
+      },
+
+      complete: function () {
+        wx.hideNavigationBarLoading();
       }
     }))
   })
