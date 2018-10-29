@@ -3,19 +3,21 @@
     <p class="title" v-if="isCreator">你的朋友们对你的支持情况：</p>
     <p class="title" v-else>觉得{{gender === '2' ? '她' : '他'}}能完成这个约定吗？</p>
 
-    <div class="button-wrapper" v-if="!isCreator && support === -1">
-      <button @click="handleSupport">
+    <div class="button-wrapper" v-if="!isCreator">
+        <button @click="handleSupport" :class="{select: isSupport === 1}">
         <i class="iconfont icon-zan"></i>
-        能完成
+        <span>能完成</span>
+        <span v-if="isSupport !== -1" class="support">{{support}}</span>
       </button>
 
-      <button @click="handleUnSupport">
+      <button @click="handleUnSupport" :class="{select: isSupport === 0}">
         <i class="iconfont icon-daozan"></i>
-        完不成
+        <span>完不成</span>
+        <span v-if="isSupport !== -1" class="support">{{unSupport}}</span>
       </button>
     </div>
 
-    <div class="button-wrapper creator" v-if="isCreator || (!isCreator && support > -1)" :class="{finish: !paddingTop}">
+    <div class="button-wrapper creator" v-else :class="{finish: !paddingTop}">
       <div @click="fetchSupporters">
          <i class="iconfont icon-zan"></i>
          <span>能完成</span>
@@ -120,6 +122,17 @@
         i {
           margin-right: 26rpx;
         }
+
+        .support {
+          margin-left: 10rpx;
+        }
+      }
+
+      button.select {
+        background: #3F51B5;
+          span, i {
+            color: #ffdd65;
+          }
       }
     }
 

@@ -63,6 +63,8 @@
   import CheckOption from '../../component/CheckOption.vue'
   import UploadImage from './components/UploadImage.vue'
   import { formatTime  } from '../../utils/index.js'
+  const MINUTES_OPTION = [5, 10, 20, 30, 40, 50];
+  const HOURS_OPTION = [1, 2, 3];
 
   export default {
     data() {
@@ -92,7 +94,7 @@
       }
     },
 
-    onLoad() {
+    mounted() {
       this.initData();
     },
 
@@ -113,7 +115,15 @@
         let day = time.getDate();
         day = day < 10 ? '0' + day : day;
         part1 = part1 || `${year}-${month}-${day}`;
-        start = start || '07:30';
+
+        // 计算十分钟以后的时间
+        let minutes = time.getMinutes();
+        time.setMinutes(minutes + 10);
+        let hours = time.getHours();
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = time.getMinutes();
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        start = start || (`${hours}:${minutes}`);
         end = end || '08:00';
         this.formData.startTime = part1 + ' ' + start;
       },
@@ -180,11 +190,11 @@
       timeTypeChange(e) {
         const {column, value} = e.mp.detail;
 
-        let newValue = [5, 10, 20, 30, 40, 50];
+        let newValue = MINUTES_OPTION;
 
         if (column) {
           if (value === 1) {
-            newValue = [1, 2, 3];
+            newValue = HOURS_OPTION;
           }
 
           this.$set(this.timeRange, 0, newValue);
@@ -235,18 +245,6 @@
       if (e.edit) {
         const editData = JSON.parse(JSON.stringify(wx.getStorageSync('APPONT_EDIT_DATA')));
         wx.removeStorageSync('APPONT_EDIT_DATA');
-        /*
-        *
-        * startTime: '',
-          onlookers: true,
-          private: false,
-          effectiveTime: 120,
-          autoCreate: '',
-          type: '跑步',
-          images: [],
-          title: '有人监督，动力十足！',
-          des: ''
-        * */
 
         this.formData = {
           onlookers: editData.onlookers,
@@ -260,6 +258,33 @@
           startTime: formatTime(editData.startTime),
         }
 
+        // 计算有效时间
+          let numberIndex = 0;
+          let typeIndex = 0;
+          if (editData.effectiveTime > 60) {
+            // 小时
+            typeIndex = 1;
+            const hours = Math.floor(editData.effectiveTime / 60);
+            
+            for (let i = 0; i < HOURS_OPTION.length; i++) {
+                if (hours === HOURS_OPTION[i]) {
+                    numberIndex = i;
+                    break;
+                }
+            }
+            this.$set(this.timeRange, 0, HOURS_OPTION);
+          } else {
+            // 分钟
+            this.$set(this.timeRange, 0, MINUTES_OPTION);
+              for(let i = 0; i < MINUTES_OPTION.length; i++) {
+                  if (editData.effectiveTime === MINUTES_OPTION[i]) {
+                    numberIndex = i;
+                    break;
+                  }
+              }
+          }
+
+          this.effectiveIndex = [numberIndex, typeIndex];
         this.editing = true;
       }
     },

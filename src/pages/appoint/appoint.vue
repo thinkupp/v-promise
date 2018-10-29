@@ -54,7 +54,7 @@
       showWatchButton () {
         // 未开始/进行中
         const appointStatus = this.appointData.status;
-        return appointStatus === 0 || appointStatus === 1;
+        return !this.appointData.watching && (appointStatus === 0 || appointStatus === 1);
       },
 
       showWatcherHandle () {
@@ -138,6 +138,7 @@
         this.$api.watchAppoint(this.appointData.id).then(res => {
           this.loading = false;
           this.buttonAnimation = false;
+          this.fetchAppointDetail();
         }).catch (err => {
           this.loading = false;
           this.buttonAnimation = false;
@@ -146,6 +147,17 @@
 
       // 支持/不支持 某约定
       handleSupport ( support ) {
+        const isSupport = this.appointData.isSupport;
+        if (isSupport > -1) {
+            if (support === isSupport) {
+                return wx.showModal({
+                    title: '提示',
+                    content: '您已经选择了' + (support ? '支持' : '反对'),
+                    showCancel: false
+                })
+            }
+        }
+
         // 0 -> 不支持 1 -> 支持
         if (this.loading) return;
         this.loading = true;
@@ -154,6 +166,7 @@
           support
         }).then(res => {
           this.loading = false;
+          this.fetchAppointDetail();
         }).catch(err => {
           this.loading = false;
         })
