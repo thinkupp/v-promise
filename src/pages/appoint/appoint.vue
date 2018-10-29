@@ -103,7 +103,7 @@
       },
 
       // 获取详情
-      fetchAppointDetail (refresh) {
+      fetchAppointDetail (refresh = true) {
         this.$api.fetchAppointDetail({
           refresh,
           appointId: this.appointId
@@ -249,7 +249,7 @@
 
     onLoad ( e ) {
       this.appointId = e.id;
-      this.fetchAppointDetail();
+      this.fetchAppointDetail(false);
     }
   }
 </script>
