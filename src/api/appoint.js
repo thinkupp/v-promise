@@ -64,6 +64,22 @@ const unSupporters = function ( appointId ) {
   })
 }
 
+const fetchAllAppoint = function ( data ) {
+  return request({
+    url: '/appoint/all',
+    method: 'POST',
+    data
+  })
+}
+
+const updateAppoint = function ( data ) {
+  return request({
+	url: '/appoint/create',
+	data,
+	method: 'PUT'
+  })
+}
+
 export default {
   createAppoint,
   fetchCreateAppoint,
@@ -73,5 +89,7 @@ export default {
   supportAppoint,
   clockIn,
   supporters,
-  unSupporters
+  unSupporters,
+  fetchAllAppoint,
+  updateAppoint
 }

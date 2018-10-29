@@ -6,7 +6,7 @@
       </view>
       <view class="_div data-v-18a455c9 handle"><button bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_button data-v-18a455c9">回首页</button> <button bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_button data-v-18a455c9">编辑</button></view>
     </view>
-    <view class="_p data-v-18a455c9 des">{{detail.dsc}}</view>
+    <view class="_p data-v-18a455c9 des">{{detail.des}}</view>
     <view class="_p data-v-18a455c9 item-name">目标：</view>
     <view class="_p data-v-18a455c9 target-content"><label class="_span data-v-18a455c9">[</label>
       {{detail.type}}

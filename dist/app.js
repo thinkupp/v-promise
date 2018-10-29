@@ -79,6 +79,22 @@ var unSupporters = function unSupporters(appointId) {
   });
 };
 
+var fetchAllAppoint = function fetchAllAppoint(data) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/appoint/all',
+    method: 'POST',
+    data: data
+  });
+};
+
+var updateAppoint = function updateAppoint(data) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__request__["a" /* default */])({
+    url: '/appoint/create',
+    data: data,
+    method: 'PUT'
+  });
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   createAppoint: createAppoint,
   fetchCreateAppoint: fetchCreateAppoint,
@@ -88,7 +104,9 @@ var unSupporters = function unSupporters(appointId) {
   supportAppoint: supportAppoint,
   clockIn: clockIn,
   supporters: supporters,
-  unSupporters: unSupporters
+  unSupporters: unSupporters,
+  fetchAllAppoint: fetchAllAppoint,
+  updateAppoint: updateAppoint
 });
 
 /***/ }),
@@ -475,6 +493,14 @@ var accessRecord = function accessRecord(data) {
   return __WEBPACK_IMPORTED_MODULE_0__api_user__["a" /* default */].accessRecord(data);
 };
 
+var fetchAllAppoint = function fetchAllAppoint(data) {
+  return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].fetchAllAppoint(data);
+};
+
+var updateAppoint = function updateAppoint(data) {
+  return __WEBPACK_IMPORTED_MODULE_1__api_appoint__["a" /* default */].updateAppoint(data);
+};
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   login: login,
   register: register,
@@ -490,7 +516,9 @@ var accessRecord = function accessRecord(data) {
   supporters: supporters,
   unSupporters: unSupporters,
   commentLike: commentLike,
-  accessRecord: accessRecord
+  accessRecord: accessRecord,
+  fetchAllAppoint: fetchAllAppoint,
+  updateAppoint: updateAppoint
 });
 
 /***/ }),

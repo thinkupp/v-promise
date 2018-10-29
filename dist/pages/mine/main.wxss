@@ -1,1 +1,28 @@
 @import "../../common/vendor.wxss";
+
+.mine.data-v-46d448c6 {
+  background: #F8F8F8;
+  height: 100%;
+  overflow: auto;
+}
+.mine .user-info.data-v-46d448c6 {
+  display: flex;
+  background: #FFF;
+  padding: 25rpx 30rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.mine .user-info .avatar.data-v-46d448c6 {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.mine .user-info .nickname.data-v-46d448c6 {
+  font-size: 28rpx;
+  color: #333;
+  margin-left: 20rpx;
+}
+.mine .user-info .update-button.data-v-46d448c6 {
+  background: transparent;
+}

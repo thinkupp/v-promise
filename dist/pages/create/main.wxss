@@ -6,13 +6,20 @@
   position: relative;
   min-height: 100%;
 }
-.create .submit-button.data-v-0949817d {
+.footer.data-v-0949817d {
+  display: flex;
   height: 100rpx;
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
+}
+.footer .go-home.data-v-0949817d {
+  flex: 2;
+}
+.footer .submit-button.data-v-0949817d {
   background: #aedefc;
+  flex: 3;
 }
 
 .more.data-v-202347ea {

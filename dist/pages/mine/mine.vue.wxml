@@ -1,3 +1,14 @@
 <template name="0007c258">
-  <view class="_div data-v-46d448c6 mine"> Mine <button bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_button data-v-46d448c6">足迹</button></view>
+  <view class="_div data-v-46d448c6 mine">
+    <view class="_div data-v-46d448c6 user-info">
+      <view class="_div data-v-46d448c6 about">
+        <image class="_img data-v-46d448c6 avatar" src="{{userInfo.avatar}}"></image> <label class="_span data-v-46d448c6 nickname">{{userInfo.nickName}}</label>
+      </view> <button class="_button data-v-46d448c6 update-button">更新资料</button>
+    </view>
+    <van-cell-group class="_van-cell-group data-v-46d448c6">
+      <van-cell title="我的足迹" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_van-cell data-v-46d448c6"></van-cell>
+      <van-cell title="意见反馈" class="_van-cell data-v-46d448c6"></van-cell>
+      <van-cell title="举报" class="_van-cell data-v-46d448c6"></van-cell>
+    </van-cell-group> <button bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_button data-v-46d448c6">足迹</button>
+  </view>
 </template>

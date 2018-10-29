@@ -280,6 +280,12 @@ if (false) {(function () {
       if (this.loading) return;
       this.loading = true;
       this.$api.supporters(this.appointData.id).then(function (res) {
+        if (!res.length) {
+          wx.showToast({
+            title: '暂时没有支持者哦~',
+            icon: 'none'
+          });
+        }
         _this7.loading = false;
       }).catch(function (err) {
         _this7.loading = false;
@@ -711,7 +717,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }, [_vm._v("编辑")])], 1)]), _vm._v(" "), _c('p', {
     staticClass: "des"
-  }, [_vm._v(_vm._s(_vm.detail.dsc))]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.detail.des))]), _vm._v(" "), _c('p', {
     staticClass: "item-name"
   }, [_vm._v("目标：")]), _vm._v(" "), _c('p', {
     staticClass: "target-content"

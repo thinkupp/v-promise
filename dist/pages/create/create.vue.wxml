@@ -15,9 +15,10 @@
     </van-cell-group> <template bindchange="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'5'], $root}}" is="b135605a"></template>
     <view class="_div data-v-0949817d more-option" hidden="{{!(showAnMore)}}"><template bindchange="handleProxy" bindquestion="handleProxy" title="允许围观" data-eventid="{{'4'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'6'], $root}}" is="37eeaebb"></template> <template bindchange="handleProxy" bindquestion="handleProxy" title="私密" data-eventid="{{'5'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'7'], $root}}" is="37eeaebb"></template> <template bindsuccess="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'8'], $root}}" is="1d471ff9"></template>
       <van-cell-group class="_van-cell-group data-v-0949817d">
-        <van-field value="{{formData.title}}" label="标题" placeholder="请输入标题" class="_van-field data-v-0949817d"></van-field>
-        <van-field value="{{formData.des}}" label="描述" type="textarea" placeholder="描述" class="_van-field data-v-0949817d"></van-field>
+        <van-field value="{{formData.title}}" label="标题" bindinput="handleProxy" placeholder="请输入标题" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_van-field data-v-0949817d"></van-field>
+        <van-field value="{{formData.des}}" label="描述" type="textarea" bindinput="handleProxy" placeholder="描述" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_van-field data-v-0949817d"></van-field>
       </van-cell-group>
-    </view> <button class="_button data-v-0949817d submit-button" bindtap="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}">提交</button>
+    </view>
+    <view class="_div data-v-0949817d footer"><button class="_button data-v-0949817d go-home" bindtap="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}">首页</button> <button class="_button data-v-0949817d submit-button" bindtap="handleProxy" data-eventid="{{'10'}}" data-comkey="{{$k}}">{{editing ? "编辑" : "提交"}}</button></view>
   </view>
 </template>

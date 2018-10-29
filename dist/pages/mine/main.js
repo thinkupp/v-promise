@@ -74,17 +74,41 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
-    return {};
+    return {
+      userInfo: { nickName: '' }
+    };
   },
-  created: function created() {},
+  mounted: function mounted() {
+    this.userInfo = getApp().globalData.u;
+  },
 
 
   methods: {
     fetchAccessRecord: function fetchAccessRecord() {
       this.$api.accessRecord([]).then(function (res) {
+        console.log(res);
+      });
+    },
+    fetchVisitRecord: function fetchVisitRecord() {
+      console.log('visit');
+      this.$api.accessRecord().then(function (res) {
         console.log(res);
       });
     }
@@ -100,9 +124,45 @@ if (false) {(function () {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "mine"
-  }, [_vm._v("\n  Mine\n  "), _c('button', {
+  }, [_c('div', {
+    staticClass: "user-info"
+  }, [_c('div', {
+    staticClass: "about"
+  }, [_c('img', {
+    staticClass: "avatar",
     attrs: {
-      "eventid": '0'
+      "src": _vm.userInfo.avatar
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "nickname"
+  }, [_vm._v(_vm._s(_vm.userInfo.nickName))])]), _vm._v(" "), _c('button', {
+    staticClass: "update-button"
+  }, [_vm._v("更新资料")])], 1), _vm._v(" "), _c('van-cell-group', {
+    attrs: {
+      "mpcomid": '3'
+    }
+  }, [_c('van-cell', {
+    attrs: {
+      "title": "我的足迹",
+      "eventid": '0',
+      "mpcomid": '0'
+    },
+    on: {
+      "click": _vm.fetchVisitRecord
+    }
+  }), _vm._v(" "), _c('van-cell', {
+    attrs: {
+      "title": "意见反馈",
+      "mpcomid": '1'
+    }
+  }), _vm._v(" "), _c('van-cell', {
+    attrs: {
+      "title": "举报",
+      "mpcomid": '2'
+    }
+  })], 1), _vm._v(" "), _c('button', {
+    attrs: {
+      "eventid": '1'
     },
     on: {
       "click": _vm.fetchAccessRecord

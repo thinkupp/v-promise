@@ -94,7 +94,11 @@ if (false) {(function () {
   data: function data() {
     return {};
   },
-  created: function created() {},
+  mounted: function mounted() {
+    this.$api.fetchAllAppoint().then(function (res) {
+      console.log(res);
+    });
+  },
 
 
   methods: {}

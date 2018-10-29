@@ -141,6 +141,12 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -169,7 +175,9 @@ if (false) {(function () {
         images: [],
         title: '有人监督，动力十足！',
         des: ''
-      }
+      },
+
+      editing: false
     };
   },
   mounted: function mounted() {
@@ -220,6 +228,9 @@ if (false) {(function () {
       this.$modal.privateQuestion();
     },
     handleSubmit: function handleSubmit() {
+      this.editing ? this.updateAppoint() : this.createAppoint();
+    },
+    createAppoint: function createAppoint() {
       var mIndex = this.effectiveIndex[0];
       var mType = this.effectiveIndex[1];
       var time = this.timeRange[0][mIndex];
@@ -230,8 +241,15 @@ if (false) {(function () {
 
       this.formData.effectiveTime = time;
       this.formData.type = this.typeRange[this.createType];
-
       this.$api.createAppoint(this.formData).then(function (res) {
+        wx.redirectTo({
+          url: '/pages/appoint/main?id=' + res.id
+        });
+      });
+    },
+    updateAppoint: function updateAppoint() {
+      this.formData.startTime = new Date(this.formData.startTime).getTime();
+      this.$api.updateAppoint(this.formData).then(function (res) {
         wx.redirectTo({
           url: '/pages/appoint/main?id=' + res.id
         });
@@ -274,6 +292,15 @@ if (false) {(function () {
     },
     uploadSuccess: function uploadSuccess(image) {
       this.formData.images.push(image);
+    },
+    goHome: function goHome() {
+      this.$route.toIndex();
+    },
+    titleChange: function titleChange(e) {
+      this.formData.title = e.mp.detail;
+    },
+    desChange: function desChange(e) {
+      this.formData.des = e.mp.detail;
     }
   },
 
@@ -293,17 +320,19 @@ if (false) {(function () {
         title: '有人监督，动力十足！',
         des: ''
       * */
-      // this.formData = {
-      //   onlookers: editData.onlookers,
-      //   effectiveTime: editData.effectiveTime,
-      //   type: editData.type,
-      //   title: editData.title,
-      //   des: editData.des,
-      //   private: editData.private,
-      //   images: editData.images,
-      // }
-      //
-      // console.log(this.formData);
+      this.formData = {
+        onlookers: editData.onlookers,
+        effectiveTime: editData.effectiveTime,
+        type: editData.type,
+        title: editData.title,
+        des: editData.des,
+        private: editData.private,
+        images: editData.images,
+        id: editData.id
+      };
+
+      console.log(this.formData);
+      this.editing = true;
     }
   },
 
@@ -1038,7 +1067,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "value": _vm.formData.title,
       "label": "标题",
       "placeholder": "请输入标题",
+      "eventid": '7',
       "mpcomid": '9'
+    },
+    on: {
+      "input": _vm.titleChange
     }
   }), _vm._v(" "), _c('van-field', {
     attrs: {
@@ -1046,17 +1079,31 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "label": "描述",
       "type": "textarea",
       "placeholder": "描述",
+      "eventid": '8',
       "mpcomid": '10'
+    },
+    on: {
+      "input": _vm.desChange
     }
-  })], 1)], 1), _vm._v(" "), _c('button', {
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "footer"
+  }, [_c('button', {
+    staticClass: "go-home",
+    attrs: {
+      "eventid": '9'
+    },
+    on: {
+      "click": _vm.goHome
+    }
+  }, [_vm._v("首页")]), _vm._v(" "), _c('button', {
     staticClass: "submit-button",
     attrs: {
-      "eventid": '7'
+      "eventid": '10'
     },
     on: {
       "click": _vm.handleSubmit
     }
-  }, [_vm._v("提交")])], 1)
+  }, [_vm._v(_vm._s(_vm.editing ? "编辑" : "提交"))])], 1)], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
