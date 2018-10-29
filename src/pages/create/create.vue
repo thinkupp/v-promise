@@ -62,6 +62,7 @@
   import AnMore from './components/AnMore.vue'
   import CheckOption from '../../component/CheckOption.vue'
   import UploadImage from './components/UploadImage.vue'
+  import { formatTime  } from '../../utils/index.js'
 
   export default {
     data() {
@@ -70,7 +71,7 @@
         createRange: ['从不', '每天', '工作日', '节假日'],
         timeRange: [[1, 2, 3], ['分钟', '小时']],
         showAction: false,
-        showAnMore: true,
+        showAnMore: false,
         effectiveIndex: [1, 1],
         tmpEffectiveIndex: [1, 1],
         tmpTimeRange: [[1, 2, 3], ['分钟', '小时']],
@@ -91,7 +92,7 @@
       }
     },
 
-    mounted() {
+    onLoad() {
       this.initData();
     },
 
@@ -246,6 +247,7 @@
           title: '有人监督，动力十足！',
           des: ''
         * */
+
         this.formData = {
           onlookers: editData.onlookers,
           effectiveTime: editData.effectiveTime,
@@ -255,9 +257,9 @@
           private: editData.private,
           images: editData.images,
           id: editData.id,
+          startTime: formatTime(editData.startTime),
         }
 
-        console.log(this.formData);
         this.editing = true;
       }
     },

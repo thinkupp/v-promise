@@ -35,13 +35,14 @@
       }
     },
 
-    mounted() {
+    onLoad() {
       this.initData();
     },
 
     methods: {
       initData () {
         const time = this.value.split(' ');
+        console.log(time);
         this.part1 = time[0];
         this.part2 = time[1];
       },

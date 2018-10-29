@@ -8,7 +8,7 @@
 
       <div class="handle">
         <button @click="handleBack">回首页</button>
-        <button @click="handleEdit">编辑</button>
+        <button @click="handleEdit" v-if="detail.isCreator">编辑</button>
       </div>
     </div>
 

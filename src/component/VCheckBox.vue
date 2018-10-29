@@ -19,7 +19,7 @@
       }
     },
 
-    mounted() {
+    onLoad () {
       this.select = this.value;
     },
 
