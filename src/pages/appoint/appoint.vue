@@ -18,7 +18,7 @@
             v-if="showWatcherHandle"
             @support="handleSupport"></handle>
 
-    <about :comments="comments" @comment-like="handleCommentLike" :watching="appointData.watching"></about>
+    <about :disableComment="disableComment" :comments="comments" @comment-like="handleCommentLike" :watching="appointData.watching"></about>
 
     <bottom ref="bottom" @publish="publish"></bottom>
   </div>
@@ -68,10 +68,9 @@
         return this.appointData.isCreator && !this.appointData.finishTime;
       },
 
-      // disableComment () {
-      //   // 不是监督者并且不是创建者的时候没有评论权
-      //   return !this.appointData.watching && getApp().globalData.userId !== this.appointData.creatorId;
-      // }
+      disableComment () {
+        return !this.appointData || JSON.stringify(this.appointData) === "{}"
+      }
     },
 
     components: {
