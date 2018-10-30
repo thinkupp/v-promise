@@ -39,6 +39,7 @@
       <div class="options">
         <span v-if="detail.watcherMax">监督者上限 {{detail.watcherMax}}</span>
         <span v-if="!detail.onlookers">不允许围观</span>
+        <span v-if="detail.private">不在大厅显示</span>
       </div>
 
       <div class="information">

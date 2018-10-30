@@ -47,6 +47,7 @@
         loading: false,
         buttonAnimation: false,
         commentLoading: false,
+        appointId: null
       }
     },
 
@@ -246,7 +247,14 @@
       }
     },
 
+    onShow () {
+        if (!this.appointId) {
+            this.$route.toIndex();
+        }
+    },
+
     onLoad ( e ) {
+      console.log(e, 'on load');
       this.appointId = e.id;
       this.fetchAppointDetail(false);
     }

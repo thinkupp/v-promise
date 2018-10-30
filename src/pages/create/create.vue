@@ -157,10 +157,6 @@
       },
 
       handleSubmit() {
-        this.editing ? this.updateAppoint() : this.createAppoint();
-      },
-
-      createAppoint() {
         const mIndex = this.effectiveIndex[0];
         const mType = this.effectiveIndex[1];
         let time = this.timeRange[0][mIndex];
@@ -171,19 +167,22 @@
 
         this.formData.effectiveTime = time;
         this.formData.type = this.typeRange[this.createType];
+        this.editing ? this.updateAppoint() : this.createAppoint();
+      },
+
+      createAppoint() {
         this.$api.createAppoint(this.formData).then(res => {
-          wx.redirectTo({
-            url: '/pages/appoint/main?id=' + res.id
-          })
+            wx.redirectTo({
+                url: '/pages/appoint/main?id=' + res.id
+            })
         })
       },
 
       updateAppoint() {
-        this.formData.startTime = new Date(this.formData.startTime).getTime();
         this.$api.updateAppoint(this.formData).then(res => {
-          wx.redirectTo({
-            url: '/pages/appoint/main?id=' + res.id
-          })
+            wx.redirectTo({
+                url: '/pages/appoint/main?id=' + res.id
+            })
         })
       },
 
@@ -255,37 +254,29 @@
           private: editData.private,
           images: editData.images,
           id: editData.id,
-          startTime: formatTime(editData.startTime),
+          startTime: formatTime(editData.startTime)
         }
 
         // 计算有效时间
           let numberIndex = 0;
           let typeIndex = 0;
-          if (editData.effectiveTime > 60) {
+          
+          if (editData.effectiveTime >= 60) {
             // 小时
             typeIndex = 1;
             const hours = Math.floor(editData.effectiveTime / 60);
-            
-            for (let i = 0; i < HOURS_OPTION.length; i++) {
-                if (hours === HOURS_OPTION[i]) {
-                    numberIndex = i;
-                    break;
-                }
-            }
+            numberIndex = HOURS_OPTION.indexOf(hours);
             this.$set(this.timeRange, 0, HOURS_OPTION);
           } else {
             // 分钟
             this.$set(this.timeRange, 0, MINUTES_OPTION);
-              for(let i = 0; i < MINUTES_OPTION.length; i++) {
-                  if (editData.effectiveTime === MINUTES_OPTION[i]) {
-                    numberIndex = i;
-                    break;
-                  }
-              }
+            numberIndex = MINUTES_OPTION.indexOf(editData.effectiveTime);
           }
 
-          this.effectiveIndex = [numberIndex, typeIndex];
-        this.editing = true;
+          // 类型
+         this.createType = this.typeRange.indexOf(editData.type); 
+         this.effectiveIndex = [numberIndex, typeIndex];
+         this.editing = true;
       }
     },
 
