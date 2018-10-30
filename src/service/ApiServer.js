@@ -70,6 +70,10 @@ const updateAppoint = function ( data ) {
   return ApiAppoint.updateAppoint( data )
 };
 
+const fetchWatcher = function ( id, data  ) {
+  return ApiAppoint.fetchWatcher( id, data  );
+}
+
 export default {
   login,
   register,
@@ -88,4 +92,5 @@ export default {
   accessRecord,
   fetchAllAppoint,
   updateAppoint,
+  fetchWatcher
 }

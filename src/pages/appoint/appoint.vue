@@ -3,7 +3,7 @@
     <header-tip :detail="appointData"></header-tip>
 
     <div class="confirm-wrapper">
-      <card :detail="appointData"></card>
+      <card :detail="appointData" @watcher="fetchWatcher"></card>
       <confirm v-if="showWatchButton" @click="handleWatch" :loading="buttonAnimation" :buttonText="watchButtonText"></confirm>
       <confirm buttonText="打卡" v-if="showClockInButton" @click="handleClockIn" :loading="buttonAnimation"></confirm>
     </div>
@@ -21,6 +21,8 @@
     <about :disableComment="disableComment" :comments="comments" @comment-like="handleCommentLike" :watching="appointData.watching"></about>
 
     <bottom ref="bottom" @publish="publish"></bottom>
+
+    <member :title="memberTitle" v-if="showMember" :listData="memberData" @close="showMember = false"></member>
   </div>
 </template>
 
@@ -31,6 +33,7 @@
   import Bottom from './components/Bottom.vue'
   import Confirm from './components/Confirm.vue'
   import Handle from './components/Handle.vue'
+  import Member from './components/Member.vue'
 
   export default {
     data() {
@@ -47,7 +50,16 @@
         loading: false,
         buttonAnimation: false,
         commentLoading: false,
-        appointId: null
+        appointId: null,
+        showMember: false,
+
+        memberData: [],
+        memberTitle: '',
+
+        searchData: {
+          startId: -1,
+          size: 30
+        }
       }
     },
 
@@ -80,7 +92,8 @@
       About,
       Bottom,
       Confirm,
-      Handle
+      Handle,
+      Member
     },
 
     methods: {
@@ -244,6 +257,14 @@
           comment.loading = false;
           this.$set(this.comments, index, comment);
         })
+      },
+
+      fetchWatcher () {
+          this.$api.fetchWatcher(this.appointId, this.searchData).then(res => {
+              this.memberTitle = '监督者列表';
+              this.memberData = res;
+              this.showMember = true;
+          })
       }
     },
 

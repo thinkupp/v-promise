@@ -82,6 +82,14 @@ const updateAppoint = function ( data ) {
   })
 };
 
+const fetchWatcher = function ( appointId, data  ) {
+  return request({
+    url: '/appoint/watcher/' + appointId,
+    data,
+    method: 'POST'
+  })
+}
+
 export default {
   createAppoint,
   fetchCreateAppoint,
@@ -94,4 +102,5 @@ export default {
   unSupporters,
   fetchAllAppoint,
   updateAppoint,
+  fetchWatcher
 }
