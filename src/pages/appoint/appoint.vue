@@ -209,12 +209,9 @@
         if (this.loading) return;
         this.loading = true;
         this.$api.supporters(this.appointData.id).then(res => {
-          if (!res.length) {
-            wx.showToast({
-              title: '暂时没有支持者哦~',
-              icon: 'none'
-            })
-          }
+          this.memberData = res;
+          this.memberTitle = '支持者列表';
+          this.showMember = true;
           this.loading = false;
         }).catch(err => {
           this.loading = false;
@@ -226,12 +223,9 @@
         if (this.loading) return;
         this.loading = true;
         this.$api.unSupporters(this.appointData.id).then(res => {
-          if (!res.length) {
-            wx.showToast({
-              title: '暂时没有反对者哦',
-              icon: 'none'
-            })
-          }
+          this.memberData = res;
+          this.memberTitle = '反对者列表';
+          this.showMember = true;
           this.loading = false;
         }).catch(err => {
           this.loading = false;

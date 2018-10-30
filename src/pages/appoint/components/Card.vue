@@ -24,7 +24,9 @@
 
     <p class="item-name">有效打卡时间：</p>
     <p class="clock-in-time">
-      <span class="end-time">{{endTime}}</span> 之前
+      <span class="end-time">{{startTime}}</span>
+      <span> - </span>
+      <span class="end-time">{{endTime}}</span>
     </p>
 
     <div class="images" v-if="detail.images.length">
@@ -36,19 +38,41 @@
     <!--</p>-->
 
     <div class="about">
+      <ul class="information">
+        <li>
+            <!-- <i class="iconfont icon-fangwenliang"></i>-->
+         <span>{{detail.access}}</span>
+         <span class="title">访问量</span>
+        </li>
+
+        <li class="watcher-item">
+            <!-- <i class="iconfont icon-jiandu"></i>-->
+         <span class="number">{{detail.watcherNumber}}</span>
+         <span class="title">监督者</span>
+        </li>
+        
+        <li>
+            <!-- <i class="iconfont icon-fangwen"></i>-->
+         <span>{{detail.visit}}</span>
+         <span class="title">访问人次</span>
+        </li>
+      </ul>
+
       <div class="options">
         <span v-if="detail.watcherMax">监督者上限 {{detail.watcherMax}}</span>
         <span v-if="!detail.onlookers">不允许围观</span>
         <span v-if="detail.private">不在大厅显示</span>
       </div>
-
+    </div>
+    <!--
       <div class="information">
         <p @click="fetchWatcher"><i class="iconfont icon-jiandu"></i>监督者 {{detail.watcherNumber}}</p>
         <p><i class="iconfont icon-fangwenliang"></i>访问量 {{detail.access}}</p>
         <p><i class="iconfont icon-fangwen"></i>浏览人次 {{detail.visit}}</p>
       </div>
-    </div>
+    -->
   </div>
+
 </template>
 
 <script>
@@ -70,6 +94,10 @@
     },
 
     computed: {
+      startTime () {
+        return formatTime(this.detail.startTime)
+      },
+
       endTime () {
         return formatTime(this.detail.endTime)
       }
@@ -234,9 +262,10 @@
 
     .about {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
 
-      .options, .information {
+      .options {
         display: flex;
         flex-direction: column;
         font-size: 28rpx;
@@ -251,34 +280,48 @@
       }
 
       .information {
+        display: flex;
+        margin-top: 20rpx;
 
+        li {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            font-size: 39rpx;
 
-        p {
-          display: flex;
-          align-items: center;
+            .title {
+                margin-top: 5rpx;
+                font-size: 32rpx;
+                color: #3f51b5;
+            }
 
-          i {
-            margin-right: 10rpx;
-            font-size: 36rpx;
-          }
+            i {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 100rpx;
+            }
+        }
+
+        .watcher-item {
+            border-left: 1rpx solid #BBB;
+            border-right: 1rpx solid #BBB;
+
+            .number {
+                padding-bottom: 2rpx;
+                border-bottom: 1rpx solid #000;
+            }
         }
 
         i {
           color: rgba(255, 22, 0, 0.1);
         }
-
-        /*.icon-jiandu {*/
-          /*color: #ff1600;*/
-        /*}*/
-
-        /*.icon-fangwenliang {*/
-          /*color: #3F51B5;*/
-        /*}*/
-
-        /*.icon-fangwen {*/
-          /*color: #fc76b2;*/
-        /*}*/
       }
     }
   }
 </style>
+
