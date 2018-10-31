@@ -22,7 +22,7 @@
 
     <bottom ref="bottom" @publish="publish"></bottom>
 
-    <member :title="memberTitle" v-if="showMember" :listData="memberData" @close="showMember = false"></member>
+    <member :loading="memberLoading" :title="memberTitle" v-if="showMember" :listData="memberData" @close="showMember = false"></member>
   </div>
 </template>
 
@@ -55,6 +55,7 @@
 
         memberData: [],
         memberTitle: '',
+        memberLoading: false,
 
         searchData: {
           startId: -1,
@@ -206,29 +207,31 @@
 
       // 获取支持者
       fetchSupporters () {
-        if (this.loading) return;
-        this.loading = true;
+        if (this.memberLoading) return;
+        this.memberLoading= true;
+        this.memberTitle = '支持者列表';
+        this.showMember = true;
+
         this.$api.supporters(this.appointData.id).then(res => {
           this.memberData = res;
-          this.memberTitle = '支持者列表';
-          this.showMember = true;
-          this.loading = false;
+          this.memberLoading = false;
         }).catch(err => {
-          this.loading = false;
+          this.memberLoading = false;
         })
       },
 
       // 获取反对者
       fetchUnSupporters () {
-        if (this.loading) return;
-        this.loading = true;
+        if (this.memberLoading) return;
+        this.memberLoading = true;
+        this.memberTitle = '反对者列表';
+        this.showMember = true;
+
         this.$api.unSupporters(this.appointData.id).then(res => {
           this.memberData = res;
-          this.memberTitle = '反对者列表';
-          this.showMember = true;
-          this.loading = false;
+          this.memberLoading = false;
         }).catch(err => {
-          this.loading = false;
+          this.memberLoading = false;
         })
       },
 
@@ -253,11 +256,18 @@
         })
       },
 
+      // 获取监督者列表 
       fetchWatcher () {
+          if (this.memberLoading) return;
+          this.memberLoading = true;
+          this.memberTitle = '监督者列表';
+          this.showMember = true;
+
           this.$api.fetchWatcher(this.appointId, this.searchData).then(res => {
-              this.memberTitle = '监督者列表';
               this.memberData = res;
-              this.showMember = true;
+              this.memberLoading = false;
+          }).catch (err => {
+              this.memberLoading = false;
           })
       }
     },

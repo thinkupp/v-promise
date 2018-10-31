@@ -3,7 +3,7 @@
         <div class="content">
             <p class="title">{{title}}</p>
 
-            <ul @click.stop>
+            <ul v-if="listData && listData.length" @click.stop>
                 <li v-for="(list, index) in listData" :key="index">
                     <div class="left">
                         <img class="avatar" :src="list.avatar"></img>
@@ -16,7 +16,7 @@
                 <v-loading></v-loading>           
             </div>
 
-            <div class="list-none-wrapper">
+            <div v-if="!loading && !listData.length" class="list-none-wrapper">
                 <list-none></list-none>
             </div>
         </div>
