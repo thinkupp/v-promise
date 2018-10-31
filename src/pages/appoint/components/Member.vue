@@ -11,11 +11,17 @@
                     </div>
                 </li>
             </ul>
+
+            <div v-if="loading" class="loading-wrapper">
+                <v-loading></v-loading>           
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import VLoading from '../../../component/Loading.vue';
+
     export default {
         data () {
             return {
@@ -34,6 +40,11 @@
                 default: function () {
                     return []
                 }
+            },
+
+            loading: {
+                type: Boolean,
+                default: false
             }
         },
 
@@ -44,6 +55,10 @@
                     this.$emit('close');
                 }, 300);
             }
+        },
+
+        components: {
+            VLoading
         }
     }
 </script>
@@ -74,6 +89,7 @@
             height: 900rpx;
             padding: 30rpx;
             box-sizing: border-box;
+            position: relative;
 
             .title {
                 text-align: center;
@@ -99,6 +115,17 @@
                         }
                     }
                 }
+            }
+
+            .loading-wrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
     }

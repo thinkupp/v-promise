@@ -45,7 +45,7 @@
          <span class="title">访问量</span>
         </li>
 
-        <li class="watcher-item">
+        <li @click="fetchWatcher" class="watcher-item">
             <!-- <i class="iconfont icon-jiandu"></i>-->
          <span class="number">{{detail.watcherNumber}}</span>
          <span class="title">监督者</span>
@@ -312,7 +312,6 @@
             border-right: 1rpx solid #BBB;
 
             .number {
-                padding-bottom: 2rpx;
                 border-bottom: 1rpx solid #000;
             }
         }
