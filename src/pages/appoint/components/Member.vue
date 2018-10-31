@@ -15,12 +15,17 @@
             <div v-if="loading" class="loading-wrapper">
                 <v-loading></v-loading>           
             </div>
+
+            <div class="list-none-wrapper">
+                <list-none></list-none>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
     import VLoading from '../../../component/Loading.vue';
+    import ListNone from '../../../component/ListNone.vue';
 
     export default {
         data () {
@@ -58,7 +63,8 @@
         },
 
         components: {
-            VLoading
+            VLoading,
+            ListNone
         }
     }
 </script>
@@ -117,7 +123,7 @@
                 }
             }
 
-            .loading-wrapper {
+            .loading-wrapper, .list-none-wrapper {
                 position: absolute;
                 top: 0;
                 left: 0;
