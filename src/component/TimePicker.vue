@@ -48,7 +48,7 @@
       },
 
       dateChange ( e ) {
-        this.part1 = e.mp.detail.value;
+        this.part1 = e.mp.detail.value.replace(/-/g, '/');
         this.changeEmit();
       },
 
