@@ -74,6 +74,10 @@ const fetchWatcher = function ( id, data  ) {
   return ApiAppoint.fetchWatcher( id, data  );
 }
 
+const feedback = function ( content ) {
+	return ApiUser.feedback( content );
+}
+
 export default {
   login,
   register,
@@ -92,5 +96,6 @@ export default {
   accessRecord,
   fetchAllAppoint,
   updateAppoint,
-  fetchWatcher
+  fetchWatcher,
+	feedback
 }

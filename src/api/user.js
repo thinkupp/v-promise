@@ -24,8 +24,17 @@ const accessRecord = function ( data ) {
   })
 }
 
+const feedback = function ( content ) {
+	return request({
+		url: '/users/feedback',
+		data: { content },
+		method: 'POST'
+	})
+}
+
 export default {
   login,
   register,
-  accessRecord
+  accessRecord,
+	feedback
 }

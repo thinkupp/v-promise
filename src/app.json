@@ -8,7 +8,8 @@
     "pages/register/main",
     "pages/appoint/main",
     "pages/mine/main",
-		"pages/visit/main"
+		"pages/visit/main",
+		"pages/feedback/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

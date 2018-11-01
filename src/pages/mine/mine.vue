@@ -11,11 +11,9 @@
 
     <van-cell-group>
       <van-cell title="我的足迹" @click="fetchVisitRecord"/>
-      <van-cell title="意见反馈"/>
+      <van-cell title="意见反馈" @click="toFeedback" />
       <van-cell title="举报"/>
     </van-cell-group>
-
-    <button @click="fetchAccessRecord">足迹</button>
   </div>
 </template>
 
@@ -32,17 +30,17 @@
     },
 
     methods: {
-      fetchAccessRecord() {
-        this.$api.accessRecord([]).then(res => {
-          console.log(res);
-        })
-      },
-
       fetchVisitRecord() {
 				wx.navigateTo({
 					url: '/pages/visit/main'
 				})
-      }
+      },
+
+			toFeedback() {
+				wx.navigateTo({
+					url: '/pages/feedback/main'
+				})
+			}
     }
   }
 </script>
