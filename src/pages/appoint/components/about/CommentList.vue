@@ -64,8 +64,18 @@
       },
 
       handleClickContent () {
+				const that = this;
+
         wx.showActionSheet({
-          itemList: ['回复', '举报', '复制']
+          itemList: ['回复', '举报', '复制'],
+					success(e) {
+						const i = e.tapIndex;
+						if (i === 2) {
+							wx.setClipboardData({
+								data: that.comment.content
+							})
+						}
+					}
         })
       }
     }

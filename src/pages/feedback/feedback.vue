@@ -1,6 +1,5 @@
 <template>
 	<div>
-		feedback
 		<div class="input-wrapper">
 			<textarea class="input" placeholder="请输入您的意见或建议" v-model="value" :maxlength="maxlength"></textarea>
 		</div>
