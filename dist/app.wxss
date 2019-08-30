@@ -2,8 +2,8 @@
 
 @font-face {
   font-family: 'iconfont';
-  src: url('//at.alicdn.com/t/font_864209_hsz6xcdzlu.eot');
-  src: url('//at.alicdn.com/t/font_864209_hsz6xcdzlu.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_864209_hsz6xcdzlu.woff') format('woff'), url('//at.alicdn.com/t/font_864209_hsz6xcdzlu.ttf') format('truetype'), url('//at.alicdn.com/t/font_864209_hsz6xcdzlu.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_864209_s43234intj.eot');
+  src: url('//at.alicdn.com/t/font_864209_s43234intj.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_864209_s43234intj.woff') format('woff'), url('//at.alicdn.com/t/font_864209_s43234intj.ttf') format('truetype'), url('//at.alicdn.com/t/font_864209_s43234intj.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -52,7 +52,7 @@
   content: "\E60A";
 }
 .icon-loading:before {
-  content: "\E6AC";
+  content: "\E60D";
 }
 .icon-dengdai:before {
   content: "\E62B";

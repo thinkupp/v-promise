@@ -7,7 +7,9 @@
     "pages/template/main",
     "pages/register/main",
     "pages/appoint/main",
-    "pages/mine/main"
+    "pages/mine/main",
+		"pages/visit/main",
+		"pages/feedback/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,7 +19,7 @@
   },
   "tabBar": {
     "color": "#707070",
-    "selectedColor": "#d81e06",
+    "selectedColor": "#5677fc",
     "backgroundColor": "#FFFFFF",
     "list": [
       {

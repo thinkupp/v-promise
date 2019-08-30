@@ -1,14 +1,14 @@
 @import "../../common/vendor.wxss";
 
 .create.data-v-0949817d {
-  padding-bottom: 120rpx;
+  padding-bottom: 120 rpx;
   box-sizing: border-box;
   position: relative;
   min-height: 100%;
 }
 .footer.data-v-0949817d {
   display: flex;
-  height: 100rpx;
+  height: 100 rpx;
   position: absolute;
   left: 0;
   bottom: 0;

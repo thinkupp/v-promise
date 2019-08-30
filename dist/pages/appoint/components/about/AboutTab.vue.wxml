@@ -1,0 +1,6 @@
+<template name="5d2296e3">
+  <view class="_ul data-v-346c3983 tab">
+    <view class="_li data-v-346c3983 recommend" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}"><label class="_span data-v-346c3983 select">评论</label></view>
+    <view class="_li data-v-346c3983 dynamic" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"><label class="_span data-v-346c3983"> 动态 <label class="_span data-v-346c3983 round"></label></label></view>
+  </view>
+</template>

@@ -1,4 +1,4 @@
-<template name="0007c258">
+<template name="44d34e06">
   <view class="_div data-v-46d448c6 mine">
     <view class="_div data-v-46d448c6 user-info">
       <view class="_div data-v-46d448c6 about">
@@ -7,8 +7,8 @@
     </view>
     <van-cell-group class="_van-cell-group data-v-46d448c6">
       <van-cell title="我的足迹" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_van-cell data-v-46d448c6"></van-cell>
-      <van-cell title="意见反馈" class="_van-cell data-v-46d448c6"></van-cell>
+      <van-cell title="意见反馈" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_van-cell data-v-46d448c6"></van-cell>
       <van-cell title="举报" class="_van-cell data-v-46d448c6"></van-cell>
-    </van-cell-group> <button bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_button data-v-46d448c6">足迹</button>
+    </van-cell-group>
   </view>
 </template>

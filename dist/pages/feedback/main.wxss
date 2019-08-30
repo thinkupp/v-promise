@@ -1,0 +1,24 @@
+@import "../../common/vendor.wxss";
+
+.input-wrapper.data-v-4bf04046 {
+  padding: 20rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.input.data-v-4bf04046 {
+  width: 100%;
+  height: 300rpx;
+  border: 1rpx solid #CCC;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+.button.data-v-4bf04046 {
+  position: absolute;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  left: 0;
+  bottom: 0;
+  font-size: 30rpx;
+}

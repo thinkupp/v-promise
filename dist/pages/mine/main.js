@@ -2,16 +2,32 @@ require("../../common/manifest.js");
 require("../../common/vendor.js");
 global.webpackJsonp([9],{
 
-/***/ 240:
+/***/ 218:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_mine_vue__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_46d448c6_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_mine_vue__ = __webpack_require__(243);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mine__ = __webpack_require__(219);
+
+
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__mine__["a" /* default */]);
+
+app.$mount();
+
+/***/ }),
+
+/***/ 219:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_mine_vue__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_46d448c6_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_mine_vue__ = __webpack_require__(222);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(241)
+  __webpack_require__(220)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -56,19 +72,17 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 241:
+/***/ 220:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 242:
+/***/ 221:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-//
-//
 //
 //
 //
@@ -101,15 +115,14 @@ if (false) {(function () {
 
 
   methods: {
-    fetchAccessRecord: function fetchAccessRecord() {
-      this.$api.accessRecord([]).then(function (res) {
-        console.log(res);
+    fetchVisitRecord: function fetchVisitRecord() {
+      wx.navigateTo({
+        url: '/pages/visit/main'
       });
     },
-    fetchVisitRecord: function fetchVisitRecord() {
-      console.log('visit');
-      this.$api.accessRecord().then(function (res) {
-        console.log(res);
+    toFeedback: function toFeedback() {
+      wx.navigateTo({
+        url: '/pages/feedback/main'
       });
     }
   }
@@ -117,7 +130,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 243:
+/***/ 222:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -153,21 +166,18 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('van-cell', {
     attrs: {
       "title": "意见反馈",
+      "eventid": '1',
       "mpcomid": '1'
+    },
+    on: {
+      "click": _vm.toFeedback
     }
   }), _vm._v(" "), _c('van-cell', {
     attrs: {
       "title": "举报",
       "mpcomid": '2'
     }
-  })], 1), _vm._v(" "), _c('button', {
-    attrs: {
-      "eventid": '1'
-    },
-    on: {
-      "click": _vm.fetchAccessRecord
-    }
-  }, [_vm._v("足迹")])], 1)
+  })], 1)], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -180,23 +190,7 @@ if (false) {
   }
 }
 
-/***/ }),
-
-/***/ 60:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mine__ = __webpack_require__(240);
-
-
-var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__mine__["a" /* default */]);
-
-app.$mount();
-
 /***/ })
 
-},[60]);
+},[218]);
 //# sourceMappingURL=main.js.map

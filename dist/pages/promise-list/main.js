@@ -1,15 +1,15 @@
 require("../../common/manifest.js");
 require("../../common/vendor.js");
-global.webpackJsonp([7],{
+global.webpackJsonp([8],{
 
-/***/ 198:
+/***/ 223:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__promise_list__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__promise_list__ = __webpack_require__(224);
 
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__promise_list__["a" /* default */]);
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 199:
+/***/ 224:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_promise_list_vue__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_269f9ebd_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_promise_list_vue__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_promise_list_vue__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_269f9ebd_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_promise_list_vue__ = __webpack_require__(227);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(200)
+  __webpack_require__(225)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,17 +72,18 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 200:
+/***/ 225:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 201:
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index_components_Item_vue__ = __webpack_require__(38);
 //
 //
 //
@@ -90,28 +91,48 @@ if (false) {(function () {
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
-    return {};
+    return {
+      listData: []
+    };
   },
-  mounted: function mounted() {
-    this.$api.fetchAllAppoint().then(function (res) {
+  onShow: function onShow() {
+    var _this = this;
+
+    this.$api.fetchAllAppoint({}).then(function (res) {
       console.log(res);
+      _this.listData = res;
     });
   },
 
 
-  methods: {}
+  methods: {},
+
+  components: {
+    Item: __WEBPACK_IMPORTED_MODULE_0__index_components_Item_vue__["a" /* default */]
+  }
 });
 
 /***/ }),
 
-/***/ 202:
+/***/ 227:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n  PromiseList\n")])
+  return _c('div', _vm._l((_vm.listData), function(list, index) {
+    return _c('Item', {
+      key: index,
+      attrs: {
+        "showWatchTip": true,
+        "item": list,
+        "mpcomid": '0-' + index
+      }
+    })
+  }))
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -126,5 +147,5 @@ if (false) {
 
 /***/ })
 
-},[198]);
+},[223]);
 //# sourceMappingURL=main.js.map

@@ -1,0 +1,5 @@
+<template name="4474fbc3">
+  <view class="_div data-v-fcc3533a loading"><label class="_span data-v-fcc3533a loading-image">
+      <view class="_i data-v-fcc3533a iconfont icon-loading"></view>
+    </label> <label class="_span data-v-fcc3533a">{{title}}</label></view>
+</template>

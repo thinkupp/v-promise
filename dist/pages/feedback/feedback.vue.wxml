@@ -1,0 +1,3 @@
+<template name="42360586">
+  <view class="_div data-v-4bf04046">
+    <view class="_div data-v-4bf04046 input-wrapper"><textarea class="_textarea data-v-4bf04046 input" placeholder="请输入您的意见或建议" value="{{value}}" bindinput="handleProxy" maxlength="{{maxlength}}" data-eventid="{{'0'}}" data-comkey="{{$k}}" /></view> <button class="_button data-v-4bf04046 button" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">提交</button></view></template>

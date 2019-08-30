@@ -1,17 +1,17 @@
-<template name="3bed9214">
+<template name="64fcd6bd">
   <view class="_div data-v-78ad695d appoint-item" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
     <view class="_div data-v-78ad695d top">
       <view class="_div data-v-78ad695d user-info" wx:if="{{!self}}">
         <image src="{{item.u.avatar}}" class="_img data-v-78ad695d avatar"></image> <label class="_span data-v-78ad695d nickname">{{item.u.nickName}}</label>
       </view>
       <view class="_div data-v-78ad695d user-info" wx:else>
-        <image src="{{selfInfo.avatar}}" class="_img data-v-78ad695d avatar"></image> <label class="_span data-v-78ad695d nickname">{{selfInfo.nickName}}</label>
+        <image src="{{selfInfo.avatar}}" class="_img data-v-78ad695d avatar"></image> <label class="_span data-v-78ad695d nickname">{{selfInfo.nickName}}{{selfInfo.a}}</label>
       </view> <label class="_span data-v-78ad695d create-time">{{createTime}}</label>
     </view>
     <view class="_p data-v-78ad695d appoint-type"><label class="_span data-v-78ad695d type">{{item.type}}</label></view>
     <view class="_div data-v-78ad695d footer">
       <view class="_p data-v-78ad695d startTime"><label class="_span data-v-78ad695d">{{item.title}}</label></view>
-      <view class="_div data-v-78ad695d status"><label class="_span data-v-78ad695d status-option" wx:if="{{showWatchTip}}">{{watchTipContent}}</label> <label class="_span data-v-78ad695d status-option {{'status_' + item.status}}">{{status[item.status]}}</label></view>
+      <view class="_div data-v-78ad695d status" wx:if="{{!item.lastTime}}"><label class="_span data-v-78ad695d status-option" wx:if="{{showWatchTip && item.watching}}">{{watchTipContent}}</label> <label class="_span data-v-78ad695d status-option {{'status_' + item.status}}">{{status[item.status]}}</label></view><label wx:else class="_span data-v-78ad695d">{{item.lastTime}}</label>
     </view>
   </view>
 </template>

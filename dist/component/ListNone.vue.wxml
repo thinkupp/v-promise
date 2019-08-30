@@ -1,0 +1,5 @@
+<template name="e5841702">
+  <view class="_div data-v-15802442 list-none">
+    <view class="_i data-v-15802442 iconfont icon-zanwushuju"></view> <label class="_span data-v-15802442">{{title}}</label>
+  </view>
+</template>

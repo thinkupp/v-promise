@@ -1,0 +1,17 @@
+<import src="/component/Loading.vue.wxml" />
+<import src="/component/ListNone.vue.wxml" /><template name="7b3fc973">
+  <view class="_div data-v-49260c13 member {{[close ? 'close' : '']}}" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+    <view class="_div data-v-49260c13 content">
+      <view class="_p data-v-49260c13 title">{{title}}</view>
+      <view wx:if="{{listData && listData.length}}" catchtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_ul data-v-49260c13">
+        <view wx:key="index" key="{{index}}" wx:for="{{listData}}" wx:for-index="index" wx:for-item="list" class="_li data-v-49260c13">
+          <view class="_div data-v-49260c13 left">
+            <image class="_img data-v-49260c13 avatar" src="{{list.avatar}}"></image> <label class="_span data-v-49260c13 nickname">{{list.nickname}}</label>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{loading}}" class="_div data-v-49260c13 loading-wrapper"><template data="{{...$root[$kk+'0'], $root}}" is="4474fbc3"></template></view>
+      <view wx:if="{{!loading && !listData.length}}" class="_div data-v-49260c13 list-none-wrapper"><template data="{{...$root[$kk+'1'], $root}}" is="e5841702"></template></view>
+    </view>
+  </view>
+</template>

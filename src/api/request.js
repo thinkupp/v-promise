@@ -1,5 +1,6 @@
-const base_ip = 'http://192.168.0.100:3000/api';
+// const base_ip = 'http://192.168.0.100:3000/api';
 // const base_ip = 'http://192.168.8.149:3000/api';
+const base_ip = 'http://www.vvipo.cn/api'
 
 const request = function ( option ) {
   return new Promise((resolve, reject) => {
